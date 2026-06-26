@@ -83,7 +83,7 @@
   // The manifest is loaded once, in French — it drives the sidebar, navigation
   // and anchorIndex for every language (ids are shared across fr/en/cn).
   function loadManifest() {
-    return fetchJSON('fr.json').then(function (m) {
+    return fetchJSON('data/fr/manifest.json').then(function (m) {
       state.manifest = m;
       applyChrome();
       state.pageToChapter = {};
@@ -130,7 +130,7 @@
   function loadChapter(lang, chapterId) {
     var cache = state.chapterCache[lang] || (state.chapterCache[lang] = {});
     if (cache[chapterId]) return Promise.resolve(cache[chapterId]);
-    return fetchJSON(lang + '/chapters/' + chapterId + '.json').then(function (c) {
+    return fetchJSON('data/' + lang + '/chapters/' + chapterId + '.json').then(function (c) {
       cache[chapterId] = c;
       return c;
     });

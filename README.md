@@ -6,10 +6,11 @@ du complexe de de Rham »* (Inventiones math. **89**, 247–270, 1987), rendered
 
 ## View it
 
-Must be served over HTTP (the viewer uses `fetch`):
+Live: **https://rosie-0525.github.io/Deligne-Illusie/**
+
+To run locally — must be served over HTTP (the viewer uses `fetch`), from the repo root:
 
 ```sh
-cd site
 python3 -m http.server 8000
 # open http://localhost:8000/
 ```
@@ -20,10 +21,11 @@ python3 -m http.server 8000
 index.html        viewer shell (MathJax + XyJax config, top bar, sidebar)
 viewer.js         loads the manifest once, lazy-loads + caches chapters, resolves #anchors
 viewer.css        styling
-fr.json / en.json / cn.json   manifest: { toc, chapters, anchor_index, default_page_id }
-fr/chapters/*.json   French content       (the reference text)
-en/chapters/*.json   English translation  (full; bibliography entries kept verbatim)
-cn/chapters/*.json   Chinese translation  (full; bibliography entries kept verbatim)
+data/<lang>/manifest.json   per-language manifest: { toc, chapters, anchor_index, default_page_id }
+data/fr/chapters/*.json     French content       (the reference text)
+data/en/chapters/*.json     English translation  (full; bibliography entries kept verbatim)
+data/cn/chapters/*.json     Chinese translation  (full; bibliography entries kept verbatim)
+source/Deligne-Illusie.pdf  original paper (source material; not referenced by the viewer)
 ```
 
 ## Reading layout (bilingual, block-aligned)
@@ -48,10 +50,11 @@ desktop (the ☰ button); below 800 px each block stacks over its translation (F
 its rendering) and ☰ opens the sidebar as an overlay.
 
 Navigation, the TOC and `anchor_index` are driven by the **French manifest only** — all three
-languages share identical chapter/page/element ids, so `cn.json` (a copy of `fr.json`) is kept for
-parallelism but is not loaded by the viewer.
+languages share identical chapter/page/element ids, so `data/en/manifest.json` and
+`data/cn/manifest.json` (copies of `data/fr/manifest.json`) are kept for parallelism but are not
+loaded by the viewer.
 
-`fr.json` is small (~6 KB) and loaded first; each section JSON (~total 110 KB) is fetched only
+`data/fr/manifest.json` is small (~6 KB) and loaded first; each section JSON (~total 110 KB) is fetched only
 when visited, so navigation is fast. Cross-references resolve in O(1) through `anchor_index`
 (`anchorId → pageId`).
 

@@ -1,0 +1,13 @@
+{
+ "chapter_id": "front",
+ "title": "Title page",
+ "number": null,
+ "pages": [
+  {
+   "id": "front",
+   "title": "Liftings modulo p² and decomposition of the de Rham complex",
+   "html": "<p class=\"muted small\">Invent. math. 89, 247–270 (1987) · Inventiones mathematicae · © Springer-Verlag 1987</p>\n<h1 id=\"front\">Liftings modulo \\(p^2\\) and decomposition of the de Rham complex</h1>\n<p class=\"center large\">Pierre Deligne<sup>1</sup> and Luc Illusie<sup>2</sup></p>\n<p class=\"center small\"><sup>1</sup> Institute for Advanced Study, School of Mathematics, Princeton, NJ 08540, USA<br>\n<sup>2</sup> Université de Paris-Sud, Mathématique – Bât. 425, Unité associée au CNRS n° 752, F-91405 Orsay Cedex, France</p>\n\n<h2>Contents</h2>\n<dl class=\"bibliography\">\n<dt><a class=\"ref\" href=\"#1\">1.</a></dt><dd><a class=\"ref\" href=\"#1\">Notation and recollections</a> <span class=\"muted\">249</span></dd>\n<dt><a class=\"ref\" href=\"#2\">2.</a></dt><dd><a class=\"ref\" href=\"#2\">Decomposition of the de Rham complex and applications (case of a perfect field)</a> <span class=\"muted\">250</span></dd>\n<dt><a class=\"ref\" href=\"#3\">3.</a></dt><dd><a class=\"ref\" href=\"#3\">Gerbes of liftings and splittings, and decomposition of the de Rham complex (general case)</a> <span class=\"muted\">259</span></dd>\n<dt><a class=\"ref\" href=\"#4\">4.</a></dt><dd><a class=\"ref\" href=\"#4\">Complements and variants</a> <span class=\"muted\">264</span>\n  <dl class=\"bibliography\">\n  <dt><a class=\"ref\" href=\"#4.1\">4.1.</a></dt><dd><a class=\"ref\" href=\"#4.1\">Relative degeneration</a> <span class=\"muted\">264</span></dd>\n  <dt><a class=\"ref\" href=\"#4.2\">4.2.</a></dt><dd><a class=\"ref\" href=\"#4.2\">Logarithmic poles</a> <span class=\"muted\">267</span></dd>\n  </dl>\n</dd>\n<dt><a class=\"ref\" href=\"#bibliographie\">Bibl.</a></dt><dd><a class=\"ref\" href=\"#bibliographie\">Bibliography</a> <span class=\"muted\">269</span></dd>\n</dl>\n<p><a class=\"ref\" href=\"#intro\">→ Introduction</a></p>",
+   "footnotes": []
+  }
+ ]
+}

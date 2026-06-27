@@ -61,16 +61,26 @@ loaded by the viewer.
 when visited, so navigation is fast. Cross-references resolve in O(1) through `anchor_index`
 (`anchorId → pageId`).
 
-## Content model (per page, lean schema)
+## Content model (per page)
 
 ```jsonc
-{ "id": "2", "title": "...", "html": "<...>", "footnotes": [{ "id", "number", "html" }] }
+{ "id": "2", "title": "...",
+  "blocks": [ { "id": "2.1", "type": "theoreme", "label": "2.1", "title": "Théorème",
+                "html": "<div class=\"thm thm-plain theoreme\" id=\"2.1\">…</div>" }, … ],
+  "footnotes": [{ "id", "number", "html" }] }
 ```
 
-`html` is the rendered page. Conventions: statements `div.thm.thm-plain.<kind> id="2.1"`;
-collapsible proofs `div.proof`; numbered equations `div.equation id="eq:0.2"` with `\tag{0.2}`;
-unnumbered displays `div.displaymath`; cross-refs `a.ref href="#2.1"` / `a.eqref href="#eq:0.2"`;
-citations `a.ref href="#bib-14"`; bibliography `dl.bibliography > dt id="bib-1"`.
+Each page is a sequence of top-level **blocks**, one per theorem / proof / proposition / numbered
+paragraph / displayed equation / heading. A block is `{ id, type, label, title, html }`: `html` is
+the block's exact markup; `id` is its anchor id (or `null`); `type` is `heading` / `paragraph` /
+`theoreme` / `proposition` / `corollaire` / `lemme` / `remarque` / `proof` / `displaymath` /
+`equation` / `bibliography`; `label`/`title` are derived metadata (e.g. `"2.1"` / `"Théorème"`).
+The viewer pairs left/right blocks by index, so the sequence is identical across `fr`/`en`/`cn`.
+
+Markup conventions: statements `div.thm.thm-plain.<kind> id="2.1"`; collapsible proofs `div.proof`;
+numbered equations `div.equation id="eq:0.2"` with `\tag{0.2}`; unnumbered displays
+`div.displaymath`; cross-refs `a.ref href="#2.1"` / `a.eqref href="#eq:0.2"`; citations
+`a.ref href="#bib-14"`; bibliography `dl.bibliography > dt id="bib-1"`.
 Inside math, `<`/`>` are written as `&lt;`/`&gt;` so the browser doesn’t mistake `\(i<p\)` for a tag.
 
 ## Chapters / anchors
@@ -85,13 +95,15 @@ The viewer has a built-in way to **flag errors in the text for an agent to fix**
 **select any text** in a block — a theorem, paragraph, equation, in the French column or the EN/CN
 translation — and a floating **💬 Comment** button appears; add a note (usually describing the
 error). The flagged block gets a 💬 badge, and the **💬 Comments** button in the top bar opens a
-panel listing every comment (jump to it, edit, resolve, delete).
+panel listing every comment, each with **Go** (scroll to its exact block) and **Resolve** (marks
+the error handled — **deletes** the comment). Clicking a block's 💬 badge opens its thread, where
+you can also **Edit** a note or **+ Add** another.
 
 Comments are kept in the browser (`localStorage`), so the site itself stays static — there is no
 backend. To hand them to an agent, open the panel and click **Export `comments.json`** (or **Copy**);
 save the file at the repo root. (`comments.json` is git-ignored as a local working file — remove that
-line in `.gitignore` if a team wants to commit/share it.) The panel's **Import…** reloads an
-agent-edited `comments.json` back into the viewer (e.g. to see which were marked `resolved`).
+line in `.gitignore` if a team wants to commit/share it.) The panel's **Import…** merges an
+edited `comments.json` back into the viewer.
 
 Each record carries everything needed to locate the spot in the source JSON:
 
@@ -101,29 +113,28 @@ Each record carries everything needed to locate the spot in the source JSON:
   "pageId": "2",          // page within the chapter file
   "chapterId": "2",       // -> data/<lang>/chapters/<chapterId>.json
   "lang": "fr",           // 'fr' | 'en' | 'cn' — which column the error is in
-  "blockIndex": 1,        // index of the block among the page's top-level html children
-  "anchorId": "2.1",      // the block's id if any (else null) — primary locator
+  "blockIndex": 1,        // index of the block in the page's blocks[] array
+  "blockId": "2.1",       // the block's id if any (else null) — primary locator
   "quote": "p>0",         // exact selected text (whitespace-collapsed)
   "comment": "should be p ≥ 0",
-  "createdAt": "2026-06-27T12:00:00.000Z",
-  "status": "open"        // 'open' | 'resolved'
+  "createdAt": "2026-06-27T12:00:00.000Z"
 }
 ```
 
-An agent pointed at `comments.json` fixes each `"status":"open"` entry by opening
-`data/<lang>/chapters/<chapterId>.json`, finding the page with `id === pageId`, locating the block by
-`anchorId` (search `id="<anchorId>"`) — or, when `anchorId` is `null`, the `blockIndex`-th top-level
-element of `page.html` — then the `quote` within it, applying the fix, and (optionally) setting
-`status` to `"resolved"`.
+An agent pointed at `comments.json` fixes each entry by opening
+`data/<lang>/chapters/<chapterId>.json`, finding the page with `id === pageId`, locating the block in
+`page.blocks[]` by `blockId` (the entry whose `id === blockId`) — or, when `blockId` is `null`, the
+`blockIndex`-th entry — then the `quote` within that block's `html`, and applying the fix. (In the
+viewer, "Resolve" simply deletes a handled comment, so the exported file lists only open items.)
 
 ## Note on `viewer.js`
 
 Changes vs. the sample. (1) `typeset()` now defers until MathJax has finished loading (the
 library is loaded `async`, so the original raced it and left the first page un-typeset until you
 navigated). (2) `renderPageAligned()` loads the French chapter **and** the right-language chapter
-together (alignment needs both before layout), then `renderAligned()` splits each page into its
-top-level blocks (`parseBlocks()`), pairs them by index, and emits one `.align-row` per pair
-(French in `.cell-left`, translation in `.cell-right`). Because all languages reuse the same
+together (alignment needs both before layout), then `renderAligned()` reads each page's `blocks[]`
+array, builds an element per block (`blockEl()`), pairs them by index, and emits one `.align-row`
+per pair (French in `.cell-left`, translation in `.cell-right`). Because all languages reuse the same
 element ids, each right cell is passed through `namespaceIds()` (prefixing every `id` with `r-`)
 so the DOM stays valid and `getElementById`/cross-reference scrolling resolve to the canonical
 left (French) cell. French stays canonical for navigation, the sidebar highlight and scrolling;

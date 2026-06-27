@@ -185,17 +185,14 @@
     });
   }
 
-  // Split a page's html into its sequence of top-level block elements. The
-  // translation pipeline preserves this sequence 1:1 across fr/en/cn (same count
-  // and kind of blocks in the same order), so blocks pair cleanly by index.
-  function parseBlocks(html) {
+  // Build the DOM element for one stored block (a {id,type,label,title,html}
+  // record from the page's `blocks` array). The translation pipeline preserves
+  // the block sequence 1:1 across fr/en/cn (same count and kind in the same
+  // order), so the left/right blocks pair cleanly by index.
+  function blockEl(block) {
     var tpl = document.createElement('template');
-    tpl.innerHTML = html || '';
-    var out = [];
-    Array.prototype.forEach.call(tpl.content.childNodes, function (n) {
-      if (n.nodeType === 1) out.push(n);  // element nodes only (drop whitespace)
-    });
-    return out;
+    tpl.innerHTML = (block && block.html) || '';
+    return tpl.content.firstElementChild;
   }
 
   // Build the footnotes <section> as a detached element so it can be paired into
@@ -219,11 +216,11 @@
 
   function renderAligned(frPage, rPage, rlang, rErr) {
     var s = STRINGS[rlang] || STRINGS.fr;
-    var leftBlocks = parseBlocks(frPage.html || '');
-    var rightHtml = (rPage && rPage.html) ? rPage.html : '';
-    var rightBlocks;
-    if (rightHtml.trim()) {
-      rightBlocks = parseBlocks(rightHtml);
+    var toRec = function (b) { return { el: blockEl(b), id: b.id }; };
+    var left = (frPage.blocks || []).map(toRec);
+    var right;
+    if (rPage && rPage.blocks && rPage.blocks.length) {
+      right = rPage.blocks.map(toRec);
     } else {
       // No translation (or load error): one placeholder block beside the French
       // title; the remaining rows keep the French text reading on the left.
@@ -231,18 +228,18 @@
       ph.innerHTML = '<h1>' + ((rPage && rPage.title) || frPage.title || '') + '</h1>' +
         (rErr ? '<p class="error">' + rErr + '</p>'
               : '<p class="muted"><em>' + s.notrans + '</em></p>');
-      rightBlocks = [ph];
+      right = [{ el: ph, id: null }];
     }
     // Footnotes pair as a final aligned row.
     var lf = footnotesEl(frPage, 'fr');
     var rf = footnotesEl(rPage, rlang);
-    if (lf) leftBlocks.push(lf);
-    if (rf) rightBlocks.push(rf);
+    if (lf) left.push({ el: lf, id: 'footnotes' });
+    if (rf) right.push({ el: rf, id: 'footnotes' });
 
     var frag = document.createDocumentFragment();
-    var n = Math.max(leftBlocks.length, rightBlocks.length);
+    var n = Math.max(left.length, right.length);
     for (var i = 0; i < n; i++) {
-      frag.appendChild(buildRow(leftBlocks[i] || null, rightBlocks[i] || null, rlang, i));
+      frag.appendChild(buildRow(left[i] || null, right[i] || null, rlang, i));
     }
     elPanes.innerHTML = '';
     elPanes.appendChild(frag);
@@ -253,23 +250,27 @@
   }
 
   // One aligned row: French block in the left cell, its translation in the right
-  // cell. align-items:start (in CSS) tops them out, so each pair lines up. The
-  // block index (same on both cells, stable across fr/en/cn) lets comments.js
-  // anchor a comment to a block that has no id of its own.
-  function buildRow(leftNode, rightNode, rlang, idx) {
+  // cell. align-items:start (in CSS) tops them out, so each pair lines up. Each
+  // cell carries its block index (same on both cells, stable across fr/en/cn) and
+  // the block's own id, so comments.js can anchor a comment to its block — by id
+  // when it has one, by index otherwise. leftRec/rightRec are {el, id} or null.
+  function buildRow(leftRec, rightRec, rlang, idx) {
     var row = document.createElement('div');
     row.className = 'align-row';
     var lc = document.createElement('div');
     lc.className = 'cell cell-left';
     lc.lang = 'fr';
     lc.dataset.blockIndex = idx;
-    if (leftNode) lc.appendChild(leftNode);
+    lc.dataset.blockId = (leftRec && leftRec.id) || '';
+    if (leftRec && leftRec.el) lc.appendChild(leftRec.el);
     var rc = document.createElement('div');
     rc.className = 'cell cell-right';
     rc.lang = rlang;
     rc.dataset.blockIndex = idx;
-    if (rightNode) {
-      rc.appendChild(rightNode);
+    // The canonical (un-prefixed) id; the DOM ids inside the cell get an r- prefix.
+    rc.dataset.blockId = (rightRec && rightRec.id) || '';
+    if (rightRec && rightRec.el) {
+      rc.appendChild(rightRec.el);
       // The right cell reuses the same element ids as the left (ids are shared
       // across languages), so namespace them to keep the DOM valid and ensure
       // getElementById/scrollToAnchor resolve to the canonical left (French) cell.

@@ -6,19 +6,288 @@
   {
    "id": "4",
    "title": "Complements and variants",
-   "html": "<h1 id=\"4\">4. Complements and variants</h1>",
+   "blocks": [
+    {
+     "id": "4",
+     "type": "heading",
+     "label": "4",
+     "title": "Complements and variants",
+     "html": "<h1 id=\"4\">4. Complements and variants</h1>"
+    }
+   ],
    "footnotes": []
   },
   {
    "id": "4-1",
    "title": "4.1. Relative degeneration",
-   "html": "<h2 id=\"4.1\">4.1. Relative degeneration</h2>\n\n<p><span class=\"label-anchor\" id=\"4.1.1\"></span><strong>4.1.1.</strong> Let \\(S\\) be a scheme of characteristic \\(p &gt; 0\\) and \\(f : X \\to S\\) a smooth morphism. Two spectral sequences abut to \\(R^* f_* \\Omega^{\\bullet}_{X/S}\\): (i) the <em>Hodge spectral sequence</em></p>\n\n<div class=\"displaymath\" id=\"disp-4-1\">\n\\[\nE_1^{ij} = R^j f_* \\Omega^i_{X/S} \\ \\Rightarrow\\ R^{i+j} f_* \\Omega^{\\bullet}_{X/S} ;\n\\]\n</div>\n\n<p>(ii) the <em>conjugate spectral sequence</em></p>\n\n<div class=\"displaymath\" id=\"disp-4-2\">\n\\[\n{}_c E_2^{ij} = R^i f'_* \\mathscr{H}^j F_* \\Omega^{\\bullet}_{X/S} \\ \\Rightarrow\\ R^{i+j} f_* \\Omega^{\\bullet}_{X/S}\n\\]\n</div>\n\n<p>(where \\(f' : X' \\to S\\) is deduced from \\(f\\) by the base change \\(F_S : S \\to S\\), and \\(F = F_{X/S}\\)) (cf. Katz <a class=\"ref\" href=\"#bib-16\">[16, §2]</a>). The initial term of (ii) can moreover be rewritten, thanks to Cartier, as \\({}_c E_2^{ij} = R^i f'_* \\Omega^j_{X'/S}\\).</p>\n\n<div class=\"thm thm-plain proposition\" id=\"4.1.2\"><div class=\"thm-head\"><span class=\"thm-name\">Proposition 4.1.2</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.2\"></span><em>With the preceding notation, suppose \\(f\\) of finite type, and \\(S\\) artinian local, with closed point \\(s\\) and residue field \\(k\\). For \\(T \\to S\\), denote by \\(f_T : X_T \\to T\\) the morphism deduced from \\(f\\) by the base change \\(T \\to S\\). Let \\(n\\) be an integer and suppose that:</em></p>\n<p><em>(a) for \\(i + j = n\\), the \\(H^j(X_s, \\Omega^i)\\) are of finite dimension over \\(k\\);</em></p>\n<p><em>(b) for every closed subscheme \\(T\\) of \\(S\\), the conjugate spectral sequence relative to \\(f_T\\) satisfies \\({}_c E_2^{ij} = E_\\infty^{ij}\\) for \\(i + j = n\\).</em></p>\n<p><em>Under these hypotheses, the Hodge spectral sequence satisfies \\(E_1^{ij} = E_\\infty^{ij}\\) for \\(i + j = n\\) and the \\(E_1^{ij} = R^j f_* \\Omega^i_{X/S}\\) are, for \\(i + j = n\\), free and of formation compatible with any base change.</em></p></div></div>\n\n<div class=\"proof\" id=\"proof-4-1\"><div class=\"proof-head\"><span class=\"proof-name\">Proof</span><span class=\"proof-toggle\">▾</span></div><div class=\"proof-body\">\n<p>Let \\(A\\) be the ring of \\(S\\). Since the sheaf \\(\\Omega^i_{X/S}\\) is \\(S\\)-flat and the morphism \\(f\\) is of finite type, \\(R f_* \\Omega^i_{X/S}\\) is of finite flat amplitude (<a class=\"ref\" href=\"#bib-SGA6\">SGA 6 III 3.7.1</a>), hence isomorphic to a bounded complex \\(K_i\\) of flat (hence free) \\(A\\)-modules. For every \\(S\\)-scheme \\(T\\), \\(R f_{T*} \\Omega^i_{X_T/T}\\) is deduced from \\(K_i\\) by base change from \\(S\\) to \\(T\\) (<a class=\"ref\" href=\"#bib-SGA6\">SGA 6 III 3.7</a>). In particular, \\(H^j(X_s, \\Omega^i) = H^j(K_i \\otimes_A k)\\). It follows, by dévissage of \\(A\\) as a \\(A\\)-module, that one has</p>\n\n<div class=\"equation\" id=\"eq:4.1.2.1\">\n\\[\n\\tag{4.1.2.1} \\lg R^j f_* \\Omega^i_{X/S} \\le h^{ij} \\lg A \\,,\n\\]\n</div>\n\n<p>where \\(h^{ij} = \\dim_k H^j(X_s, \\Omega^i)\\) and \\(\\lg\\) denotes the length as a \\(A\\)-module. Thanks to (a), the \\(A\\)-modules \\(R^j f_* \\Omega^i_{X/S}\\) are therefore of finite length for \\(i + j = n\\). Moreover, one may assume \\(K_i\\) minimal, i.e. such that \\(K_i \\otimes_A k\\) has zero differential: decomposing \\(K_i \\otimes_A k\\) into the sum of a complex with zero differential and an acyclic complex, one can find a subcomplex \\(K'\\) of \\(K_i\\), a sum of complexes of the form \\(\\left( 0 \\to E \\xrightarrow{\\ \\mathrm{id}\\ } E \\to 0 \\right)\\) and a direct factor of \\(K_i\\) degree by degree, such that \\((K_i / K') \\otimes_A k\\) has zero differential; it then suffices to replace \\(K_i\\) by \\(K_i / K'\\). For a pair \\((i, j)\\) such that \\(i + j = n\\) and \\(K_i\\) minimal, equality in <a class=\"eqref\" href=\"#eq:4.1.2.1\">(4.1.2.1)</a> can be attained only if the differentials \\(K_i^{j-1} \\xrightarrow{d^{j-1}} K_i^j \\xrightarrow{d^j} K_i^{j+1}\\) are zero (since \\(\\lg \\operatorname{Im} d^{j-1} + \\lg H^j(K_i) + \\lg \\operatorname{Im} d^j = \\lg K_i^j \\le h^{ij} \\lg A\\)), in which case \\(R^j f_* \\Omega^i_{X/S}\\) is free, of formation compatible with any base change.</p>\n\n<p>Since the \\(E_1^{ij}\\) are \\(A\\)-modules of finite length for \\(i + j = n\\), the equality \\(E_1^{ij} = E_\\infty^{ij}\\) is equivalent to equality being attained in the inequality</p>\n\n<div class=\"equation\" id=\"eq:4.1.2.2\">\n\\[\n\\tag{4.1.2.2} \\lg R^n f_* \\Omega^{\\bullet}_{X/S} \\le \\sum_{i+j=n} \\lg R^j f_* \\Omega^i_{X/S} \\,.\n\\]\n</div>\n\n<p>On the other hand, \\(X'_s\\), deduced from \\(X_s\\) by an extension of the base field, has the same Hodge numbers \\(h^{ij}\\) as \\(X_s\\). By the first part of the argument above, the \\({}_c E_2^{ij} = R^i f'_* \\Omega^j_{X'/S}\\) are therefore also \\(A\\)-modules of finite length for \\(i + j = n\\). By (b) (for \\(T = S\\)), one therefore has</p>\n\n<div class=\"equation\" id=\"eq:4.1.2.3\">\n\\[\n\\tag{4.1.2.3} \\lg R^n f'_* \\Omega^{\\bullet}_{X'/S} = \\sum_{i+j=n} \\lg R^i f'_* \\Omega^j_{X'/S} \\,.\n\\]\n</div>\n\n<p>If \\(S\\) is the spectrum of a field, <a class=\"eqref\" href=\"#eq:4.1.2.3\">(4.1.2.3)</a> implies equality in <a class=\"eqref\" href=\"#eq:4.1.2.2\">(4.1.2.2)</a>, and 4.1.2 follows. Let \\(\\mathfrak{m}\\) be the maximal ideal of \\(A\\). Let us prove by induction on an integer \\(N \\ge 1\\) that 4.1.2 is true when \\(\\mathfrak{m}^N = 0\\). The case \\(N = 1\\), \\(A = k\\) has just been treated. If \\(N &gt; 1\\), there exists \\(N'\\) satisfying \\(1 \\le N' &lt; N\\), \\(p N' \\ge N\\). For such \\(N'\\), the Frobenius endomorphism \\(F_S\\) of \\(S\\) factors through \\(T = \\operatorname{Spec}(A_1)\\), \\(A_1 = A / \\mathfrak{m}^{N'}\\):</p>\n\n<div class=\"displaymath\" id=\"disp-4-3\">\n\\[\n\\xymatrix{\nX \\ar[r]^{F} \\ar[d]_{f} & X' \\ar[r] \\ar[d]^{f'} & X_T \\ar[r] \\ar[d]^{f_T} & X \\ar[d]^{f} \\\\\nS \\ar@{=}[r] & S \\ar[r] & T \\ar@{^{(}-&gt;}[r] & S \\,.\n}\n\\]\n</div>\n\n<p>The induction hypothesis applies to \\(X_T / T\\): for \\(i + j = n\\), \\(R^j f_* \\Omega^i_{X_T/T}\\) is free of rank \\(h^{ij}\\), of formation compatible with any base change. In particular (base change \\(S \\to T\\)), \\(R^j f_* \\Omega^i_{X/S}\\) is free of rank \\(h^{ij}\\), and the hypothesis \\({}_c E_2^{ij} = E_\\infty^{ij}\\) for \\(i + j = n\\) ensures that \\(R^n f'_* \\Omega^{\\bullet}_{X'/S}\\) is free, of rank \\(\\sum_{i+j=n} h^{ij}\\) by <a class=\"eqref\" href=\"#eq:4.1.2.3\">(4.1.2.3)</a>. The inequalities <a class=\"eqref\" href=\"#eq:4.1.2.1\">(4.1.2.1)</a> and <a class=\"eqref\" href=\"#eq:4.1.2.2\">(4.1.2.2)</a> are therefore equalities and 4.1.2 follows.</p>\n</div></div>\n\n<div class=\"thm thm-remark remarque\" id=\"4.1.3\"><div class=\"thm-head\"><span class=\"thm-name\">Remark 4.1.3</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.3\"></span>Let \\(f : X \\to S\\) be as in 4.1.1 and \\(b\\) an integer. Hypothesis (a) of 4.1.2 is satisfied if \\(f\\) is proper. On the other hand, if \\(\\tau_{\\le 1} F_* \\Omega^{\\bullet}_{X/S}\\) is decomposable (<a class=\"ref\" href=\"#3.1\">3.1</a>), hypothesis (b) of 4.1.2 is satisfied for \\(n \\le b\\). The \"decomposable\" hypothesis is stable under base change since the \\(\\mathscr{H}^j F_* \\Omega^{\\bullet}_{X/S}\\) are \\(S\\)-flat. It therefore suffices to check \\({}_c E_2^{ij} = E_\\infty^{ij}\\) for \\(X/k\\) and \\(i + j \\le b\\). The decomposability of \\(\\tau_{\\le b} F_* \\Omega^{\\bullet}_{X/S}\\) ensures that \\(d_2^{ij} = 0\\) for \\(j \\le b\\), hence in the required region \\(i + j \\le b\\).</p></div></div>\n\n<div class=\"thm thm-plain corollaire\" id=\"4.1.4\"><div class=\"thm-head\"><span class=\"thm-name\">Corollary 4.1.4</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.4\"></span><em>Let \\(S\\) be a scheme of characteristic \\(p &gt; 0\\), \\(f : X \\to S\\) a proper smooth morphism and \\(b\\) an integer. One makes the hypothesis that \\(\\tau_{\\le b} F_* \\Omega^{\\bullet}_{X/S}\\) is decomposable (<a class=\"ref\" href=\"#3.1\">3.1</a>) in \\(D(X')\\). Then:</em></p>\n<p><em>(i) For \\(i + j \\le b\\), the \\(R^j f_* \\Omega^i_{X/S}\\) are locally free of finite type, of formation compatible with any base change;</em></p>\n<p><em>(ii) the Hodge spectral sequence of \\(f\\) satisfies \\(E_1^{ij} = E_\\infty^{ij}\\) for \\(i + j \\le b\\).</em></p></div></div>\n\n<p>Standard arguments allow one successively to assume \\(S\\) affine, \\(S = \\operatorname{Spec}(A)\\), then \\(A\\) noetherian (write \\(A\\) as an inductive limit of rings of finite type over \\(\\mathbf{Z}\\)), noetherian local, complete, and finally artinian local (write \\(A = \\lim \\operatorname{proj} A / \\mathfrak{m}^n\\)). One then applies 4.1.3 and 4.1.2 for each \\(n \\le b\\).</p>\n\n<div class=\"thm thm-plain corollaire\" id=\"4.1.5\"><div class=\"thm-head\"><span class=\"thm-name\">Corollary 4.1.5</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.5\"></span><em>Let \\(f\\) be as in 4.1.4, and suppose that \\(F_* \\Omega^{\\bullet}_{X/S}\\) is decomposable in \\(D(X')\\). Then the \\(R^j f_* \\Omega^i_{X/S}\\) are locally free of finite type, of formation compatible with any base change, and the Hodge spectral sequence of \\(f\\) degenerates at \\(E_1\\).</em></p></div></div>\n\n<p>It suffices to apply 4.1.4 with \\(b \\ge 2 \\dim(X/S)\\).</p>\n\n<div class=\"thm thm-remark remarque\" id=\"4.1.6\"><div class=\"thm-head\"><span class=\"thm-name\">Remark 4.1.6</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.6\"></span>The statement <a class=\"ref\" href=\"#3.7\">3.7</a> provides sufficient conditions ensuring that the decomposability hypothesis of 4.1.4 (or 4.1.5) is fulfilled. One should take care that the liftability condition bears on \\(X'\\) and not \\(X\\). However, if, for \\(\\widetilde{S}\\) as in 3.7, the Frobenius endomorphism \\(F_S\\) of \\(S\\) admits a lifting \\(\\widetilde{F}_S\\) to \\(\\widetilde{S}\\), then every lifting \\(\\widetilde{X}\\) of \\(X\\) over \\(\\widetilde{S}\\) defines, by base change along \\(\\widetilde{F}_S\\), a lifting of \\(X'\\) over \\(\\widetilde{S}\\). Such a lifting \\(\\widetilde{F}_S\\) exists for example if \\(S\\) is affine and smooth over a perfect field \\(k\\) of characteristic \\(p\\), and \\(\\widetilde{S}\\) is a lifting of \\(S\\) over \\(W_2(k)\\).</p></div></div>",
+   "blocks": [
+    {
+     "id": "4.1",
+     "type": "heading",
+     "label": "4.1",
+     "title": "Relative degeneration",
+     "html": "<h2 id=\"4.1\">4.1. Relative degeneration</h2>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p><span class=\"label-anchor\" id=\"4.1.1\"></span><strong>4.1.1.</strong> Let \\(S\\) be a scheme of characteristic \\(p &gt; 0\\) and \\(f : X \\to S\\) a smooth morphism. Two spectral sequences abut to \\(R^* f_* \\Omega^{\\bullet}_{X/S}\\): (i) the <em>Hodge spectral sequence</em></p>"
+    },
+    {
+     "id": "disp-4-1",
+     "type": "displaymath",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"displaymath\" id=\"disp-4-1\">\n\\[\nE_1^{ij} = R^j f_* \\Omega^i_{X/S} \\ \\Rightarrow\\ R^{i+j} f_* \\Omega^{\\bullet}_{X/S} ;\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>(ii) the <em>conjugate spectral sequence</em></p>"
+    },
+    {
+     "id": "disp-4-2",
+     "type": "displaymath",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"displaymath\" id=\"disp-4-2\">\n\\[\n{}_c E_2^{ij} = R^i f'_* \\mathscr{H}^j F_* \\Omega^{\\bullet}_{X/S} \\ \\Rightarrow\\ R^{i+j} f_* \\Omega^{\\bullet}_{X/S}\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>(where \\(f' : X' \\to S\\) is deduced from \\(f\\) by the base change \\(F_S : S \\to S\\), and \\(F = F_{X/S}\\)) (cf. Katz <a class=\"ref\" href=\"#bib-16\">[16, §2]</a>). The initial term of (ii) can moreover be rewritten, thanks to Cartier, as \\({}_c E_2^{ij} = R^i f'_* \\Omega^j_{X'/S}\\).</p>"
+    },
+    {
+     "id": "4.1.2",
+     "type": "proposition",
+     "label": "4.1.2",
+     "title": "Proposition",
+     "html": "<div class=\"thm thm-plain proposition\" id=\"4.1.2\"><div class=\"thm-head\"><span class=\"thm-name\">Proposition 4.1.2</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.2\"></span><em>With the preceding notation, suppose \\(f\\) of finite type, and \\(S\\) artinian local, with closed point \\(s\\) and residue field \\(k\\). For \\(T \\to S\\), denote by \\(f_T : X_T \\to T\\) the morphism deduced from \\(f\\) by the base change \\(T \\to S\\). Let \\(n\\) be an integer and suppose that:</em></p>\n<p><em>(a) for \\(i + j = n\\), the \\(H^j(X_s, \\Omega^i)\\) are of finite dimension over \\(k\\);</em></p>\n<p><em>(b) for every closed subscheme \\(T\\) of \\(S\\), the conjugate spectral sequence relative to \\(f_T\\) satisfies \\({}_c E_2^{ij} = E_\\infty^{ij}\\) for \\(i + j = n\\).</em></p>\n<p><em>Under these hypotheses, the Hodge spectral sequence satisfies \\(E_1^{ij} = E_\\infty^{ij}\\) for \\(i + j = n\\) and the \\(E_1^{ij} = R^j f_* \\Omega^i_{X/S}\\) are, for \\(i + j = n\\), free and of formation compatible with any base change.</em></p></div></div>"
+    },
+    {
+     "id": "proof-4-1",
+     "type": "proof",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"proof\" id=\"proof-4-1\"><div class=\"proof-head\"><span class=\"proof-name\">Proof</span><span class=\"proof-toggle\">▾</span></div><div class=\"proof-body\">\n<p>Let \\(A\\) be the ring of \\(S\\). Since the sheaf \\(\\Omega^i_{X/S}\\) is \\(S\\)-flat and the morphism \\(f\\) is of finite type, \\(R f_* \\Omega^i_{X/S}\\) is of finite flat amplitude (<a class=\"ref\" href=\"#bib-SGA6\">SGA 6 III 3.7.1</a>), hence isomorphic to a bounded complex \\(K_i\\) of flat (hence free) \\(A\\)-modules. For every \\(S\\)-scheme \\(T\\), \\(R f_{T*} \\Omega^i_{X_T/T}\\) is deduced from \\(K_i\\) by base change from \\(S\\) to \\(T\\) (<a class=\"ref\" href=\"#bib-SGA6\">SGA 6 III 3.7</a>). In particular, \\(H^j(X_s, \\Omega^i) = H^j(K_i \\otimes_A k)\\). It follows, by dévissage of \\(A\\) as a \\(A\\)-module, that one has</p>\n\n<div class=\"equation\" id=\"eq:4.1.2.1\">\n\\[\n\\tag{4.1.2.1} \\lg R^j f_* \\Omega^i_{X/S} \\le h^{ij} \\lg A \\,,\n\\]\n</div>\n\n<p>where \\(h^{ij} = \\dim_k H^j(X_s, \\Omega^i)\\) and \\(\\lg\\) denotes the length as a \\(A\\)-module. Thanks to (a), the \\(A\\)-modules \\(R^j f_* \\Omega^i_{X/S}\\) are therefore of finite length for \\(i + j = n\\). Moreover, one may assume \\(K_i\\) minimal, i.e. such that \\(K_i \\otimes_A k\\) has zero differential: decomposing \\(K_i \\otimes_A k\\) into the sum of a complex with zero differential and an acyclic complex, one can find a subcomplex \\(K'\\) of \\(K_i\\), a sum of complexes of the form \\(\\left( 0 \\to E \\xrightarrow{\\ \\mathrm{id}\\ } E \\to 0 \\right)\\) and a direct factor of \\(K_i\\) degree by degree, such that \\((K_i / K') \\otimes_A k\\) has zero differential; it then suffices to replace \\(K_i\\) by \\(K_i / K'\\). For a pair \\((i, j)\\) such that \\(i + j = n\\) and \\(K_i\\) minimal, equality in <a class=\"eqref\" href=\"#eq:4.1.2.1\">(4.1.2.1)</a> can be attained only if the differentials \\(K_i^{j-1} \\xrightarrow{d^{j-1}} K_i^j \\xrightarrow{d^j} K_i^{j+1}\\) are zero (since \\(\\lg \\operatorname{Im} d^{j-1} + \\lg H^j(K_i) + \\lg \\operatorname{Im} d^j = \\lg K_i^j \\le h^{ij} \\lg A\\)), in which case \\(R^j f_* \\Omega^i_{X/S}\\) is free, of formation compatible with any base change.</p>\n\n<p>Since the \\(E_1^{ij}\\) are \\(A\\)-modules of finite length for \\(i + j = n\\), the equality \\(E_1^{ij} = E_\\infty^{ij}\\) is equivalent to equality being attained in the inequality</p>\n\n<div class=\"equation\" id=\"eq:4.1.2.2\">\n\\[\n\\tag{4.1.2.2} \\lg R^n f_* \\Omega^{\\bullet}_{X/S} \\le \\sum_{i+j=n} \\lg R^j f_* \\Omega^i_{X/S} \\,.\n\\]\n</div>\n\n<p>On the other hand, \\(X'_s\\), deduced from \\(X_s\\) by an extension of the base field, has the same Hodge numbers \\(h^{ij}\\) as \\(X_s\\). By the first part of the argument above, the \\({}_c E_2^{ij} = R^i f'_* \\Omega^j_{X'/S}\\) are therefore also \\(A\\)-modules of finite length for \\(i + j = n\\). By (b) (for \\(T = S\\)), one therefore has</p>\n\n<div class=\"equation\" id=\"eq:4.1.2.3\">\n\\[\n\\tag{4.1.2.3} \\lg R^n f'_* \\Omega^{\\bullet}_{X'/S} = \\sum_{i+j=n} \\lg R^i f'_* \\Omega^j_{X'/S} \\,.\n\\]\n</div>\n\n<p>If \\(S\\) is the spectrum of a field, <a class=\"eqref\" href=\"#eq:4.1.2.3\">(4.1.2.3)</a> implies equality in <a class=\"eqref\" href=\"#eq:4.1.2.2\">(4.1.2.2)</a>, and 4.1.2 follows. Let \\(\\mathfrak{m}\\) be the maximal ideal of \\(A\\). Let us prove by induction on an integer \\(N \\ge 1\\) that 4.1.2 is true when \\(\\mathfrak{m}^N = 0\\). The case \\(N = 1\\), \\(A = k\\) has just been treated. If \\(N &gt; 1\\), there exists \\(N'\\) satisfying \\(1 \\le N' &lt; N\\), \\(p N' \\ge N\\). For such \\(N'\\), the Frobenius endomorphism \\(F_S\\) of \\(S\\) factors through \\(T = \\operatorname{Spec}(A_1)\\), \\(A_1 = A / \\mathfrak{m}^{N'}\\):</p>\n\n<div class=\"displaymath\" id=\"disp-4-3\">\n\\[\n\\xymatrix{\nX \\ar[r]^{F} \\ar[d]_{f} & X' \\ar[r] \\ar[d]^{f'} & X_T \\ar[r] \\ar[d]^{f_T} & X \\ar[d]^{f} \\\\\nS \\ar@{=}[r] & S \\ar[r] & T \\ar@{^{(}-&gt;}[r] & S \\,.\n}\n\\]\n</div>\n\n<p>The induction hypothesis applies to \\(X_T / T\\): for \\(i + j = n\\), \\(R^j f_* \\Omega^i_{X_T/T}\\) is free of rank \\(h^{ij}\\), of formation compatible with any base change. In particular (base change \\(S \\to T\\)), \\(R^j f_* \\Omega^i_{X/S}\\) is free of rank \\(h^{ij}\\), and the hypothesis \\({}_c E_2^{ij} = E_\\infty^{ij}\\) for \\(i + j = n\\) ensures that \\(R^n f'_* \\Omega^{\\bullet}_{X'/S}\\) is free, of rank \\(\\sum_{i+j=n} h^{ij}\\) by <a class=\"eqref\" href=\"#eq:4.1.2.3\">(4.1.2.3)</a>. The inequalities <a class=\"eqref\" href=\"#eq:4.1.2.1\">(4.1.2.1)</a> and <a class=\"eqref\" href=\"#eq:4.1.2.2\">(4.1.2.2)</a> are therefore equalities and 4.1.2 follows.</p>\n</div></div>"
+    },
+    {
+     "id": "4.1.3",
+     "type": "remarque",
+     "label": "4.1.3",
+     "title": "Remark",
+     "html": "<div class=\"thm thm-remark remarque\" id=\"4.1.3\"><div class=\"thm-head\"><span class=\"thm-name\">Remark 4.1.3</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.3\"></span>Let \\(f : X \\to S\\) be as in 4.1.1 and \\(b\\) an integer. Hypothesis (a) of 4.1.2 is satisfied if \\(f\\) is proper. On the other hand, if \\(\\tau_{\\le 1} F_* \\Omega^{\\bullet}_{X/S}\\) is decomposable (<a class=\"ref\" href=\"#3.1\">3.1</a>), hypothesis (b) of 4.1.2 is satisfied for \\(n \\le b\\). The \"decomposable\" hypothesis is stable under base change since the \\(\\mathscr{H}^j F_* \\Omega^{\\bullet}_{X/S}\\) are \\(S\\)-flat. It therefore suffices to check \\({}_c E_2^{ij} = E_\\infty^{ij}\\) for \\(X/k\\) and \\(i + j \\le b\\). The decomposability of \\(\\tau_{\\le b} F_* \\Omega^{\\bullet}_{X/S}\\) ensures that \\(d_2^{ij} = 0\\) for \\(j \\le b\\), hence in the required region \\(i + j \\le b\\).</p></div></div>"
+    },
+    {
+     "id": "4.1.4",
+     "type": "corollaire",
+     "label": "4.1.4",
+     "title": "Corollary",
+     "html": "<div class=\"thm thm-plain corollaire\" id=\"4.1.4\"><div class=\"thm-head\"><span class=\"thm-name\">Corollary 4.1.4</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.4\"></span><em>Let \\(S\\) be a scheme of characteristic \\(p &gt; 0\\), \\(f : X \\to S\\) a proper smooth morphism and \\(b\\) an integer. One makes the hypothesis that \\(\\tau_{\\le b} F_* \\Omega^{\\bullet}_{X/S}\\) is decomposable (<a class=\"ref\" href=\"#3.1\">3.1</a>) in \\(D(X')\\). Then:</em></p>\n<p><em>(i) For \\(i + j \\le b\\), the \\(R^j f_* \\Omega^i_{X/S}\\) are locally free of finite type, of formation compatible with any base change;</em></p>\n<p><em>(ii) the Hodge spectral sequence of \\(f\\) satisfies \\(E_1^{ij} = E_\\infty^{ij}\\) for \\(i + j \\le b\\).</em></p></div></div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>Standard arguments allow one successively to assume \\(S\\) affine, \\(S = \\operatorname{Spec}(A)\\), then \\(A\\) noetherian (write \\(A\\) as an inductive limit of rings of finite type over \\(\\mathbf{Z}\\)), noetherian local, complete, and finally artinian local (write \\(A = \\lim \\operatorname{proj} A / \\mathfrak{m}^n\\)). One then applies 4.1.3 and 4.1.2 for each \\(n \\le b\\).</p>"
+    },
+    {
+     "id": "4.1.5",
+     "type": "corollaire",
+     "label": "4.1.5",
+     "title": "Corollary",
+     "html": "<div class=\"thm thm-plain corollaire\" id=\"4.1.5\"><div class=\"thm-head\"><span class=\"thm-name\">Corollary 4.1.5</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.5\"></span><em>Let \\(f\\) be as in 4.1.4, and suppose that \\(F_* \\Omega^{\\bullet}_{X/S}\\) is decomposable in \\(D(X')\\). Then the \\(R^j f_* \\Omega^i_{X/S}\\) are locally free of finite type, of formation compatible with any base change, and the Hodge spectral sequence of \\(f\\) degenerates at \\(E_1\\).</em></p></div></div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>It suffices to apply 4.1.4 with \\(b \\ge 2 \\dim(X/S)\\).</p>"
+    },
+    {
+     "id": "4.1.6",
+     "type": "remarque",
+     "label": "4.1.6",
+     "title": "Remark",
+     "html": "<div class=\"thm thm-remark remarque\" id=\"4.1.6\"><div class=\"thm-head\"><span class=\"thm-name\">Remark 4.1.6</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.1.6\"></span>The statement <a class=\"ref\" href=\"#3.7\">3.7</a> provides sufficient conditions ensuring that the decomposability hypothesis of 4.1.4 (or 4.1.5) is fulfilled. One should take care that the liftability condition bears on \\(X'\\) and not \\(X\\). However, if, for \\(\\widetilde{S}\\) as in 3.7, the Frobenius endomorphism \\(F_S\\) of \\(S\\) admits a lifting \\(\\widetilde{F}_S\\) to \\(\\widetilde{S}\\), then every lifting \\(\\widetilde{X}\\) of \\(X\\) over \\(\\widetilde{S}\\) defines, by base change along \\(\\widetilde{F}_S\\), a lifting of \\(X'\\) over \\(\\widetilde{S}\\). Such a lifting \\(\\widetilde{F}_S\\) exists for example if \\(S\\) is affine and smooth over a perfect field \\(k\\) of characteristic \\(p\\), and \\(\\widetilde{S}\\) is a lifting of \\(S\\) over \\(W_2(k)\\).</p></div></div>"
+    }
+   ],
    "footnotes": []
   },
   {
    "id": "4-2",
    "title": "4.2. Logarithmic poles",
-   "html": "<h2 id=\"4.2\">4.2. Logarithmic poles</h2>\n\n<p><span class=\"label-anchor\" id=\"4.2.1\"></span><strong>4.2.1.</strong> Let \\(S\\) be a scheme of characteristic \\(p &gt; 0\\), \\(X\\) a smooth \\(S\\)-scheme, and \\(D \\subset X\\) a relative divisor with normal crossings. Let \\(\\Omega^{\\bullet}_{X/S}(\\log D)\\) be the relative de Rham complex with logarithmic poles along \\(D\\). One again has a Cartier isomorphism (cf. Katz <a class=\"ref\" href=\"#bib-15\">[15, 7.2]</a>):</p>\n\n<div class=\"equation\" id=\"eq:4.2.1.1\">\n\\[\n\\tag{4.2.1.1} C^{-1} : \\Omega^i_{X'/S}(\\log D') \\xrightarrow{\\ \\sim\\ } \\mathscr{H}^i F_* \\Omega^{\\bullet}_{X/S}(\\log D).\n\\]\n</div>\n\n<p>More generally, let \\(A\\), \\(B\\), and \\(D = A + B\\) be relative divisors with normal crossings on \\(X\\) (\\(A\\) and \\(B\\) are therefore transverse to one another), and set</p>\n\n<div class=\"equation\" id=\"eq:4.2.1.2\">\n\\[\n\\tag{4.2.1.2} \\Omega^{\\bullet}_{X/S}(A, B) := \\Omega^{\\bullet}_{X/S}(\\log D)(-A).\n\\]\n</div>\n\n<p>One checks by a local computation (reduction to the case where \\(X = S[t]\\) is the affine line over \\(S\\) and \\(D\\) the divisor \\((t)\\)) that the inclusion</p>\n\n<div class=\"displaymath\" id=\"disp-4-4\">\n\\[\n\\Omega^{\\bullet}_{X/S}(\\log D)(-pA) \\hookrightarrow \\Omega^{\\bullet}_{X/S}(A, B)\n\\]\n</div>\n\n<p>is a quasi-isomorphism. Its direct image under \\(F_*\\) is a quasi-isomorphism</p>\n\n<div class=\"displaymath\" id=\"disp-4-5\">\n\\[\n(F_* \\Omega^{\\bullet}_{X/S}(\\log D))(-A') \\hookrightarrow F_* \\Omega^{\\bullet}_{X/S}(A, B).\n\\]\n</div>\n\n<p>By composition with <a class=\"eqref\" href=\"#eq:4.2.1.1\">(4.2.1.1)</a> tensored with \\(\\mathcal{O}(-A')\\) one therefore obtains an isomorphism</p>\n\n<div class=\"equation\" id=\"eq:4.2.1.3\">\n\\[\n\\tag{4.2.1.3} C^{-1} : \\Omega^i_{X'/S}(A', B') \\xrightarrow{\\ \\sim\\ } \\mathscr{H}^i F_* \\Omega^{\\bullet}_{X/S}(A, B).\n\\]\n</div>\n\n<div class=\"thm thm-remark remarque\" id=\"4.2.2\"><div class=\"thm-head\"><span class=\"thm-name\">Remarks 4.2.2</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.2.2\"></span>(a) The definition <a class=\"eqref\" href=\"#eq:4.2.1.2\">(4.2.1.2)</a> still makes sense over an arbitrary base \\(S\\). For \\(X\\) the affine line over \\(S\\), with coordinate \\(t\\), \\(D\\) the divisor \\((t)\\), one has</p>\n<div class=\"displaymath\" id=\"disp-4-6\">\n\\[\n\\Omega^{\\bullet}_{X/S}(\\log D) = \\left( \\mathcal{O}_S[t] \\to \\mathcal{O}_S[t] \\, \\frac{dt}{t} \\right),\n\\]\n</div>\n<div class=\"displaymath\" id=\"disp-4-7\">\n\\[\n\\Omega^{\\bullet}_{X/S}(\\log D)(-D) = (t \\mathcal{O}_S[t] \\to \\mathcal{O}_S[t] \\, dt).\n\\]\n</div>\n<p>Let \\(a, b, c\\) be integers \\(\\ge 0\\), \\(n = a + b + c\\), and for \\(1 \\le i \\le n\\), \\(E_i\\) the affine line over \\(S\\), with coordinate \\(t_i\\), \\(D_i\\) the divisor \\((t_i)\\). Let \\(X = E_1 \\times_S \\cdots \\times_S E_n\\) and \\(D = A + B\\) be the divisor defined by \\(A = \\sum_{1 \\le i \\le a} pr_i^{-1}(D_i)\\), \\(B = \\sum_{a+1 \\le i \\le a+b} pr_i^{-1}(D_i)\\). Then \\(\\Omega^{\\bullet}_{X/S}(A, B)\\) is the external tensor product of the \\(\\Omega^{\\bullet}_{E_i/S}(\\log D_i)(-D_i)\\) for \\(1 \\le i \\le a\\), the \\(\\Omega^{\\bullet}_{E_i/S}(\\log D_i)\\) for \\(a + 1 \\le i \\le a + b\\), and the \\(\\Omega^{\\bullet}_{E_i/S}\\) for \\(i &gt; a + b\\).</p>\n<p>(b) Let \\((X, D)\\) be as in 4.2.1, with \\(X\\) of relative dimension \\(n\\) over \\(S\\). The complex \\(F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) is self-dual, for a duality with values in \\(\\Omega^n_{X'/S}(\\log D')\\). On the other hand, the Serre dual of \\(F_* \\Omega^{\\bullet}_{X/S}(A, B)\\) (duality with values in \\(\\Omega^n_{X'/S}\\)) is \\(F_* \\Omega^{\\bullet}_{X/S}(B, A)\\).</p>\n<p>(c) Let \\(S\\) be a scheme, \\(X\\) a smooth \\(S\\)-scheme, and \\(D\\) a relative divisor with normal crossings, sum of distinct smooth divisors \\(D_i\\) (\\(1 \\le i \\le r\\)). Then the sequence</p>\n<div class=\"displaymath\" id=\"disp-4-8\">\n\\[\n0 \\to \\Omega^{\\bullet}_{X/S}(\\log D)(-D) \\to \\Omega^{\\bullet}_{X/S} \\to \\bigoplus_i \\Omega^{\\bullet}_{D_i/S} \\to \\bigoplus_{i&lt;j} \\Omega^{\\bullet}_{D_i \\cap D_j/S} \\to \\cdots\n\\]\n</div>\n<p>is exact (local verification, by means of a Künneth-type decomposition, as in (a)). The quotient \\(\\Omega^{\\bullet}_{X/S} / \\Omega^{\\bullet}_{X/S}(\\log D)(-D)\\) is the \"Sullivan-style\" de Rham complex of \\(D\\): differential forms on the \\(D_i\\) that glue together. For \\(S = \\operatorname{Spec} \\mathbf{C}\\), it provides a resolution of the constant sheaf \\(\\mathbf{C}\\) on the analytic space associated with \\(D\\); the complex \\(\\Omega^{\\bullet}_{X/S}(\\log D)(-D)\\) therefore computes \\(j_! \\mathbf{C}\\), where \\(j : X - D \\hookrightarrow X\\) is the inclusion. It is known on the other hand that \\(\\Omega^{\\bullet}_{X/S}(\\log D)\\) computes \\(R j_* \\mathbf{C}\\) (cf. <a class=\"ref\" href=\"#bib-6\">[6, 3.1.8]</a>). More generally, if \\(X\\) is a complex analytic manifold, and \\(A, B, D = A + B\\) divisors with normal crossings on \\(X\\),</p>\n<div class=\"displaymath\" id=\"disp-4-9\">\n\\[\n\\xymatrix{\nX - A \\ar[r]^{j_A} & X \\\\\nX - D \\ar[r]^{j_A} \\ar[u]^{j_B} & X - B, \\ar[u]_{j_B}\n}\n\\]\n</div>\n<p>one checks that one has</p>\n<div class=\"displaymath\" id=\"disp-4-10\">\n\\[\n\\Omega^{\\bullet}_X(A, B) = R j_{A!} R j_{B*} \\mathbf{C} = R j_{B*} R j_{A!} \\mathbf{C},\n\\]\n</div>\n<p>with \\(\\Omega^{\\bullet}_X(A, B)\\) defined as in <a class=\"eqref\" href=\"#eq:4.2.1.2\">(4.2.1.2)</a>.</p></div></div>\n\n<p><span class=\"label-anchor\" id=\"4.2.3\"></span><strong>4.2.3.</strong> The statements <a class=\"ref\" href=\"#2.1\">2.1</a>, <a class=\"ref\" href=\"#2.3\">2.3</a>, <a class=\"ref\" href=\"#2.4\">2.4</a>, <a class=\"ref\" href=\"#3.5\">3.5</a>, <a class=\"ref\" href=\"#3.6\">3.6</a>, <a class=\"ref\" href=\"#3.7\">3.7</a>, <a class=\"ref\" href=\"#3.8\">3.8</a> have \"logarithmic poles\" variants. One again defines an equivalence of the gerbe \\(\\operatorname{Rel}(X', D', \\widetilde{S})\\) of liftings of \\((X', D')\\) over \\(\\widetilde{S}\\) with the gerbe of splittings of \\(\\tau_{\\le 1} F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\). One considers only liftings \\((\\widetilde{X}', \\widetilde{D}')\\) where \\(\\widetilde{D}'\\) is again a relative divisor with normal crossings, the sheaf \\(\\Theta_{X'/S}\\) is replaced by the dual \\(\\Theta_{X'/S}(-\\log D')\\) of a lifting \\((\\widetilde{X}, \\widetilde{D})\\) of \\((X, D)\\), one considers only the liftings \\(\\widetilde{F}\\) such that \\(\\widetilde{F}^{-1}(\\widetilde{D}') = p \\widetilde{D}\\). Moreover, every global lifting of \\((X', D')\\) provides a canonical decomposition of the \\(\\tau_{&lt;p} F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) and a (non-canonical) decomposition of the \\(F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) if \\(X\\) has relative dimension \\(\\le p\\) and if \\(H^{p+1}(X, (\\Omega^p_{X/S}(\\log D))') = 0\\) (which is the case for example if \\(S\\) is affine and \\(X\\) proper over \\(S\\)) (self-duality of \\(F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\), 4.2.2 (b)).</p>\n\n<p>If \\(D = A + B\\) as in 4.2.1, such a decomposition provides an analogous decomposition for \\(F_* \\Omega^{\\bullet}_{X/S}(A, B)\\) (quasi-isomorphic to \\((F_* \\Omega^{\\bullet}_{X/S}(\\log D))(-A')\\)).</p>\n\n<p>Let \\(f : X \\to S\\) be proper and smooth, \\(D = A + B\\) as in 4.2.1, \\(b\\) an integer, and suppose that \\(\\tau_{\\le b} F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) is decomposable. Then one checks as in 4.1.4 that, for \\(i + j \\le b\\), the \\(R^j f_* \\Omega^i_{X/S}(A, B)\\) are locally free of finite type, of formation compatible with any base change, and that the spectral sequence</p>\n\n<div class=\"displaymath\" id=\"disp-4-11\">\n\\[\nE_1^{ij} = R^j f_* \\Omega^i_{X/S}(A, B) \\ \\Rightarrow\\ R^{i+j} f_* \\Omega^{\\bullet}_{X/S}(A, B)\n\\]\n</div>\n\n<p>satisfies \\(E_1^{ij} = E_\\infty^{ij}\\) for \\(i + j \\le b\\).</p>\n\n<p>By an argument similar to the proof of <a class=\"ref\" href=\"#2.6\">2.6</a>, one deduces:</p>\n\n<div class=\"thm thm-plain corollaire\" id=\"4.2.4\"><div class=\"thm-head\"><span class=\"thm-name\">Corollary 4.2.4</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.2.4\"></span><em>Let \\(X\\) be a proper smooth scheme over a field \\(K\\) of characteristic zero and \\(D = A + B\\) a divisor with normal crossings on \\(X\\). Then the Hodge spectral sequence</em></p>\n<div class=\"displaymath\" id=\"disp-4-12\">\n\\[\nE_1^{ij} = H^j(X, \\Omega^i_{X/K}(A, B)) \\ \\Rightarrow\\ H^{i+j}(X, \\Omega^{\\bullet}_{X/K}(A, B))\n\\]\n</div>\n<p><em>degenerates at \\(E_1\\).</em></p></div></div>\n\n<p>The particular case \\(A = \\emptyset\\) provides a new proof of the degeneration result <a class=\"ref\" href=\"#bib-6\">[6, 3.2.13 (ii)]</a>.</p>\n\n<p><span class=\"label-anchor\" id=\"4.2.5\"></span><strong>4.2.5.</strong> It is not difficult to transpose into the framework of M. Artin's algebraic spaces (cf. Knutson <a class=\"ref\" href=\"#bib-17\">[17]</a>) the main results of this article, in particular <a class=\"ref\" href=\"#3.5\">3.5</a> to <a class=\"ref\" href=\"#3.7\">3.7</a> and their variants <a class=\"ref\" href=\"#4.2.3\">4.2.3</a>.</p>\n\n<h2>Acknowledgements</h2>\n<p>We are grateful to J.-M. Fontaine and W. Messing for having communicated to us their degeneration results, which, together with that of K. Kato, served as a catalyst for those presented here. It is a pleasure to thank G. Laumon for the interest he has taken in this work since its beginning; his critical reading of a first version of this article and the suggestions he made to us were invaluable to us. Finally, we wish to thank M. Raynaud for numerous discussions.</p>",
+   "blocks": [
+    {
+     "id": "4.2",
+     "type": "heading",
+     "label": "4.2",
+     "title": "Logarithmic poles",
+     "html": "<h2 id=\"4.2\">4.2. Logarithmic poles</h2>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p><span class=\"label-anchor\" id=\"4.2.1\"></span><strong>4.2.1.</strong> Let \\(S\\) be a scheme of characteristic \\(p &gt; 0\\), \\(X\\) a smooth \\(S\\)-scheme, and \\(D \\subset X\\) a relative divisor with normal crossings. Let \\(\\Omega^{\\bullet}_{X/S}(\\log D)\\) be the relative de Rham complex with logarithmic poles along \\(D\\). One again has a Cartier isomorphism (cf. Katz <a class=\"ref\" href=\"#bib-15\">[15, 7.2]</a>):</p>"
+    },
+    {
+     "id": "eq:4.2.1.1",
+     "type": "equation",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"equation\" id=\"eq:4.2.1.1\">\n\\[\n\\tag{4.2.1.1} C^{-1} : \\Omega^i_{X'/S}(\\log D') \\xrightarrow{\\ \\sim\\ } \\mathscr{H}^i F_* \\Omega^{\\bullet}_{X/S}(\\log D).\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>More generally, let \\(A\\), \\(B\\), and \\(D = A + B\\) be relative divisors with normal crossings on \\(X\\) (\\(A\\) and \\(B\\) are therefore transverse to one another), and set</p>"
+    },
+    {
+     "id": "eq:4.2.1.2",
+     "type": "equation",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"equation\" id=\"eq:4.2.1.2\">\n\\[\n\\tag{4.2.1.2} \\Omega^{\\bullet}_{X/S}(A, B) := \\Omega^{\\bullet}_{X/S}(\\log D)(-A).\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>One checks by a local computation (reduction to the case where \\(X = S[t]\\) is the affine line over \\(S\\) and \\(D\\) the divisor \\((t)\\)) that the inclusion</p>"
+    },
+    {
+     "id": "disp-4-4",
+     "type": "displaymath",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"displaymath\" id=\"disp-4-4\">\n\\[\n\\Omega^{\\bullet}_{X/S}(\\log D)(-pA) \\hookrightarrow \\Omega^{\\bullet}_{X/S}(A, B)\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>is a quasi-isomorphism. Its direct image under \\(F_*\\) is a quasi-isomorphism</p>"
+    },
+    {
+     "id": "disp-4-5",
+     "type": "displaymath",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"displaymath\" id=\"disp-4-5\">\n\\[\n(F_* \\Omega^{\\bullet}_{X/S}(\\log D))(-A') \\hookrightarrow F_* \\Omega^{\\bullet}_{X/S}(A, B).\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>By composition with <a class=\"eqref\" href=\"#eq:4.2.1.1\">(4.2.1.1)</a> tensored with \\(\\mathcal{O}(-A')\\) one therefore obtains an isomorphism</p>"
+    },
+    {
+     "id": "eq:4.2.1.3",
+     "type": "equation",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"equation\" id=\"eq:4.2.1.3\">\n\\[\n\\tag{4.2.1.3} C^{-1} : \\Omega^i_{X'/S}(A', B') \\xrightarrow{\\ \\sim\\ } \\mathscr{H}^i F_* \\Omega^{\\bullet}_{X/S}(A, B).\n\\]\n</div>"
+    },
+    {
+     "id": "4.2.2",
+     "type": "remarque",
+     "label": "4.2.2",
+     "title": "Remarks",
+     "html": "<div class=\"thm thm-remark remarque\" id=\"4.2.2\"><div class=\"thm-head\"><span class=\"thm-name\">Remarks 4.2.2</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.2.2\"></span>(a) The definition <a class=\"eqref\" href=\"#eq:4.2.1.2\">(4.2.1.2)</a> still makes sense over an arbitrary base \\(S\\). For \\(X\\) the affine line over \\(S\\), with coordinate \\(t\\), \\(D\\) the divisor \\((t)\\), one has</p>\n<div class=\"displaymath\" id=\"disp-4-6\">\n\\[\n\\Omega^{\\bullet}_{X/S}(\\log D) = \\left( \\mathcal{O}_S[t] \\to \\mathcal{O}_S[t] \\, \\frac{dt}{t} \\right),\n\\]\n</div>\n<div class=\"displaymath\" id=\"disp-4-7\">\n\\[\n\\Omega^{\\bullet}_{X/S}(\\log D)(-D) = (t \\mathcal{O}_S[t] \\to \\mathcal{O}_S[t] \\, dt).\n\\]\n</div>\n<p>Let \\(a, b, c\\) be integers \\(\\ge 0\\), \\(n = a + b + c\\), and for \\(1 \\le i \\le n\\), \\(E_i\\) the affine line over \\(S\\), with coordinate \\(t_i\\), \\(D_i\\) the divisor \\((t_i)\\). Let \\(X = E_1 \\times_S \\cdots \\times_S E_n\\) and \\(D = A + B\\) be the divisor defined by \\(A = \\sum_{1 \\le i \\le a} pr_i^{-1}(D_i)\\), \\(B = \\sum_{a+1 \\le i \\le a+b} pr_i^{-1}(D_i)\\). Then \\(\\Omega^{\\bullet}_{X/S}(A, B)\\) is the external tensor product of the \\(\\Omega^{\\bullet}_{E_i/S}(\\log D_i)(-D_i)\\) for \\(1 \\le i \\le a\\), the \\(\\Omega^{\\bullet}_{E_i/S}(\\log D_i)\\) for \\(a + 1 \\le i \\le a + b\\), and the \\(\\Omega^{\\bullet}_{E_i/S}\\) for \\(i &gt; a + b\\).</p>\n<p>(b) Let \\((X, D)\\) be as in 4.2.1, with \\(X\\) of relative dimension \\(n\\) over \\(S\\). The complex \\(F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) is self-dual, for a duality with values in \\(\\Omega^n_{X'/S}(\\log D')\\). On the other hand, the Serre dual of \\(F_* \\Omega^{\\bullet}_{X/S}(A, B)\\) (duality with values in \\(\\Omega^n_{X'/S}\\)) is \\(F_* \\Omega^{\\bullet}_{X/S}(B, A)\\).</p>\n<p>(c) Let \\(S\\) be a scheme, \\(X\\) a smooth \\(S\\)-scheme, and \\(D\\) a relative divisor with normal crossings, sum of distinct smooth divisors \\(D_i\\) (\\(1 \\le i \\le r\\)). Then the sequence</p>\n<div class=\"displaymath\" id=\"disp-4-8\">\n\\[\n0 \\to \\Omega^{\\bullet}_{X/S}(\\log D)(-D) \\to \\Omega^{\\bullet}_{X/S} \\to \\bigoplus_i \\Omega^{\\bullet}_{D_i/S} \\to \\bigoplus_{i&lt;j} \\Omega^{\\bullet}_{D_i \\cap D_j/S} \\to \\cdots\n\\]\n</div>\n<p>is exact (local verification, by means of a Künneth-type decomposition, as in (a)). The quotient \\(\\Omega^{\\bullet}_{X/S} / \\Omega^{\\bullet}_{X/S}(\\log D)(-D)\\) is the \"Sullivan-style\" de Rham complex of \\(D\\): differential forms on the \\(D_i\\) that glue together. For \\(S = \\operatorname{Spec} \\mathbf{C}\\), it provides a resolution of the constant sheaf \\(\\mathbf{C}\\) on the analytic space associated with \\(D\\); the complex \\(\\Omega^{\\bullet}_{X/S}(\\log D)(-D)\\) therefore computes \\(j_! \\mathbf{C}\\), where \\(j : X - D \\hookrightarrow X\\) is the inclusion. It is known on the other hand that \\(\\Omega^{\\bullet}_{X/S}(\\log D)\\) computes \\(R j_* \\mathbf{C}\\) (cf. <a class=\"ref\" href=\"#bib-6\">[6, 3.1.8]</a>). More generally, if \\(X\\) is a complex analytic manifold, and \\(A, B, D = A + B\\) divisors with normal crossings on \\(X\\),</p>\n<div class=\"displaymath\" id=\"disp-4-9\">\n\\[\n\\xymatrix{\nX - A \\ar[r]^{j_A} & X \\\\\nX - D \\ar[r]^{j_A} \\ar[u]^{j_B} & X - B, \\ar[u]_{j_B}\n}\n\\]\n</div>\n<p>one checks that one has</p>\n<div class=\"displaymath\" id=\"disp-4-10\">\n\\[\n\\Omega^{\\bullet}_X(A, B) = R j_{A!} R j_{B*} \\mathbf{C} = R j_{B*} R j_{A!} \\mathbf{C},\n\\]\n</div>\n<p>with \\(\\Omega^{\\bullet}_X(A, B)\\) defined as in <a class=\"eqref\" href=\"#eq:4.2.1.2\">(4.2.1.2)</a>.</p></div></div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p><span class=\"label-anchor\" id=\"4.2.3\"></span><strong>4.2.3.</strong> The statements <a class=\"ref\" href=\"#2.1\">2.1</a>, <a class=\"ref\" href=\"#2.3\">2.3</a>, <a class=\"ref\" href=\"#2.4\">2.4</a>, <a class=\"ref\" href=\"#3.5\">3.5</a>, <a class=\"ref\" href=\"#3.6\">3.6</a>, <a class=\"ref\" href=\"#3.7\">3.7</a>, <a class=\"ref\" href=\"#3.8\">3.8</a> have \"logarithmic poles\" variants. One again defines an equivalence of the gerbe \\(\\operatorname{Rel}(X', D', \\widetilde{S})\\) of liftings of \\((X', D')\\) over \\(\\widetilde{S}\\) with the gerbe of splittings of \\(\\tau_{\\le 1} F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\). One considers only liftings \\((\\widetilde{X}', \\widetilde{D}')\\) where \\(\\widetilde{D}'\\) is again a relative divisor with normal crossings, the sheaf \\(\\Theta_{X'/S}\\) is replaced by the dual \\(\\Theta_{X'/S}(-\\log D')\\) of a lifting \\((\\widetilde{X}, \\widetilde{D})\\) of \\((X, D)\\), one considers only the liftings \\(\\widetilde{F}\\) such that \\(\\widetilde{F}^{-1}(\\widetilde{D}') = p \\widetilde{D}\\). Moreover, every global lifting of \\((X', D')\\) provides a canonical decomposition of the \\(\\tau_{&lt;p} F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) and a (non-canonical) decomposition of the \\(F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) if \\(X\\) has relative dimension \\(\\le p\\) and if \\(H^{p+1}(X, (\\Omega^p_{X/S}(\\log D))') = 0\\) (which is the case for example if \\(S\\) is affine and \\(X\\) proper over \\(S\\)) (self-duality of \\(F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\), 4.2.2 (b)).</p>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>If \\(D = A + B\\) as in 4.2.1, such a decomposition provides an analogous decomposition for \\(F_* \\Omega^{\\bullet}_{X/S}(A, B)\\) (quasi-isomorphic to \\((F_* \\Omega^{\\bullet}_{X/S}(\\log D))(-A')\\)).</p>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>Let \\(f : X \\to S\\) be proper and smooth, \\(D = A + B\\) as in 4.2.1, \\(b\\) an integer, and suppose that \\(\\tau_{\\le b} F_* \\Omega^{\\bullet}_{X/S}(\\log D)\\) is decomposable. Then one checks as in 4.1.4 that, for \\(i + j \\le b\\), the \\(R^j f_* \\Omega^i_{X/S}(A, B)\\) are locally free of finite type, of formation compatible with any base change, and that the spectral sequence</p>"
+    },
+    {
+     "id": "disp-4-11",
+     "type": "displaymath",
+     "label": null,
+     "title": null,
+     "html": "<div class=\"displaymath\" id=\"disp-4-11\">\n\\[\nE_1^{ij} = R^j f_* \\Omega^i_{X/S}(A, B) \\ \\Rightarrow\\ R^{i+j} f_* \\Omega^{\\bullet}_{X/S}(A, B)\n\\]\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>satisfies \\(E_1^{ij} = E_\\infty^{ij}\\) for \\(i + j \\le b\\).</p>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>By an argument similar to the proof of <a class=\"ref\" href=\"#2.6\">2.6</a>, one deduces:</p>"
+    },
+    {
+     "id": "4.2.4",
+     "type": "corollaire",
+     "label": "4.2.4",
+     "title": "Corollary",
+     "html": "<div class=\"thm thm-plain corollaire\" id=\"4.2.4\"><div class=\"thm-head\"><span class=\"thm-name\">Corollary 4.2.4</span></div><div class=\"thm-body\"><p><span class=\"label-anchor\" id=\"4.2.4\"></span><em>Let \\(X\\) be a proper smooth scheme over a field \\(K\\) of characteristic zero and \\(D = A + B\\) a divisor with normal crossings on \\(X\\). Then the Hodge spectral sequence</em></p>\n<div class=\"displaymath\" id=\"disp-4-12\">\n\\[\nE_1^{ij} = H^j(X, \\Omega^i_{X/K}(A, B)) \\ \\Rightarrow\\ H^{i+j}(X, \\Omega^{\\bullet}_{X/K}(A, B))\n\\]\n</div>\n<p><em>degenerates at \\(E_1\\).</em></p></div></div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>The particular case \\(A = \\emptyset\\) provides a new proof of the degeneration result <a class=\"ref\" href=\"#bib-6\">[6, 3.2.13 (ii)]</a>.</p>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p><span class=\"label-anchor\" id=\"4.2.5\"></span><strong>4.2.5.</strong> It is not difficult to transpose into the framework of M. Artin's algebraic spaces (cf. Knutson <a class=\"ref\" href=\"#bib-17\">[17]</a>) the main results of this article, in particular <a class=\"ref\" href=\"#3.5\">3.5</a> to <a class=\"ref\" href=\"#3.7\">3.7</a> and their variants <a class=\"ref\" href=\"#4.2.3\">4.2.3</a>.</p>"
+    },
+    {
+     "id": null,
+     "type": "heading",
+     "label": null,
+     "title": "Acknowledgements",
+     "html": "<h2>Acknowledgements</h2>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>We are grateful to J.-M. Fontaine and W. Messing for having communicated to us their degeneration results, which, together with that of K. Kato, served as a catalyst for those presented here. It is a pleasure to thank G. Laumon for the interest he has taken in this work since its beginning; his critical reading of a first version of this article and the suggestions he made to us were invaluable to us. Finally, we wish to thank M. Raynaud for numerous discussions.</p>"
+    }
+   ],
    "footnotes": []
   }
  ]

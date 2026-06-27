@@ -6,7 +6,57 @@
   {
    "id": "front",
    "title": "模 ⟦M0⟧ 提升与德拉姆复形的分解",
-   "html": "<p class=\"muted small\">Invent. math. 89, 247–270 (1987) · Inventiones mathematicae · © Springer-Verlag 1987</p>\n<h1 id=\"front\">模 \\(p^2\\) 提升与德拉姆复形的分解</h1>\n<p class=\"center large\">Pierre Deligne<sup>1</sup> 与 Luc Illusie<sup>2</sup></p>\n<p class=\"center small\"><sup>1</sup> Institute for Advanced Study, School of Mathematics, Princeton, NJ 08540, USA<br>\n<sup>2</sup> Université de Paris-Sud, Mathématique – Bât. 425, Unité associée au CNRS n° 752, F-91405 Orsay Cedex, France</p>\n\n<h2>目录</h2>\n<dl class=\"bibliography\">\n<dt><a class=\"ref\" href=\"#1\">1.</a></dt><dd><a class=\"ref\" href=\"#1\">记号与回顾</a> <span class=\"muted\">249</span></dd>\n<dt><a class=\"ref\" href=\"#2\">2.</a></dt><dd><a class=\"ref\" href=\"#2\">德拉姆复形的分解及其应用（完全域的情形）</a> <span class=\"muted\">250</span></dd>\n<dt><a class=\"ref\" href=\"#3\">3.</a></dt><dd><a class=\"ref\" href=\"#3\">提升与分裂的 gerbe，以及德拉姆复形的分解（一般情形）</a> <span class=\"muted\">259</span></dd>\n<dt><a class=\"ref\" href=\"#4\">4.</a></dt><dd><a class=\"ref\" href=\"#4\">补充与变体</a> <span class=\"muted\">264</span>\n  <dl class=\"bibliography\">\n  <dt><a class=\"ref\" href=\"#4.1\">4.1.</a></dt><dd><a class=\"ref\" href=\"#4.1\">相对退化</a> <span class=\"muted\">264</span></dd>\n  <dt><a class=\"ref\" href=\"#4.2\">4.2.</a></dt><dd><a class=\"ref\" href=\"#4.2\">对数极点</a> <span class=\"muted\">267</span></dd>\n  </dl>\n</dd>\n<dt><a class=\"ref\" href=\"#bibliographie\">Bibl.</a></dt><dd><a class=\"ref\" href=\"#bibliographie\">参考文献</a> <span class=\"muted\">269</span></dd>\n</dl>\n<p><a class=\"ref\" href=\"#intro\">→ 引言</a></p>",
+   "blocks": [
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p class=\"muted small\">Invent. math. 89, 247–270 (1987) · Inventiones mathematicae · © Springer-Verlag 1987</p>"
+    },
+    {
+     "id": "front",
+     "type": "heading",
+     "label": null,
+     "title": "模 \\(p^2\\) 提升与德拉姆复形的分解",
+     "html": "<h1 id=\"front\">模 \\(p^2\\) 提升与德拉姆复形的分解</h1>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p class=\"center large\">Pierre Deligne<sup>1</sup> 与 Luc Illusie<sup>2</sup></p>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p class=\"center small\"><sup>1</sup> Institute for Advanced Study, School of Mathematics, Princeton, NJ 08540, USA<br>\n<sup>2</sup> Université de Paris-Sud, Mathématique – Bât. 425, Unité associée au CNRS n° 752, F-91405 Orsay Cedex, France</p>"
+    },
+    {
+     "id": null,
+     "type": "heading",
+     "label": null,
+     "title": "目录",
+     "html": "<h2>目录</h2>"
+    },
+    {
+     "id": null,
+     "type": "bibliography",
+     "label": null,
+     "title": null,
+     "html": "<dl class=\"bibliography\">\n<dt><a class=\"ref\" href=\"#1\">1.</a></dt><dd><a class=\"ref\" href=\"#1\">记号与回顾</a> <span class=\"muted\">249</span></dd>\n<dt><a class=\"ref\" href=\"#2\">2.</a></dt><dd><a class=\"ref\" href=\"#2\">德拉姆复形的分解及其应用（完全域的情形）</a> <span class=\"muted\">250</span></dd>\n<dt><a class=\"ref\" href=\"#3\">3.</a></dt><dd><a class=\"ref\" href=\"#3\">提升与分裂的 gerbe，以及德拉姆复形的分解（一般情形）</a> <span class=\"muted\">259</span></dd>\n<dt><a class=\"ref\" href=\"#4\">4.</a></dt><dd><a class=\"ref\" href=\"#4\">补充与变体</a> <span class=\"muted\">264</span>\n  <dl class=\"bibliography\">\n  <dt><a class=\"ref\" href=\"#4.1\">4.1.</a></dt><dd><a class=\"ref\" href=\"#4.1\">相对退化</a> <span class=\"muted\">264</span></dd>\n  <dt><a class=\"ref\" href=\"#4.2\">4.2.</a></dt><dd><a class=\"ref\" href=\"#4.2\">对数极点</a> <span class=\"muted\">267</span></dd>\n  </dl>\n</dd>\n<dt><a class=\"ref\" href=\"#bibliographie\">Bibl.</a></dt><dd><a class=\"ref\" href=\"#bibliographie\">参考文献</a> <span class=\"muted\">269</span></dd>\n</dl>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p><a class=\"ref\" href=\"#intro\">→ 引言</a></p>"
+    }
+   ],
    "footnotes": []
   }
  ]

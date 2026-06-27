@@ -7,12 +7,13 @@
 
    Each comment records where it lives so the fix is mechanical:
      data/<lang>/chapters/<chapterId>.json  ->  pages[].id === pageId  ->  the
-     block by anchorId (or the blockIndex-th top-level element of page.html)  ->
-     the exact `quote`.
+     entry in page.blocks[] by blockId (or by blockIndex)  ->  the exact `quote`.
 
    Visual marking is block-level (a 💬 badge + tint): MathJax replaces math with
    SVG after typesetting, so re-wrapping an arbitrary substring of rendered
-   content is fragile. The precise quote is still stored for the agent. */
+   content is fragile. The precise quote is still stored for the agent.
+
+   "Resolve" deletes the comment (a flagged error, once handled, is removed). */
 (function () {
   'use strict';
 
@@ -37,7 +38,6 @@
 
   function uid() { return 'c-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6); }
   function byId(id) { return comments.filter(function (c) { return c.id === id; })[0] || null; }
-  function isOpen(c) { return c.status !== 'resolved'; }
 
   // --------------------------------------------------------------- helpers ----
 
@@ -49,22 +49,18 @@
 
   // Resolve the block context for a node (typically a selection's anchor): which
   // cell it sits in, that cell's language and block index, the page/chapter, and
-  // the block's own id (un-namespacing the right column's `r-` prefix).
+  // the block's own (canonical, un-prefixed) id — both stamped on the cell by
+  // viewer.js's buildRow (data-block-index / data-block-id).
   function contextForNode(node) {
     var el = node && (node.nodeType === 1 ? node : node.parentElement);
     var cell = el && el.closest ? el.closest('#panes .cell') : null;
     if (!cell) return null;
     var lang = cell.lang || (cell.classList.contains('cell-right') ? '' : 'fr');
-    var block = cell.firstElementChild;
-    var anchorId = block && block.id ? block.id : null;
-    if (anchorId && cell.classList.contains('cell-right') && anchorId.indexOf('r-') === 0) {
-      anchorId = anchorId.slice(2);
-    }
     return {
       cell: cell,
       lang: lang,
       blockIndex: cell.dataset.blockIndex != null ? parseInt(cell.dataset.blockIndex, 10) : null,
-      anchorId: anchorId,
+      blockId: cell.dataset.blockId || null,
       pageId: elPanes.dataset.pageId || null,
       chapterId: elPanes.dataset.chapterId || null
     };
@@ -74,7 +70,9 @@
     return elPanes.querySelector('.cell-' + side + '[data-block-index="' + String(blockIndex) + '"]');
   }
 
-  function locLabel(c) { return c.anchorId ? '#' + c.anchorId : 'block ' + c.blockIndex; }
+  // A comment's block id (`anchorId` on comments saved before the rename).
+  function locId(c) { return c.blockId || c.anchorId || null; }
+  function locLabel(c) { return locId(c) ? '#' + locId(c) : 'block ' + c.blockIndex; }
 
   // -------------------------------------------------- selection → float btn ----
 
@@ -161,8 +159,8 @@
       if (!text) { ta.focus(); return; }
       comments.push({
         id: uid(), pageId: ctx.pageId, chapterId: ctx.chapterId, lang: ctx.lang,
-        blockIndex: ctx.blockIndex, anchorId: ctx.anchorId, quote: quote,
-        comment: text, createdAt: new Date().toISOString(), status: 'open'
+        blockIndex: ctx.blockIndex, blockId: ctx.blockId, quote: quote,
+        comment: text, createdAt: new Date().toISOString()
       });
       commit();
       closePopovers();
@@ -173,14 +171,36 @@
     });
   }
 
-  // Thread for one block: list its comments with edit / resolve / delete / add.
+  // Thread for one block: list its comments with resolve (= delete) / edit / add.
+  // The click handler is delegated and bound ONCE here; renderThread only rebuilds
+  // the popover's innerHTML, so handlers never stack across re-renders.
   function openThread(side, blockIndex, anchorRect) {
     closePopovers();
     var pop = popoverShell();
     pop.dataset.side = side;
     pop.dataset.blockIndex = blockIndex;
+    pop.addEventListener('click', onThreadClick);
     renderThread(pop);
     positionPopover(pop, anchorRect);
+  }
+
+  function onThreadClick(e) {
+    var pop = e.currentTarget;
+    var btn = e.target.closest && e.target.closest('button[data-act]');
+    if (!btn) return;
+    var act = btn.getAttribute('data-act');
+    if (act === 'close') { closePopovers(); return; }
+    if (act === 'add') {
+      var cell = cellFor(pop.dataset.side, pop.dataset.blockIndex);
+      var ctx = cell ? contextForNode(cell) : null;
+      if (ctx) openCreate(ctx, '', pop.getBoundingClientRect());
+      return;
+    }
+    var item = btn.closest('.cmt-item');
+    var c = byId(item && item.getAttribute('data-id'));
+    if (!c) return;
+    if (act === 'resolve') { removeComment(c.id); renderThread(pop); }  // resolve = delete
+    else if (act === 'edit') startEdit(item, c, pop);
   }
 
   function threadComments(side, blockIndex) {
@@ -196,39 +216,20 @@
     if (!list.length) { pop.remove(); return; }
     var html = '<div class="cmt-pop-head">Comments</div><div class="cmt-thread">';
     list.forEach(function (c) {
-      html += '<div class="cmt-item' + (isOpen(c) ? '' : ' resolved') + '" data-id="' + esc(c.id) + '">' +
+      html += '<div class="cmt-item" data-id="' + esc(c.id) + '">' +
         (c.quote ? '<div class="cmt-item-quote">“' + esc(truncate(c.quote, 140)) + '”</div>' : '') +
         '<div class="cmt-item-text">' + esc(c.comment) + '</div>' +
         '<div class="cmt-item-foot"><span class="cmt-tag">' + langLabel(c.lang) +
-          (c.anchorId ? ' · #' + esc(c.anchorId) : '') + '</span>' +
+          (locId(c) ? ' · #' + esc(locId(c)) : '') + '</span>' +
           '<span class="cmt-actions">' +
-            '<button type="button" data-act="resolve">' + (isOpen(c) ? 'Resolve' : 'Reopen') + '</button>' +
+            '<button type="button" data-act="resolve" title="Mark this error handled — deletes the comment">Resolve</button>' +
             '<button type="button" data-act="edit">Edit</button>' +
-            '<button type="button" data-act="del">Delete</button>' +
           '</span></div></div>';
     });
     html += '</div><div class="cmt-pop-actions">' +
-      '<button type="button" class="cmt-btn cmt-add">+ Add</button>' +
-      '<button type="button" class="cmt-btn cmt-cancel">Close</button></div>';
+      '<button type="button" class="cmt-btn cmt-add" data-act="add">+ Add</button>' +
+      '<button type="button" class="cmt-btn cmt-cancel" data-act="close">Close</button></div>';
     pop.innerHTML = html;
-
-    pop.querySelector('.cmt-cancel').addEventListener('click', closePopovers);
-    pop.querySelector('.cmt-add').addEventListener('click', function () {
-      var cell = cellFor(side, bi);
-      var ctx = cell ? contextForNode(cell) : null;
-      if (ctx) openCreate(ctx, '', pop.getBoundingClientRect());
-    });
-    pop.addEventListener('click', function (e) {
-      var btn = e.target.closest('button[data-act]');
-      if (!btn) return;
-      var item = btn.closest('.cmt-item');
-      var c = byId(item && item.getAttribute('data-id'));
-      if (!c) return;
-      var act = btn.getAttribute('data-act');
-      if (act === 'del') { removeComment(c.id); renderThread(pop); }
-      else if (act === 'resolve') { c.status = isOpen(c) ? 'resolved' : 'open'; commit(); renderThread(pop); }
-      else if (act === 'edit') startEdit(item, c, pop);
-    });
   }
 
   // Inline edit of one comment's text, in place inside its thread item.
@@ -282,10 +283,9 @@
       if (!cell) return;
       cell.classList.add('has-comment');
       var list = groups[key];
-      var allResolved = list.every(function (c) { return !isOpen(c); });
       var badge = document.createElement('button');
       badge.type = 'button';
-      badge.className = 'cmt-badge cmt-ui' + (allResolved ? ' resolved' : '');
+      badge.className = 'cmt-badge cmt-ui';
       badge.textContent = '💬' + (list.length > 1 ? ' ' + list.length : '');
       badge.title = list.length + ' comment' + (list.length > 1 ? 's' : '');
       badge.addEventListener('click', function (e) {
@@ -342,14 +342,13 @@
     order.forEach(function (pid) {
       html += '<div class="cmt-grp"><div class="cmt-grp-head">Page ' + esc(pid) + '</div>';
       groups[pid].forEach(function (c) {
-        html += '<div class="cmt-row' + (isOpen(c) ? '' : ' resolved') + '" data-id="' + esc(c.id) + '">' +
+        html += '<div class="cmt-row" data-id="' + esc(c.id) + '">' +
           '<div class="cmt-row-text">' + esc(c.comment) + '</div>' +
           (c.quote ? '<div class="cmt-row-quote">“' + esc(truncate(c.quote, 120)) + '”</div>' : '') +
           '<div class="cmt-row-foot"><span class="cmt-tag">' + langLabel(c.lang) + ' · ' + esc(locLabel(c)) + '</span>' +
             '<span class="cmt-actions">' +
-              '<button type="button" data-act="jump">Go</button>' +
-              '<button type="button" data-act="resolve">' + (isOpen(c) ? 'Resolve' : 'Reopen') + '</button>' +
-              '<button type="button" data-act="del">Delete</button>' +
+              '<button type="button" data-act="jump" title="Scroll to this comment\'s block">Go</button>' +
+              '<button type="button" data-act="resolve" title="Mark this error handled — deletes the comment">Resolve</button>' +
             '</span></div></div>';
       });
       html += '</div>';
@@ -364,9 +363,8 @@
     var c = byId(row && row.getAttribute('data-id'));
     if (!c) return;
     var act = btn.getAttribute('data-act');
-    if (act === 'jump') navTo('#' + (c.anchorId || c.pageId));
-    else if (act === 'resolve') { c.status = isOpen(c) ? 'resolved' : 'open'; commit(); }
-    else if (act === 'del') removeComment(c.id);
+    if (act === 'jump') goToComment(c);
+    else if (act === 'resolve') removeComment(c.id);  // resolve = delete
   }
 
   function onPanelTool(e) {
@@ -434,12 +432,36 @@
     document.body.appendChild(a); a.click(); a.remove();
   }
 
+  // Scroll the comment's exact block into view and flash it. Works whether or not
+  // the block has an id (anchors by blockIndex via cellFor), and targets the right
+  // column when the comment was made on the translation side.
+  function scrollToBlock(side, blockIndex) {
+    var cell = cellFor(side, blockIndex);
+    if (!cell) return;
+    cell.scrollIntoView({ block: 'center' });
+    cell.classList.add('target-flash');
+    setTimeout(function () { cell.classList.remove('target-flash'); }, 1300);
+  }
+
+  // "Go": reveal the block a comment is attached to, navigating pages if needed.
+  function goToComment(c) {
+    if (!c) return;
+    // Defer past the viewer's own post-render scroll-to-top so ours wins.
+    var reveal = function () { setTimeout(function () { scrollToBlock(sideOf(c), c.blockIndex); }, 0); };
+    if (elPanes.dataset.pageId === c.pageId) { reveal(); return; }
+    document.addEventListener('panes:rendered', function once() {
+      document.removeEventListener('panes:rendered', once);
+      reveal();
+    });
+    navTo('#' + c.pageId);
+  }
+
   function updateTopCount() {
     var badge = document.getElementById('cmt-count');
     if (!badge) return;
-    var open = comments.filter(isOpen).length;
-    badge.textContent = open ? String(open) : '';
-    badge.hidden = !open;
+    var n = comments.length;
+    badge.textContent = n ? String(n) : '';
+    badge.hidden = !n;
   }
 
   // ----------------------------------------------------------------- boot ----

@@ -7,12 +7,14 @@
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="viewer.css">
 <script>
-// MathJax 3 + XyJax-v3 (xy-pic commutative diagrams). Math uses \(..\) / \[..\]
-// delimiters; equation numbers are injected as \tag, so MathJax auto-tagging is off.
+// MathJax 3 (SVG output) + XyJax-v3 (xy-pic commutative diagrams). Both libraries are
+// vendored under vendor/ so the page renders fully offline (no CDN / network requests).
+// Math uses \(..\) / \[..\] delimiters; equation numbers are injected as \tag, so
+// MathJax auto-tagging is off.
 window.MathJax = {
   loader: {
     load: ['[custom]/xypic.js'],
-    paths: { custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3/build/' }
+    paths: { custom: 'vendor/xyjax' }
   },
   tex: {
     packages: { '[+]': ['xypic', 'ams', 'color', 'mathtools'] },
@@ -42,7 +44,7 @@ window.MathJax = {
   startup: { typeset: false }
 };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<script src="vendor/mathjax/tex-svg-full.js" id="MathJax-script" async></script>
 </head>
 <body>
 <header id="topbar">
@@ -53,6 +55,9 @@ window.MathJax = {
     <button data-rlang="en" class="active">EN</button>
     <button data-rlang="cn">中文</button>
   </div>
+  <button id="cmt-toggle" aria-label="Comments / erreurs signalées" title="Flagged errors / comments">
+    💬 Comments<span id="cmt-count" hidden></span>
+  </button>
 </header>
 <div id="layout">
   <nav id="sidebar" aria-label="Table des matières"></nav>
@@ -62,5 +67,6 @@ window.MathJax = {
   </main>
 </div>
 <script src="viewer.js"></script>
+<script src="comments.js"></script>
 </body>
 </html>

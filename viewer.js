@@ -164,6 +164,10 @@
       var frPage = pickPage(res[0], pageId);
       pageId = frPage.id;
       state.currentPage = pageId;
+      // Expose the page/chapter ids on the panes container so comments.js can
+      // record where each comment lives (data/<lang>/chapters/<chapterId>.json).
+      elPanes.dataset.pageId = pageId;
+      elPanes.dataset.chapterId = chId;
       var rChapter = res[1], rPage, rErr = null;
       if (rChapter && rChapter.__err) {
         rErr = (STRINGS[rlang] || STRINGS.fr).loadErr + rChapter.__err.message;
@@ -238,26 +242,32 @@
     var frag = document.createDocumentFragment();
     var n = Math.max(leftBlocks.length, rightBlocks.length);
     for (var i = 0; i < n; i++) {
-      frag.appendChild(buildRow(leftBlocks[i] || null, rightBlocks[i] || null, rlang));
+      frag.appendChild(buildRow(leftBlocks[i] || null, rightBlocks[i] || null, rlang, i));
     }
     elPanes.innerHTML = '';
     elPanes.appendChild(frag);
     wireProofs(elPanes);
     typeset(elPanes);
+    // Let comments.js (re-)apply its block badges for the page just rendered.
+    document.dispatchEvent(new CustomEvent('panes:rendered'));
   }
 
   // One aligned row: French block in the left cell, its translation in the right
-  // cell. align-items:start (in CSS) tops them out, so each pair lines up.
-  function buildRow(leftNode, rightNode, rlang) {
+  // cell. align-items:start (in CSS) tops them out, so each pair lines up. The
+  // block index (same on both cells, stable across fr/en/cn) lets comments.js
+  // anchor a comment to a block that has no id of its own.
+  function buildRow(leftNode, rightNode, rlang, idx) {
     var row = document.createElement('div');
     row.className = 'align-row';
     var lc = document.createElement('div');
     lc.className = 'cell cell-left';
     lc.lang = 'fr';
+    lc.dataset.blockIndex = idx;
     if (leftNode) lc.appendChild(leftNode);
     var rc = document.createElement('div');
     rc.className = 'cell cell-right';
     rc.lang = rlang;
+    rc.dataset.blockIndex = idx;
     if (rightNode) {
       rc.appendChild(rightNode);
       // The right cell reuses the same element ids as the left (ids are shared

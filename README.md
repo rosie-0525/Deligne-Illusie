@@ -2,7 +2,8 @@
 
 HTML/JSON edition of P. Deligne & L. Illusie, *« Relèvements modulo p² et décomposition
 du complexe de de Rham »* (Inventiones math. **89**, 247–270, 1987), rendered with MathJax 3
-+ XyJax‑v3. Same viewer format as the SGA 2 viewer.
+(SVG output) + XyJax‑v3. Same viewer format as the SGA 2 viewer. Both math libraries are
+vendored under `vendor/`, so the page renders **fully offline** — no CDN or network needed.
 
 ## View it
 
@@ -21,6 +22,8 @@ python3 -m http.server 8000
 index.html        viewer shell (MathJax + XyJax config, top bar, sidebar)
 viewer.js         loads the manifest once, lazy-loads + caches chapters, resolves #anchors
 viewer.css        styling
+vendor/mathjax/tex-svg-full.js   MathJax 3 (SVG output, all extensions) — vendored for offline use
+vendor/xyjax/xypic.js            XyJax-v3 xy-pic extension — vendored for offline use
 data/<lang>/manifest.json   per-language manifest: { toc, chapters, anchor_index, default_page_id }
 data/fr/chapters/*.json     French content       (the reference text)
 data/en/chapters/*.json     English translation  (full; bibliography entries kept verbatim)
@@ -75,6 +78,43 @@ Inside math, `<`/`>` are written as `&lt;`/`&gt;` so the browser doesn’t mista
 `front` (title + Sommaire) · `intro` · `1`–`4` (4 has sub-pages `4-1`, `4-2`) · `bibliographie`.
 Statement anchors are the paper’s native numbers (`2.1`, `4.1.2`, …); equations `eq:<n>`;
 bibliography `bib-1…bib-28`, `bib-EGA`, `bib-SGA1`, `bib-SGA6`. All 133 internal links resolve.
+
+## Flagging errors for agents
+
+The viewer has a built-in way to **flag errors in the text for an agent to fix**. While reading,
+**select any text** in a block — a theorem, paragraph, equation, in the French column or the EN/CN
+translation — and a floating **💬 Comment** button appears; add a note (usually describing the
+error). The flagged block gets a 💬 badge, and the **💬 Comments** button in the top bar opens a
+panel listing every comment (jump to it, edit, resolve, delete).
+
+Comments are kept in the browser (`localStorage`), so the site itself stays static — there is no
+backend. To hand them to an agent, open the panel and click **Export `comments.json`** (or **Copy**);
+save the file at the repo root. (`comments.json` is git-ignored as a local working file — remove that
+line in `.gitignore` if a team wants to commit/share it.) The panel's **Import…** reloads an
+agent-edited `comments.json` back into the viewer (e.g. to see which were marked `resolved`).
+
+Each record carries everything needed to locate the spot in the source JSON:
+
+```jsonc
+{
+  "id": "c-1719500000000-ab12",
+  "pageId": "2",          // page within the chapter file
+  "chapterId": "2",       // -> data/<lang>/chapters/<chapterId>.json
+  "lang": "fr",           // 'fr' | 'en' | 'cn' — which column the error is in
+  "blockIndex": 1,        // index of the block among the page's top-level html children
+  "anchorId": "2.1",      // the block's id if any (else null) — primary locator
+  "quote": "p>0",         // exact selected text (whitespace-collapsed)
+  "comment": "should be p ≥ 0",
+  "createdAt": "2026-06-27T12:00:00.000Z",
+  "status": "open"        // 'open' | 'resolved'
+}
+```
+
+An agent pointed at `comments.json` fixes each `"status":"open"` entry by opening
+`data/<lang>/chapters/<chapterId>.json`, finding the page with `id === pageId`, locating the block by
+`anchorId` (search `id="<anchorId>"`) — or, when `anchorId` is `null`, the `blockIndex`-th top-level
+element of `page.html` — then the `quote` within it, applying the fix, and (optionally) setting
+`status` to `"resolved"`.
 
 ## Note on `viewer.js`
 

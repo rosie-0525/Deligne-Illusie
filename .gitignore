@@ -1,3 +1,7 @@
 # macOS
 .DS_Store
 source/
+
+# Local error-comments exported from the viewer (see README "Flagging errors for
+# agents"). Remove this line if a team wants to commit/share the comment set.
+comments.json

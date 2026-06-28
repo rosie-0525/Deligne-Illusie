@@ -54,7 +54,7 @@
      "type": "paragraph",
      "label": null,
      "title": null,
-     "html": "<p>We give here an elementary proof of a result more precise than that of Kato and Fontaine-Messing, which is the following. Suppose \\(k\\) perfect, of characteristic \\(p&gt;0\\), and let \\(X\\) be a smooth \\(k\\)-scheme (of arbitrary dimension, and not necessarily proper). Let \\(X'\\) be deduced from \\(X\\) by the extension of scalars \\(k \\xrightarrow{\\lambda} k\\), \\(\\lambda \\mapsto \\lambda^p\\), and \\(F : X \\to X'\\) the relative Frobenius <a class=\"ref\" href=\"#1.1\">(1.1)</a>. We prove that each smooth lifting \\(\\tilde X\\) of \\(X\\) over the ring \\(W_2(k)\\) of Witt vectors of length 2 determines an isomorphism</p>"
+     "html": "<p>We give here an elementary proof of a result more precise than that of Kato and Fontaine-Messing, which is the following. Suppose \\(k\\) perfect, of characteristic \\(p&gt;0\\), and let \\(X\\) be a smooth \\(k\\)-scheme (of arbitrary dimension, and not necessarily proper). Let \\(X'\\) be deduced from \\(X\\) by the extension of scalars \\(k \\xrightarrow{\\lambda} k\\), \\(\\lambda \\mapsto \\lambda^p\\), and let \\(F : X \\to X'\\) be the relative Frobenius <a class=\"ref\" href=\"#1.1\">(1.1)</a>. We prove that each smooth lifting \\(\\tilde X\\) of \\(X\\) over the ring \\(W_2(k)\\) of Witt vectors of length 2 determines an isomorphism</p>"
     },
     {
      "id": "eq:0.2",
@@ -75,7 +75,7 @@
      "type": "paragraph",
      "label": null,
      "title": null,
-     "html": "<p>Here is the principle of the construction of \\(\\varphi_{\\tilde X}\\). Let \\(\\sigma : W_2(k) \\to W_2(k)\\) be the lifting \\((\\lambda_0, \\lambda_1) \\mapsto (\\lambda_0^p, \\lambda_1^p)\\) of the automorphism \\(\\lambda \\mapsto \\lambda^p\\) of \\(k\\) and \\(\\tilde X'\\) deduced from \\(\\tilde X\\) by the extension of scalars \\(\\sigma\\). If \\(F\\) lifts to \\(\\tilde F : \\tilde X \\to \\tilde X'\\), the homomorphism \\(\\tilde F^* : \\Omega^1_{\\tilde X'/W_2(k)} \\to \\tilde F_* \\Omega^1_{\\tilde X/W_2(k)}\\) provides, after division by \\(p\\), a morphism of complexes</p>"
+     "html": "<p>Here is the principle of the construction of \\(\\varphi_{\\tilde X}\\). Let \\(\\sigma : W_2(k) \\to W_2(k)\\) be the lifting \\((\\lambda_0, \\lambda_1) \\mapsto (\\lambda_0^p, \\lambda_1^p)\\) of the automorphism \\(\\lambda \\mapsto \\lambda^p\\) of \\(k\\) and let \\(\\tilde X'\\) be deduced from \\(\\tilde X\\) by the extension of scalars \\(\\sigma\\). If \\(F\\) lifts to \\(\\tilde F : \\tilde X \\to \\tilde X'\\), the homomorphism \\(\\tilde F^* : \\Omega^1_{\\tilde X'/W_2(k)} \\to \\tilde F_* \\Omega^1_{\\tilde X/W_2(k)}\\) provides, after division by \\(p\\), a morphism of complexes</p>"
     },
     {
      "id": "disp-intro-1",
@@ -117,7 +117,7 @@
      "type": "displaymath",
      "label": null,
      "title": null,
-     "html": "<div class=\"displaymath\" id=\"disp-intro-2\">\n\\[\nH^j(X, \\Omega^i_{X/k} \\otimes L^{-1}) = 0 \\quad \\text{pour } i+j &lt; \\inf(p, \\dim X).\n\\]\n</div>"
+     "html": "<div class=\"displaymath\" id=\"disp-intro-2\">\n\\[\nH^j(X, \\Omega^i_{X/k} \\otimes L^{-1}) = 0 \\quad \\text{for } i+j &lt; \\inf(p, \\dim X).\n\\]\n</div>"
     },
     {
      "id": null,

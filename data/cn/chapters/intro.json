@@ -117,7 +117,7 @@
      "type": "displaymath",
      "label": null,
      "title": null,
-     "html": "<div class=\"displaymath\" id=\"disp-intro-2\">\n\\[\nH^j(X, \\Omega^i_{X/k} \\otimes L^{-1}) = 0 \\quad \\text{pour } i+j &lt; \\inf(p, \\dim X).\n\\]\n</div>"
+     "html": "<div class=\"displaymath\" id=\"disp-intro-2\">\n\\[\nH^j(X, \\Omega^i_{X/k} \\otimes L^{-1}) = 0 \\quad \\text{对 } i+j &lt; \\inf(p, \\dim X).\n\\]\n</div>"
     },
     {
      "id": null,

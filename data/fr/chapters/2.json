@@ -19,7 +19,14 @@
      "type": "theoreme",
      "label": "2.1",
      "title": "Théorème",
-     "html": "<div class=\"thm thm-plain theoreme\" id=\"2.1\">\n  <div class=\"thm-head\"><span class=\"thm-name\">Théorème 2.1</span></div>\n  <div class=\"thm-body\">\n    <p><span class=\"label-anchor\" id=\"2.1\"></span>Soient \\( k \\) un corps parfait de caractéristique \\( p&gt;0 \\), \\( S=\\Spec(k) \\), \\( \\overline{S}=\\Spec(W_2(k)) \\) (<a class=\"ref\" href=\"#1.3\">1.3</a>), et soit \\( X \\) un \\( S \\)-schéma lisse. A tout \\( \\overline{S} \\)-schéma lisse \\( \\widetilde{X} \\) relevant \\( X \\) est associé canoniquement un isomorphisme\n    \\[\n    \\varphi_{\\widetilde{X}} : \\bigoplus_{i&lt;p} \\Omega^i_{X'/S}[-i] \\xrightarrow{\\ \\sim\\ } \\tau_{&lt;p} F_* \\Omega^{\\bullet}_{X/S}\n    \\]\n    de \\( D(X') \\), tel que \\( \\mathscr{H}^i \\varphi_{\\widetilde{X}} = C^{-1} \\) (<a class=\"ref\" href=\"#1.2\">1.2</a>) pour \\( i&lt;p \\).</p>\n\n    <p>La démonstration va se faire en quatre étapes.</p>\n\n    </div>\n</div>"
+     "html": "<div class=\"thm thm-plain theoreme\" id=\"2.1\">\n  <div class=\"thm-head\"><span class=\"thm-name\">Théorème 2.1</span></div>\n  <div class=\"thm-body\">\n    <p><span class=\"label-anchor\" id=\"2.1\"></span>Soient \\( k \\) un corps parfait de caractéristique \\( p&gt;0 \\), \\( S=\\Spec(k) \\), \\( \\overline{S}=\\Spec(W_2(k)) \\) (<a class=\"ref\" href=\"#1.3\">1.3</a>), et soit \\( X \\) un \\( S \\)-schéma lisse. A tout \\( \\overline{S} \\)-schéma lisse \\( \\widetilde{X} \\) relevant \\( X \\) est associé canoniquement un isomorphisme\n    \\[\n    \\varphi_{\\widetilde{X}} : \\bigoplus_{i&lt;p} \\Omega^i_{X'/S}[-i] \\xrightarrow{\\ \\sim\\ } \\tau_{&lt;p} F_* \\Omega^{\\bullet}_{X/S}\n    \\]\n    de \\( D(X') \\), tel que \\( \\mathscr{H}^i \\varphi_{\\widetilde{X}} = C^{-1} \\) (<a class=\"ref\" href=\"#1.2\">1.2</a>) pour \\( i&lt;p \\).</p>\n\n    </div>\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>La démonstration va se faire en quatre étapes.</p>"
     },
     {
      "id": "proof-2-1",
@@ -40,7 +47,14 @@
      "type": "corollaire",
      "label": "2.3",
      "title": "Corollaire",
-     "html": "<div class=\"thm thm-plain corollaire\" id=\"2.3\">\n  <div class=\"thm-head\"><span class=\"thm-name\">Corollaire 2.3</span></div>\n  <div class=\"thm-body\">\n    <p><span class=\"label-anchor\" id=\"2.3\"></span><em>Avec les notations de 2.1, soit \\( X \\) un \\( k \\)-schéma lisse de dimension \\( \\leqslant p \\), relevable sur \\( W_2(k) \\). Alors le complexe \\( F_* \\Omega^{\\bullet}_{X/S} \\) est isomorphe, dans \\( D(X') \\), à un complexe à différentielle nulle.</em></p>\n\n    <p>La conclusion signifie encore que \\( F_* \\Omega^{\\bullet}_{X/S} \\) est isomorphe, dans \\( D(X') \\), à la somme de ses \\( \\mathscr{H}^i[-i] \\), ou qu'il existe, dans \\( D(X') \\), un isomorphisme\n    \\[\n    \\bigoplus \\Omega^i_{X'/S}[-i] \\xrightarrow{\\sim} F_* \\Omega^{\\bullet}_{X/S}\n    \\]\n    induisant \\( C^{-1} \\) sur \\( \\mathscr{H}^i \\) (cf. <a class=\"ref\" href=\"#3.1\">3.1</a> ci-après).</p>\n\n    </div>\n</div>"
+     "html": "<div class=\"thm thm-plain corollaire\" id=\"2.3\">\n  <div class=\"thm-head\"><span class=\"thm-name\">Corollaire 2.3</span></div>\n  <div class=\"thm-body\">\n    <p><span class=\"label-anchor\" id=\"2.3\"></span><em>Avec les notations de 2.1, soit \\( X \\) un \\( k \\)-schéma lisse de dimension \\( \\leqslant p \\), relevable sur \\( W_2(k) \\). Alors le complexe \\( F_* \\Omega^{\\bullet}_{X/S} \\) est isomorphe, dans \\( D(X') \\), à un complexe à différentielle nulle.</em></p>\n\n    </div>\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>La conclusion signifie encore que \\( F_* \\Omega^{\\bullet}_{X/S} \\) est isomorphe, dans \\( D(X') \\), à la somme de ses \\( \\mathscr{H}^i[-i] \\), ou qu'il existe, dans \\( D(X') \\), un isomorphisme\n    \\[\n    \\bigoplus \\Omega^i_{X'/S}[-i] \\xrightarrow{\\sim} F_* \\Omega^{\\bullet}_{X/S}\n    \\]\n    induisant \\( C^{-1} \\) sur \\( \\mathscr{H}^i \\) (cf. <a class=\"ref\" href=\"#3.1\">3.1</a> ci-après).</p>"
     },
     {
      "id": "proof-2-3",
@@ -103,7 +117,14 @@
      "type": "corollaire",
      "label": "2.8",
      "title": "Corollaire",
-     "html": "<div class=\"thm thm-plain corollaire\" id=\"2.8\">\n  <div class=\"thm-head\"><span class=\"thm-name\">Corollaire 2.8</span> <span class=\"thm-title\">(Raynaud)</span></div>\n  <div class=\"thm-body\">\n    <p><span class=\"label-anchor\" id=\"2.8\"></span><em>Avec les notations de 2.1, soit \\( X \\) un \\( k \\)-schéma projectif et lisse, purement de dimension \\( d \\), relevable sur \\( W_2(k) \\), et soit \\( L \\) un faisceau inversible sur \\( X \\). On fait l'une des deux hypothèses suivantes :</em></p>\n    <p><em>(i) \\( L \\) est ample;</em></p>\n    <p><em>(ii) \\( d=2 \\) et \\( L \\) est numériquement positif (i.e. on a \\( L \\cdot L&gt;0 \\) et \\( L \\cdot \\mathcal{O}(D) \\geqslant 0 \\) pour tout diviseur effectif \\( D \\) sur \\( X \\) ).</em></p>\n    <p><em>Alors on a</em></p>\n\n    <div class=\"equation\" id=\"eq:2.8.1\">\n    \\[\n    \\tag{2.8.1} H^j(X, \\Omega^i \\otimes L) = 0 \\quad \\text{pour} \\quad i+j&gt;\\sup(d, 2d-p) ,\n    \\]\n    </div>\n\n    <div class=\"equation\" id=\"eq:2.8.2\">\n    \\[\n    \\tag{2.8.2} H^j(X, \\Omega^i \\otimes L^{-1}) = 0 \\quad \\text{pour} \\quad i+j&lt;\\inf(d, p) .\n    \\]\n    </div>\n\n    <p>Noter que <a class=\"eqref\" href=\"#eq:2.8.1\">(2.8.1)</a> et <a class=\"eqref\" href=\"#eq:2.8.2\">(2.8.2)</a> sont équivalents par dualité de Serre. Le coeur de la démonstration est le lemme suivant :</p>\n  </div>\n</div>"
+     "html": "<div class=\"thm thm-plain corollaire\" id=\"2.8\">\n  <div class=\"thm-head\"><span class=\"thm-name\">Corollaire 2.8</span> <span class=\"thm-title\">(Raynaud)</span></div>\n  <div class=\"thm-body\">\n    <p><span class=\"label-anchor\" id=\"2.8\"></span><em>Avec les notations de 2.1, soit \\( X \\) un \\( k \\)-schéma projectif et lisse, purement de dimension \\( d \\), relevable sur \\( W_2(k) \\), et soit \\( L \\) un faisceau inversible sur \\( X \\). On fait l'une des deux hypothèses suivantes :</em></p>\n    <p><em>(i) \\( L \\) est ample;</em></p>\n    <p><em>(ii) \\( d=2 \\) et \\( L \\) est numériquement positif (i.e. on a \\( L \\cdot L&gt;0 \\) et \\( L \\cdot \\mathcal{O}(D) \\geqslant 0 \\) pour tout diviseur effectif \\( D \\) sur \\( X \\) ).</em></p>\n    <p><em>Alors on a</em></p>\n\n    <div class=\"equation\" id=\"eq:2.8.1\">\n    \\[\n    \\tag{2.8.1} H^j(X, \\Omega^i \\otimes L) = 0 \\quad \\text{pour} \\quad i+j&gt;\\sup(d, 2d-p) ,\n    \\]\n    </div>\n\n    <div class=\"equation\" id=\"eq:2.8.2\">\n    \\[\n    \\tag{2.8.2} H^j(X, \\Omega^i \\otimes L^{-1}) = 0 \\quad \\text{pour} \\quad i+j&lt;\\inf(d, p) .\n    \\]\n    </div>\n  </div>\n</div>"
+    },
+    {
+     "id": null,
+     "type": "paragraph",
+     "label": null,
+     "title": null,
+     "html": "<p>Noter que <a class=\"eqref\" href=\"#eq:2.8.1\">(2.8.1)</a> et <a class=\"eqref\" href=\"#eq:2.8.2\">(2.8.2)</a> sont équivalents par dualité de Serre. Le coeur de la démonstration est le lemme suivant :</p>"
     },
     {
      "id": "2.9",

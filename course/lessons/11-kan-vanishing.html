@@ -1,0 +1,253 @@
+<h1>11. Kodaira–Akizuki–Nakano vanishing</h1>
+
+<div class="lead">
+<p>Kodaira vanishing — an ample line bundle kills the lower cohomology of the canonical sheaf — is,
+classically, a statement about curvature and harmonic forms on a Kähler manifold. Here we prove it
+with no metric anywhere in sight. The engine is again characteristic \(p\): once the truncated de Rham
+complex \(\tau_{&lt;b}F_*\Om^{\bullet}\) decomposes (the gift of a lift mod \(p^2\),
+<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a> / Theorem&nbsp;2.1), a single lemma lets us
+push a vanishing statement from the \(p\)-th power of a line bundle down to the bundle itself. Iterating
+this <em>Frobenius descent</em> against a Serre-vanishing seed gives Raynaud's theorem in char \(p\); a
+reduction-mod-\(p\) argument then yields the classical theorem over \(\C\). Strikingly, ampleness is used
+only to start the seed — the descent itself is pure homological algebra.</p>
+</div>
+
+<h2>The two theorems</h2>
+
+<p>Here is the classical target and its characteristic-\(p\) source. Throughout, \(X\) is projective
+smooth over a field, of pure dimension \(d\), and \(L\) is a line bundle.</p>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.11)</span> <span class="thm-cite">(Kodaira–Akizuki–Nakano; Ramanujam)</span>
+<div class="thm-body">
+<p>Let \(K\) have characteristic \(0\) and \(L\) be ample. Then
+\[
+H^j(X,\Om^i\otimes L)=0 \quad\text{for } i+j&gt;d,
+\]
+equivalently, by Serre duality, \(H^j(X,\Om^i\otimes L^{-1})=0\) for \(i+j&lt;d\).</p>
+</div>
+</div>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.8)</span> <span class="thm-cite">(Raynaud)</span>
+<div class="thm-body">
+<p>Let \(k\) have characteristic \(p&gt;0\), let \(X\) be liftable over \(\Wt(k)\), and suppose either
+(i) \(L\) is ample, or (ii) \(d=2\) and \(L\) is numerically positive. Then
+\[
+\tag{2.8.2} H^j(X,\Om^i\otimes L^{-1})=0 \quad\text{for } i+j&lt;\inf(d,p),
+\]
+equivalently, by Serre duality,
+\[
+\tag{2.8.1} H^j(X,\Om^i\otimes L)=0 \quad\text{for } i+j&gt;\sup(d,\,2d-p).
+\]</p>
+</div>
+</div>
+
+<div class="box note">
+<div class="box-label">Why the range shrinks to \(\inf(d,p)\)</div>
+<p>The equivalence \((2.8.1)\Leftrightarrow(2.8.2)\) is Serre duality \(H^j(\Om^i\otimes L^{-1})\cong
+H^{d-j}(\Om^{d-i}\otimes L)^{\vee}\): the conditions \(i+j&lt;\inf(d,p)\) and \((d-i)+(d-j)&gt;2d-\inf(d,p)
+=\sup(d,2d-p)\) are the same. The ceiling \(\inf(d,p)\) — not the full \(d\) — is the price of working in
+char \(p\); see the subtlety box at the end.</p>
+</div>
+
+<h2>The key lemma</h2>
+
+<p>Everything sits on one descent step. Let \(M\) be an invertible sheaf on \(X\), and write \(M'\) for
+its base change to the Frobenius twist \(X'\) (<a class="xref" href="#02-frobenius-twist">Lesson&nbsp;2</a>),
+so that \(F^*M'=M^{\otimes p}\).</p>
+
+<div class="thmbox">
+<span class="thm-label">Lemma (2.9)</span> <span class="thm-cite">(Deligne–Illusie)</span>
+<div class="thm-body">
+<p>Let \(X\) be smooth over \(k\), \(M\) invertible, \(b\) an integer. Suppose
+<strong>(1)</strong> \(\tau_{&lt;b}F_*\Om^{\bullet}_{X/k}\) is decomposable in \(D(X')\), and
+<strong>(2)</strong> \(H^j(X,\Om^i\otimes M^{\otimes p})=0\) for \(i+j&lt;b\). Then
+\[
+H^j(X,\Om^i\otimes M)=0 \quad\text{for } i+j&lt;b.
+\]</p>
+</div>
+</div>
+
+<details class="proof"><summary>Proof</summary>
+<div class="proof-body">
+<p><strong>Projection formula.</strong> Since \(F\colon X\to X'\) is finite (hence affine), \(F_*\) is
+exact and computes cohomology. The \(\Om^i\) are not \(\cO_{X'}\)-linear, but \(F_*\Om^{\bullet}\) is a
+complex of \(\cO_{X'}\)-modules (the differential is additive, not \(\cO_X\)-linear — it descends).
+With \(F^*M'=M^{\otimes p}\) and \(M'\) invertible, the projection formula gives, for every \(i\),
+\[
+H^j(X,\,M^{\otimes p}\otimes\Om^i) \;=\; H^j(X',\,M'\otimes F_*\Om^i).
+\tag{$\ast$}
+\]</p>
+<p><strong>A hypercohomology spectral sequence.</strong> Tensoring the complex of \(\cO_{X'}\)-modules
+\(F_*\Om^{\bullet}\) by the invertible \(M'\) is exact, so \(M'\otimes F_*\Om^{\bullet}\) is a
+well-defined complex with the second spectral sequence of hypercohomology
+\[
+E_1^{ij}=H^j(X',\,M'\otimes F_*\Om^i) \;\Longrightarrow\; \mathbb{H}^{i+j}(X',\,M'\otimes F_*\Om^{\bullet}).
+\]
+By \((\ast)\), hypothesis (2) says \(E_1^{ij}=0\) whenever \(i+j&lt;b\); hence
+\(\mathbb{H}^n(X',M'\otimes F_*\Om^{\bullet})=0\) for \(n&lt;b\).</p>
+<p><strong>Truncate, then split.</strong> Tensoring the truncation triangle
+\(\tau_{&lt;b}F_*\Om^{\bullet}\to F_*\Om^{\bullet}\to\tau_{\geqslant b}F_*\Om^{\bullet}\xto{+1}\) by the
+flat \(M'\) preserves it, and \(\tau_{\geqslant b}\) lives in degrees \(\geqslant b\), so for \(n&lt;b\)
+\[
+\mathbb{H}^n(X',M'\otimes F_*\Om^{\bullet})=\mathbb{H}^n(X',M'\otimes\tau_{&lt;b}F_*\Om^{\bullet}).
+\]
+By hypothesis (1), \(\tau_{&lt;b}F_*\Om^{\bullet}\iso\bigoplus_{i&lt;b}\Om^i_{X'/k}[-i]\); tensoring this
+isomorphism by \(M'\) gives \(M'\otimes\tau_{&lt;b}F_*\Om^{\bullet}\iso\bigoplus_{i&lt;b}
+(M'\otimes\Om^i_{X'})[-i]\). Taking \(\mathbb{H}^n\),
+\[
+0=\mathbb{H}^n(X',M'\otimes\tau_{&lt;b}F_*\Om^{\bullet})=\bigoplus_{i}H^{\,n-i}(X',M'\otimes\Om^i_{X'/k})
+\quad (n&lt;b),
+\]
+so each summand vanishes: \(H^{\,n-i}(X',M'\otimes\Om^i_{X'})=0\) for \(n&lt;b\), all \(i\).</p>
+<p><strong>Untwist.</strong> Over the perfect field \(k\), \(X'\) is the base change of \(X\) along the
+field automorphism \(\sigma=(\,\cdot\,)^p\) of \(k\), and \(M'\otimes\Om^i_{X'}\) is the base change of
+\(M\otimes\Om^i_X\). Cohomology base-changes, so \(\dim_k H^{n-i}(X',M'\otimes\Om^i_{X'})=
+\dim_k H^{n-i}(X,M\otimes\Om^i)\). Hence \(H^{n-i}(X,M\otimes\Om^i)=0\) for \(n&lt;b\), all \(i\); that is,
+\(H^j(X,\Om^i\otimes M)=0\) for \(i+j&lt;b\). <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h2>Frobenius descent (proof of 2.8.2)</h2>
+
+<p>This is Szpiro's idea. Take \(M=L^{-1}\), so \(M^{\otimes p}=L^{-p}\), and set \(b=\inf(p,d)\). Because
+\(b\leqslant p\) and \(X\) lifts over \(\Wt(k)\), hypothesis (1) of Lemma&nbsp;2.9 holds:
+\(\tau_{&lt;b}F_*\Om^{\bullet}\) is decomposable by Theorem&nbsp;2.1
+(<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>). The lemma now reads: <em>if \((2.8.2)\) holds
+for \(L^{-p}\), it holds for \(L^{-1}\)</em>. Applied to \(M=L^{-p^n}\), it says vanishing for
+\(L^{-p^{n+1}}\) descends to vanishing for \(L^{-p^{n}}\).</p>
+
+<p><strong>The seed.</strong> By Serre duality \(H^j(\Om^i\otimes L^{-N})\cong H^{d-j}(\Om^{d-i}\otimes
+L^{N})^{\vee}\). For \(j&lt;d\) we have \(d-j&gt;0\), and Serre vanishing makes \(H^{&gt;0}(\Om^{d-i}\otimes
+L^{N})=0\) once \(N\gg0\) (here \(L\) ample is used — and only here). So for \(N\gg0\),
+\[
+H^j(X,\Om^i\otimes L^{-N})=0 \quad\text{for } j&lt;d,\ \text{in particular for } i+j&lt;b.
+\]
+Choose \(m\) with \(N=p^{m}\) this large.</p>
+
+<p><strong>Descend.</strong> Starting from the seed at \(L^{-p^{m}}\), apply Lemma&nbsp;2.9 to
+\(M=L^{-p^{m-1}},L^{-p^{m-2}},\dots,L^{-p^{0}}\) in turn. After \(m\) steps,
+\[
+H^j(X,\Om^i\otimes L^{-1})=0 \quad\text{for } i+j&lt;\inf(p,d),
+\]
+which is \((2.8.2)\). For case (ii) the seed instead rests on results of Szpiro guaranteeing
+\(H^j(\Om^i\otimes L^{-N})=0\) for numerically positive \(L\) on a surface; the descent is identical.</p>
+
+<div class="box subtle">
+<div class="box-label">Where the hypotheses actually enter</div>
+<p>The proof cleanly separates two roles. <em>Ampleness</em> is a one-time input: it seeds the vanishing
+at a single huge power \(L^{-p^{m}}\) through Serre vanishing, and is never used again. <em>The lift mod
+\(p^2\)</em> powers every descent step, through the decomposability of \(\tau_{&lt;b}F_*\Om^{\bullet}\).
+Remove the lift and the chain snaps at the first rung — which is exactly how Kodaira vanishing can fail
+in char \(p\).</p>
+</div>
+
+<h2>Back to characteristic 0 (proof of 2.11)</h2>
+
+<p>The deduction copies the degeneration argument of <a class="xref" href="#10-char-zero">Lesson&nbsp;10</a>
+verbatim. Spread \((X,L)\) over a finitely generated \(\Z\)-algebra and reduce modulo a prime \(p\geqslant
+d\). The reduction is projective smooth of dimension \(d\), carries the reduction of \(L\) (still ample),
+and — being a reduction — automatically lifts mod \(p^2\). Apply \((2.8.2)\): since \(p\geqslant d\) we
+have \(\inf(d,p)=d\), so \(H^j(\Om^i\otimes L^{-1})=0\) for the full range \(i+j&lt;d\). Cohomology and
+Hodge numbers are constant in the family for \(p\gg0\), so the vanishing lifts back to the generic, and
+hence to the complex, fibre. Choosing \(p\geqslant d\) is what buys the full classical range.</p>
+
+<h2>A weak Lefschetz theorem</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.12)</span> <span class="thm-cite">(Berthelot)</span>
+<div class="thm-body">
+<p>Let \(X\) be projective smooth of dimension \(d\) over \(k\), and \(D\subset X\) a smooth ample
+divisor, with \(X\) and \(D\) both liftable over \(\Wt(k)\). Then the restriction
+\(H^n_{\dR}(X)\to H^n_{\dR}(D)\) is an isomorphism for \(n&lt;\inf(p,d)-1\) and injective for
+\(n=\inf(p,d)-1\).</p>
+</div>
+</div>
+
+<p>The proof is a weight/log dévissage: the short exact sequence of complexes
+\[
+0\to\Om^{\bullet}_X(-D)\to\Om^{\bullet}_X(\log D)(-D)\to\Om^{\bullet}_D[-1]\to0
+\]
+reduces the statement to the vanishing of \(\mathbb{H}^*\) of \(\Om^{\bullet}_X(-D)\) in a range, which
+\((2.8.2)\) supplies (here \(L=\cO_X(D)\)). We defer the logarithmic complex
+\(\Om^{\bullet}_X(\log D)\) and this dévissage to
+<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>.</p>
+
+<h2>Examples</h2>
+
+<div class="box example">
+<div class="box-label">Example — curves (\(d=1\)), the cleanest check</div>
+<p>Here \(\inf(1,p)=1\), so \((2.8.2)\) covers only \(i+j&lt;1\), i.e. \((i,j)=(0,0)\): it asserts
+\(H^0(X,\Om^0\otimes L^{-1})=H^0(X,L^{-1})=0\) for \(L\) ample. And indeed an ample \(L\) on a connected
+proper curve has \(\deg L&gt;0\), so \(\deg L^{-1}&lt;0\), so \(L^{-1}\) has no nonzero global sections.
+KAN on curves is just "a negative-degree line bundle has no sections" — a reassuring base case.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — \(\Pp^d\), \(L=\cO(1)\), versus Bott</div>
+<p>\(\Pp^d\) is defined over \(\Z\), hence lifts; \(\cO(1)\) is ample. So \((2.8.2)\) gives
+\(H^j(\Pp^d,\Om^i(-1))=0\) for \(i+j&lt;\inf(d,p)\). The Bott formula computes all \(H^j(\Pp^d,\Om^i(t))\)
+and confirms each instance. The smallest nontrivial case is \(d=2\), \((i,j)=(1,0)\), \(i+j=1&lt;2\):
+\(H^0(\Pp^2,\Om^1(-1))=0\), i.e. there is no nonzero \(1\)-form twisted down by \(\cO(1)\) — true by Bott.
+For \((i,j)=(0,1)\) one gets \(H^1(\Pp^2,\cO(-1))=0\), again standard.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — one descent step on \((\Pp^2,\cO(1))\), \(p=2\)</div>
+<p>Take \(p=2\), \(d=2\), so \(b=\inf(2,2)=2\) and \(\tau_{&lt;2}F_*\Om^{\bullet}\) decomposes. Suppose we
+already know \((2.8.2)\) for \(L^{-p}=\cO(-2)\): \(H^j(\Pp^2,\Om^i(-2))=0\) for \(i+j&lt;2\). Apply
+Lemma&nbsp;2.9 with \(M=\cO(-1)\) (so \(M^{\otimes p}=\cO(-2)\)). Hypothesis (2) is exactly the assumed
+vanishing for \(\cO(-2)\); hypothesis (1) is the decomposition. The conclusion is
+\(H^j(\Pp^2,\Om^i(-1))=0\) for \(i+j&lt;2\) — the previous example, manufactured from its own square.</p>
+</div>
+
+<h2>Subtleties</h2>
+
+<div class="box subtle">
+<div class="box-label">In char \(p\) the range stops at \(p\), not at \(d\)</div>
+<p>\((2.8.2)\) only vanishes for \(i+j&lt;\inf(d,p)\). If \(d&gt;p\) this is a genuinely weaker statement
+than Kodaira vanishing: there can be nonzero \(H^j(\Om^i\otimes L^{-1})\) with \(p\leqslant i+j&lt;d\). The
+full classical range needs either \(d\leqslant p\) (then \(\inf(d,p)=d\)) or the reduction-mod-\(p\) trick
+with \(p\gg d\), as in (2.11). This is the same ceiling that limits Theorem&nbsp;2.1 to
+\(\tau_{&lt;p}\).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Kodaira vanishing is false in char \(p\) without a lift (Remark 2.10(ii))</div>
+<p>Raynaud and Szpiro constructed smooth projective <em>surfaces</em> over a field of characteristic
+\(p\) carrying an ample \(L\) with \(H^1(X,L^{-1})\neq0\) — a flat contradiction of Kodaira vanishing.
+By \((2.8)\) such an \(X\) cannot lift to \(\Wt(k)\), and indeed it does not. So Kodaira vanishing is
+<em>not</em> a theorem in char \(p\) on its own; liftability is doing real work
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Liftability is sufficient, not necessary (Remark 2.10(iii))</div>
+<p>The converse is also subtle: Raynaud exhibited a surface that does <em>not</em> lift mod \(p^2\) yet
+for which KAN nonetheless holds for every ample \(L\). Liftability guarantees vanishing but is not
+forced by it — the boundary between the two is the gerbe story
+(<a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>, <a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Prove the projection-formula identity \(H^j(X,M^{\otimes p}\otimes\Om^i)=H^j(X',M'\otimes F_*\Om^i)\):
+use \(F^*M'=M^{\otimes p}\), the projection formula \(F_*(F^*M'\otimes\Om^i)\cong M'\otimes F_*\Om^i\),
+and that \(F\) is affine so \(R^{q}F_*=0\) for \(q&gt;0\).</li>
+<li>Deduce \((2.8.1)\Leftrightarrow(2.8.2)\) from Serre duality \(H^j(\Om^i\otimes L^{-1})\cong
+H^{d-j}(\Om^{d-i}\otimes L)^{\vee}\), checking that \(i+j&lt;\inf(d,p)\) and \((d-i)+(d-j)&gt;\sup(d,2d-p)\)
+are equivalent.</li>
+<li>Prove the curve case directly: an ample \(L\) on a smooth connected proper curve has
+\(H^0(X,L^{-1})=0\). (Degree of a sub-line-bundle of \(\cO_X\).)</li>
+<li>Using the Bott formula, verify \((2.8.2)\) for \(\Pp^3\), \(L=\cO(1)\) in the two cases
+\((i,j)=(1,0)\) and \((i,j)=(2,0)\) (assume \(p&gt;3\)), and exhibit a pair \((i,j)\) with
+\(i+j\geqslant\inf(3,p)\) where the relevant group is nonzero.</li>
+<li>Carry out the descent step from \(L^{-p^2}\) to \(L^{-p}\): identify the bundle \(M\), check both
+hypotheses of Lemma&nbsp;2.9, and state the conclusion.</li>
+<li>Explain why the descent yields vanishing only up to \(\inf(d,p)\), tracing the bound to the
+restriction \(b\leqslant p\) in the decomposability of \(\tau_{&lt;b}F_*\Om^{\bullet}\) and to the
+dimension cutoff \(\Om^i=0\) for \(i&gt;d\).</li>
+</ol>
+</div>

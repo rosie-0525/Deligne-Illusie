@@ -1,0 +1,276 @@
+<h1>12. Gerbes: lifting ⇔ splitting, exactly</h1>
+
+<div class="lead">
+<p>Lessons <a class="xref" href="#06-key-computation">6</a>–<a class="xref" href="#08-gluing">8</a>
+proved an <em>implication</em>: a lift of \(X'\) one infinitesimal step — from a base \(S\) of
+characteristic \(p\) to a flat \(\Z/p^2\)-thickening \(\tS\) — produces a splitting of the truncated
+complex \(\tau_{\leqslant 1}F_*\Om^{\bullet}_{X/S}\). Lesson <a class="xref"
+href="#05-derived-decomposable">5</a> then noticed something suspicious: the lifts of \(X'\) and the
+splittings of that complex are governed by the <em>same</em> cohomology — obstruction in
+\(H^2(X',\Theta_{X'/S})\), choices a torsor under \(H^1(X',\Theta_{X'/S})\). This lesson shows that
+the coincidence is an honest <strong>equivalence</strong>. Each problem is classified by a
+<em>gerbe</em>, and Giraud's machine reads off an \(H^2\)-obstruction and an \(H^1\)-torsor from any
+gerbe. Theorem 3.5 builds a canonical equivalence between the two gerbes; everything else — same
+obstruction, same torsor of solutions — is then automatic. As a bonus the argument runs over a
+general base, so Theorem 2.1 escapes the perfect-field hypothesis.</p>
+</div>
+
+<h2>A two-line gerbe primer</h2>
+
+<p>A gerbe is the \(H^2\)-analogue of a torsor. Recall an \(\mathcal{A}\)-<em>torsor</em> (\(\mathcal{A}\) an abelian
+sheaf on a site \(T\)) is a sheaf of sets that is locally nonempty with a simply transitive
+\(\mathcal{A}\)-action; its isomorphism class lives in \(H^1(T,\mathcal{A})\), and it has a global section iff that
+class is \(0\). Replace "sheaf of sets" by "stack of groupoids" and shift degree by one:</p>
+
+<div class="thmbox def">
+<span class="thm-label">Definition (gerbe, §3 / Giraud)</span>
+<div class="thm-body">
+<p>A <strong>gerbe</strong> on \(T\) <strong>bound by</strong> an abelian sheaf \(\mathcal{A}\) is a stack of
+groupoids \(\mathcal{G}\) that is (i) <em>locally nonempty</em> — every point has a neighbourhood over
+which \(\mathcal{G}\) has an object; (ii) <em>locally connected</em> — any two objects over an open are
+locally isomorphic; and (iii) equipped with identifications \(\underline{\operatorname{Aut}}(\xi)\cong\mathcal{A}\) for every
+object \(\xi\), compatible with restriction. Its <strong>class</strong>
+\(\cl\,\mathcal{G}\in H^2(T,\mathcal{A})\) vanishes iff \(\mathcal{G}\) has a <em>global</em> object; and when
+it does, the global objects up to isomorphism form a torsor under \(H^1(T,\mathcal{A})\).</p>
+</div>
+</div>
+
+<div class="box note">
+<div class="box-label">The dictionary to keep in view</div>
+<p>\(\mathcal{A}\)-torsors \(\leftrightarrow H^1(T,\mathcal{A})\) (a global section is the question);
+gerbes bound by \(\mathcal{A}\) \(\leftrightarrow H^2(T,\mathcal{A})\) (a global object is the question). The slogan of
+this lesson: <em>two problems with the same answer are two gerbes with the same class — provided you can
+write down an equivalence between them.</em> We will.</p>
+</div>
+
+<h2>The two gerbes</h2>
+
+<p>Fix a two-term complex \(K\) of \(\cO_T\)-modules with \(K^i=0\) for \(i\neq 0,1\) and \(\cH^1K\)
+locally free.</p>
+
+<div class="thmbox def">
+<span class="thm-label">Definition (3.2, the gerbe of splittings \(\sc(K)\))</span>
+<div class="thm-body">
+<p>An <strong>object</strong> over an open \(U\) is a splitting \(s\colon\cH^1K\to K^1\) of the
+projection \(K^1\twoheadrightarrow\cH^1K\). A <strong>morphism</strong> \(s'\to s''\) is an
+\(h\colon\cH^1K\to K^0\) with \(s''=s'+d\circ h\). Composition is addition of \(h\)'s, so
+\(\underline{\operatorname{Aut}}(s)=\{h:dh=0\}=\sHom(\cH^1K,\cH^0K)\). Thus \(\sc(K)\) is a gerbe bound by
+\(\sHom(\cH^1K,\cH^0K)\), with class \(\cl\,\sc(K)\in H^2\!\bigl(T,\sHom(\cH^1K,\cH^0K)\bigr)
+=\Ext^2(\cH^1K,\cH^0K)\).</p>
+</div>
+</div>
+
+<div class="thmbox def">
+<span class="thm-label">Definition (3.4, the gerbe of liftings \(\Rel(Y,\tS)\))</span>
+<div class="thm-body">
+<p>Let \(Y\) be smooth over \(S\), and \(\tS\) a flat \(\Z/p^2\)-thickening of \(S\). An
+<strong>object</strong> over an open \(U\subseteq Y\) is a smooth lift \(\tU/\tS\) reducing to \(U\); a
+<strong>morphism</strong> is an \(\tS\)-isomorphism of lifts reducing to the identity on \(U\).
+Deformation theory gives \(\underline{\operatorname{Aut}}(\tU)=\Theta_{Y/S}\) (relative vector fields), so
+\(\Rel(Y,\tS)\) is a gerbe bound by \(\Theta_{Y/S}\), with class
+\(\cl\,\Rel(Y,\tS)\in H^2(Y,\Theta_{Y/S})\) — the classical obstruction to a global lift of \(Y\)
+(<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>).</p>
+</div>
+</div>
+
+<h2>Splittings vs. decompositions (Proposition 3.3)</h2>
+
+<p>First, the splitting gerbe is just the obstruction theory of <a class="xref"
+href="#05-derived-decomposable">Lesson&nbsp;5</a> in stack form.</p>
+
+<div class="thmbox">
+<span class="thm-label">Proposition (3.3)</span>
+<div class="thm-body">
+<p>(a) \(\cl\,\sc(K)=-e(K)\), the triangle obstruction of <a class="xref"
+href="#05-derived-decomposable">Lesson&nbsp;5</a>. (b) There is a canonical bijection
+\[
+\alpha\colon \{\text{global objects of }\sc(K)\}/\!\cong\;\iso\;\{\text{decompositions of }K\},
+\]
+equivariant for the action of \(\Ext^1(\cH^1K,\cH^0K)\) on both sides. Hence \(K\) is decomposable
+\(\iff\sc(K)\) has a global object \(\iff e(K)=0\), and the two solution sets are the
+<em>same</em> torsor under \(\Ext^1(\cH^1K,\cH^0K)\).</p>
+</div>
+</div>
+
+<details class="proof"><summary>Proof sketch</summary>
+<div class="proof-body">
+<p>A <em>global</em> splitting \(s\colon\cH^1K\to K^1\) lands in \(\ker(d\colon K^1\to K^2)=K^1\) and
+satisfies \(\pi\circ s=\Id\) (\(\pi\) the projection to \(\cH^1K\)); viewing \(\cH^1K[-1]\to K\) it is a
+chain map inducing \(\Id\) on \(\cH^1\), i.e. a decomposition \(f_1\) (the criterion of Lesson&nbsp;5).
+This is \(\alpha\). Two splittings differing by \(d\circ h\) give chain-homotopic \(f_1\)'s, i.e. equal
+maps in \(D(T)\), so \(\alpha\) is well defined on isomorphism classes and injective; surjectivity is
+that any \(f_1\) is represented by such an \(s\) since \(\cH^1K\) is locally free. The connecting map of
+the truncation triangle that defines \(e(K)\) is, term for term, the cocycle that defines
+\(\cl\,\sc(K)\), with the opposite sign coming from the differential's placement — whence (a). Both
+torsor structures are by \(\Ext^1(\cH^1K,\cH^0K)\) and \(\alpha\) intertwines them.
+<span class="qed">∎</span></p>
+</div>
+</details>
+
+<h2>The main theorem</h2>
+
+<p>Now specialize: \(K=\tau_{\leqslant 1}F_*\Om^{\bullet}_{X/S}\), whose \(K^0=F_*\cO_X\),
+\(K^1=Z^1\) (closed \(1\)-forms), and whose cohomology, by Cartier (<a class="xref"
+href="#03-cartier">Lesson&nbsp;3</a>), is \(\cH^0K=\cO_{X'}\), \(\cH^1K=\Om^1_{X'/S}\). The bound of
+\(\sc(K)\) is then \(\sHom(\Om^1_{X'/S},\cO_{X'})=\Theta_{X'/S}\) — the very bound of
+\(\Rel(X',\tS)\).</p>
+
+<div class="thmbox">
+<span class="thm-label">Theorem (3.5)</span>
+<div class="thm-body">
+<p>There is a canonical <strong>equivalence of gerbes</strong>
+\[
+\Phi\colon \Rel(X',\tS)\;\xrightarrow{\ \sim\ }\;\sc\bigl(\tau_{\leqslant 1}F_*\Om^{\bullet}_{X/S}\bigr)
+\]
+inducing the <em>identity</em> on the common bound \(\Theta_{X'/S}\).</p>
+</div>
+</div>
+
+<details class="proof"><summary>Construction of \(\Phi\) (this is Lessons 6 and 8, reread)</summary>
+<div class="proof-body">
+<p>Let \(\tU'\) be a local lift of an open \(U'\subseteq X'\). To turn it into a splitting we choose an
+<em>auxiliary</em> local lift \((\tU,\tF)\) of \((U,F)\) — a lift \(\tU\) of \(U\) and a lift
+\(\tF\colon\tU\to\tU'\) of relative Frobenius — and set
+\[
+\Phi(\tU')\;:=\;s(\tU,\tF)\;=\;p^{-1}\tF^{*}\colon\Om^1_{X'/S}\longrightarrow Z^1,
+\]
+which is <em>exactly</em> the splitting \(f\) of <a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>
+(divide the lift of Frobenius by \(p\); it is closed and induces \(C^{-1}\) on \(\cH^1\)). The auxiliary
+choice must drop out: two lifts \(\tF_1,\tF_2\) over the same \(\tU'\) give splittings differing by
+\(d\circ h_{12}\), where \(h_{12}\colon\Om^1_{X'/S}\to F_*\cO_X\) is the homotopy of
+<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>; that is precisely a <em>morphism</em>
+\(s(\tU,\tF_1)\to s(\tU,\tF_2)\) in \(\sc(K)\). The cocycle relation
+\(h_{12}+h_{23}=h_{13}\) (Lesson&nbsp;8, eq.&nbsp;(5)) makes these morphisms compose correctly, so
+\(\Phi\) is a well-defined functor of stacks independent of all auxiliary data. On automorphisms it
+sends a vector field \(\theta\in\Theta_{X'/S}\) (an infinitesimal automorphism of \(\tU'\)) to the
+corresponding \(h\), i.e. to \(\theta\) itself: \(\Phi\) is the identity on the bound. A functor of
+gerbes inducing an isomorphism on bounds is automatically an equivalence. <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h2>The punchline (Corollary 3.6)</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (3.6)</span>
+<div class="thm-body">
+<p>(a) \(X'\) admits a global lift over \(\tS\) \(\iff\tau_{\leqslant 1}F_*\Om^{\bullet}_{X/S}\) is
+decomposable in \(D(X')\). (b) When this holds, \(\alpha\circ\Phi\) is a bijection
+\[
+\{\text{liftings of }X'\text{ over }\tS\}/\!\cong\;\iso\;\{\text{decompositions of }\tau_{\leqslant 1}F_*\Om^{\bullet}\},
+\]
+equivariant under \(\Ext^1(\Om^1_{X'},\cO_{X'})=H^1(X',\Theta_{X'/S})\). The shared obstruction lives in
+\(\Ext^2(\Om^1_{X'},\cO_{X'})=H^2(X',\Theta_{X'/S})\).</p>
+</div>
+</div>
+
+<p>This is immediate: an equivalence of gerbes equates their classes and their torsors of global
+objects, then \(\Phi\) carries the lifting problem to the splitting problem and \(\alpha\) carries
+splittings to decompositions. The map \(\varphi^1_{\tX}=\alpha\circ\Phi(\tX')\) attached to a lift is
+the one built by hand in Lessons&nbsp;6 and 8 — now seen to be the canonical content of a gerbe
+equivalence rather than a string of choices.</p>
+
+<div class="box note">
+<div class="box-label">The payoff</div>
+<p>"Lifting \(X'\) mod \(p^2\)" and "splitting \(\tau_{\leqslant 1}F_*\Om^{\bullet}\)" have the
+<em>same</em> obstruction (one class in \(H^2(X',\Theta_{X'/S})\)) and the <em>same</em> torsor of
+solutions (\(H^1(X',\Theta_{X'/S})\)). Lesson&nbsp;5 could only call this a numerical coincidence;
+Theorem&nbsp;3.5 makes it an equivalence of classifying objects. This is, finally, the structural reason
+a mod-\(p^2\) lift has any right to control de Rham cohomology.</p>
+</div>
+
+<h2>Recovering Theorem 2.1, over any base</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (3.7)</span>
+<div class="thm-body">
+<p>(a) A lift \(\tX'\) of \(X'\) over \(\tS\) yields \(\bigoplus_{i&lt;p}\Om^i_{X'/S}[-i]\iso
+\tau_{&lt;p}F_*\Om^{\bullet}_{X/S}\) inducing \(C^{-1}\) — Theorem&nbsp;2.1 over a general base. (b) If
+\(\dim X\leqslant p\), \(X'\) lifts, and \(H^{p+1}(X',\Om^p_{X'})=0\) (e.g. \(S\) affine and \(X\)
+proper over \(S\)), then \(F_*\Om^{\bullet}\) is fully decomposable.</p>
+</div>
+</div>
+
+<p>For (a), 3.6 splits the degree-\(\leqslant 1\) part; the multiplicative machine of <a class="xref"
+href="#07-multiplicativity">Lesson&nbsp;7</a> cup-products \(\varphi^1\) with itself to reach all
+\(i&lt;p\). For (b), one upgrades from \(\tau_{\leqslant 1}\) to \(\tau_{\leqslant p}\) by the duality
+argument of <a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>, the vanishing
+\(H^{p+1}(\Om^p_{X'})=0\) killing the last obstruction.</p>
+
+<div class="box note">
+<div class="box-label">Remarks 3.8 and 3.9</div>
+<p><strong>(3.8)</strong> The morphism \(\varphi^1_{\tX}=\alpha\circ\Phi(\tX')\) depends only on the lift
+\(\tX'\) of \(X'\), and two lifts differ exactly by their class in \(H^1(X',\Theta_{X'/S})\) — matching
+Lesson&nbsp;6's "a different lift changes \(f\) by a homotopy". <strong>(3.9)</strong> The gerbe
+\(\Rel(X',\tS)\) is essentially independent of the thickening: two thickenings \(\tS_1,\tS_2\) give
+canonically equivalent gerbes (compare lifts through an amalgamated sum \(\tS_1+_S\tS_2\)). So the whole
+picture depends only on \(X'/S\), not on the chosen \(\Z/p^2\)-extension.</p>
+</div>
+
+<h2>Examples</h2>
+
+<div class="box example">
+<div class="box-label">Affine, and \(\Aa^n\)</div>
+<p>If \(X\) is smooth affine then \(H^2(X',\Theta_{X'/S})=0\), so both gerbes have global objects: \(X'\)
+lifts and \(\tau_{\leqslant 1}F_*\Om^{\bullet}\) decomposes. If moreover \(H^1(X',\Theta_{X'/S})=0\)
+(e.g. \(X=\Aa^n\)), the torsor is a point: a <em>unique</em> lift and a <em>unique</em> decomposition,
+matching the explicit \(\tF\colon t_i\mapsto t_i^{p}\) computation of <a class="xref"
+href="#06-key-computation">Lesson&nbsp;6</a>.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Smooth proper curves — decompositions are deformations</div>
+<p>For \(X/k\) a smooth proper curve, \(H^2(X,\Theta_X)=0\) for dimension reasons, so \(X'\) lifts and
+\(\tau_{\leqslant 1}F_*\Om^{\bullet}\) decomposes. By 3.6(b) the decompositions form a torsor under
+\(H^1(X,\Theta_X)=H^1(X,T_X)\), the space of first-order deformations, of dimension \(3g-3\) for
+\(g\geqslant 2\). So: <em>decompositions of the de Rham complex \(\leftrightarrow\) lifts of \(X'\)
+\(\leftrightarrow\) first-order deformations</em>. The torsor of "ways to split cohomology" is literally
+the deformation space of the curve.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">A hierarchy of obstructions</div>
+<p>Lesson&nbsp;8's class \(c\in H^1(X',\Theta_{X'/S}\otimes F_*\cO_X)\) obstructs a global lift of
+<em>Frobenius</em>; it is <em>finer</em> than the present obstruction. A global \(\tF\) forces \(X'\) to
+be liftable (its existence gives a splitting, hence by 3.6 a lift), but not conversely: a curve of genus
+\(\geqslant 1\) always lifts mod \(p^2\) yet has \(c\neq 0\). The gerbe theorem needs only the coarser
+datum, a lift of \(X'\).</p>
+</div>
+
+<h2>Subtleties</h2>
+
+<div class="box subtle">
+<div class="box-label">Only \(\tau_{\leqslant 1}\) is an "iff"</div>
+<p>Corollary 3.6 is an equivalence for the truncation in degrees \(\leqslant 1\) only. Decomposing all
+of \(F_*\Om^{\bullet}\) needs more — \(\dim\leqslant p\) plus duality (<a class="xref"
+href="#09-degeneration">Lesson&nbsp;9</a>) — and for \(\dim&gt;p\) full decomposition can genuinely fail
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">The pathology, made exact</div>
+<p>Specializing 3.6: \(X\) does <em>not</em> lift over \(W_2\) \(\iff\tau_{\leqslant 1}F_*\Om^{\bullet}\)
+is <em>not</em> decomposable in \(D(X')\). Yet this can be invisible to the Hodge spectral sequence and
+to Kodaira-type vanishing — Raynaud's non-liftable surface (<a class="xref"
+href="#14-subtleties">Lesson&nbsp;14</a>) has degenerate Hodge–de Rham nonetheless. Non-liftability is
+detected in the <em>derived category</em> even when its cohomological shadows look ordinary. Note also:
+the obstruction lives on \(X'\), not \(X\) (<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>).</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>State the gerbe \(\leftrightarrow H^2/H^1\) dictionary precisely, and verify that the bounds of both
+\(\sc(\tau_{\leqslant 1}F_*\Om^{\bullet})\) and \(\Rel(X',\tS)\) are \(\Theta_{X'/S}\).</li>
+<li>Affine case: deduce from \(H^2=0\) that \(X'\) lifts and \(\tau_{\leqslant 1}F_*\Om^{\bullet}\)
+decomposes, and from \(H^1=0\) (e.g. \(\Aa^n\)) that both are unique.</li>
+<li>Curves: for \(g\geqslant 2\), show the torsor of decompositions has dimension \(3g-3\) by identifying
+it with \(H^1(X,T_X)\). What happens for \(g=0,1\)?</li>
+<li>On a toy two-term complex \(K\) (\(K^i=0\), \(i\neq 0,1\), \(\cH^1K\) free) verify directly that
+\(\cl\,\sc(K)=-e(K)\), tracking the sign through the truncation triangle.</li>
+<li>Explain why a global lift of \(F\) (class \(c\), Lesson&nbsp;8) implies liftability of \(X'\) but is
+not implied by it; exhibit the genus-\(\geqslant 1\) counterexample.</li>
+<li>Deduce 3.7(a) from 3.6 and the multiplicativity of <a class="xref"
+href="#07-multiplicativity">Lesson&nbsp;7</a>: how does \(\varphi^1_{\tX}\) generate \(\varphi^i\) for
+\(i&lt;p\)?</li>
+</ol>
+</div>

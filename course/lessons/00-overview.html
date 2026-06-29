@@ -1,0 +1,199 @@
+<h1>0. The theorem, and why it is a miracle</h1>
+
+<div class="lead">
+<p>Over the complex numbers, the deepest facts about the cohomology of an algebraic
+variety — that the Hodge–de Rham spectral sequence degenerates, that ample line bundles
+kill cohomology (Kodaira vanishing) — are <em>analytic</em>. Their classical proofs use
+harmonic forms, Kähler metrics, the <span style="font-style:italic">∂∂̄</span>-lemma.
+Deligne and Illusie found a proof that uses none of this. Instead it runs through
+characteristic&nbsp;\(p\), and turns on a single, almost absurdly cheap-looking input:
+the variety should lift one infinitesimal step, from characteristic \(p\) to "characteristic
+\(p^2\)". This lesson explains the statement, the strategy, and why the existence of such a
+lift has any right to control cohomology at all.</p>
+</div>
+
+<h2>The object of study</h2>
+
+<p>Let \(X\) be a smooth proper scheme over a field \(k\). Its algebraic de Rham cohomology
+is the hypercohomology of the de Rham complex,
+\[
+H^{*}_{\dR}(X/k) := \mathbb{H}^{*}(X, \Om^{\bullet}_{X/k}),
+\qquad
+\Om^{\bullet}_{X/k} : \; \cO_X \xto{d} \Om^1_{X/k} \xto{d} \Om^2_{X/k} \to \cdots
+\]
+The "stupid" filtration of this complex by \(\Om^{\geqslant i}\) gives the <strong>Hodge–de Rham
+spectral sequence</strong>
+\[
+\tag{0.1} E_1^{ij} = H^j(X, \Om^i_{X/k}) \;\Longrightarrow\; H^{i+j}_{\dR}(X/k).
+\]
+To say it <strong>degenerates at \(E_1\)</strong> is to say all differentials vanish, equivalently
+that for every \(n\),
+\[
+\sum_{i+j=n} \dim_k H^j(X,\Om^i_{X/k}) \;=\; \dim_k H^n_{\dR}(X/k).
+\]
+The numbers \(h^{ij}=\dim H^j(X,\Om^i)\) are the Hodge numbers; degeneration says they add up,
+without loss, to the de Rham Betti numbers. We unpack this in
+<a class="xref" href="#01-hodge-de-rham">Lesson&nbsp;1</a>.</p>
+
+<div class="box note">
+<div class="box-label">Why this is not obvious</div>
+<p>A spectral sequence is a machine for losing information: each differential \(d_r\) is a
+potential drop in dimension. Degeneration says the machine never fires. Over \(\C\) this is a
+theorem of Hodge theory. Over a field of characteristic \(p\) it can genuinely <em>fail</em>
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>) — so any proof must use a real
+hypothesis, and the question is <em>which one</em>.</p>
+</div>
+
+<h2>The main theorem</h2>
+
+<p>Work now over a perfect field \(k\) of characteristic \(p>0\). Frobenius \(a\mapsto a^p\)
+is a morphism of schemes; from \(X\) it produces a "twisted" copy \(X'\) (the
+<em>Frobenius twist</em>, <a class="xref" href="#02-frobenius-twist">Lesson&nbsp;2</a>) together
+with the <strong>relative Frobenius</strong> \(F : X \to X'\), a finite flat \(k\)-morphism.
+Pushing the de Rham complex forward along \(F\) gives a complex \(F_*\Om^{\bullet}_{X/k}\) of
+\(\cO_{X'}\)-modules. The Cartier isomorphism
+(<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>) identifies its cohomology sheaves:
+\(\cH^i F_*\Om^{\bullet}_{X/k} \cong \Om^i_{X'/k}\).</p>
+
+<p>The "characteristic \(p^2\)" input is a lift of \(X\) over the Witt vectors \(W_2(k)\) — a flat
+\(W_2(k)\)-scheme \(\tX\) reducing to \(X\) mod \(p\) (<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>).
+Here is the heart of the paper.</p>
+
+<div class="thmbox">
+<span class="thm-label">Theorem (2.1)</span> <span class="thm-cite">(Deligne–Illusie)</span>
+<div class="thm-body">
+<p>Each smooth lift \(\tX\) of \(X\) over \(W_2(k)\) determines, canonically, an isomorphism in
+the derived category \(D(X')\)
+\[
+\varphi_{\tX} : \bigoplus_{i&lt;p} \Om^i_{X'/k}[-i] \;\iso\; \tau_{&lt;p}\, F_*\Om^{\bullet}_{X/k}
+\]
+inducing the Cartier isomorphism on each cohomology sheaf.</p>
+</div>
+</div>
+
+<p>In words: <em>up to degree \(p\), the pushed-forward de Rham complex splits as the direct sum
+of its cohomology sheaves</em> — it is as simple as a complex can be, a sum of shifted sheaves
+with no differentials linking them — and a lift mod \(p^2\) is exactly the datum that produces
+the splitting. The truncation \(\tau_{&lt;p}\) and the range \(i&lt;p\) are not blemishes; they are
+where the whole subject lives, and <a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a>
+explains why.</p>
+
+<h2>What you get for free</h2>
+
+<p>Once the complex splits, cohomology cannot help but add up. A short count of dimensions
+(<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>) gives:</p>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.4)</span>
+<div class="thm-body">
+<p>If \(X\) is proper smooth over \(k\) of dimension \(&lt; p\) (in fact \(\leqslant p\)) and lifts over
+\(W_2(k)\), then the Hodge–de Rham spectral sequence (0.1) degenerates at \(E_1\).</p>
+</div>
+</div>
+
+<p>From this single characteristic-\(p\) statement, two cornerstones of complex geometry fall out by
+formal arguments:</p>
+
+<ul>
+<li><strong>Degeneration in characteristic \(0\)</strong> (Cor.&nbsp;2.7): spread a complex variety
+out over a finitely generated ring, reduce modulo a large prime \(p\) — the reduction
+automatically lifts mod \(p^2\) and has dimension \(&lt;p\) — apply 2.4, and lift the conclusion
+back. No Hodge theory. (<a class="xref" href="#10-char-zero">Lesson&nbsp;10</a>.)</li>
+<li><strong>Kodaira–Akizuki–Nakano vanishing</strong> (Cor.&nbsp;2.8, due to Raynaud; and 2.11 in
+char&nbsp;0): \(H^j(X,\Om^i\otimes L^{-1})=0\) for \(i+j&lt;\inf(p,\dim X)\) when \(L\) is ample.
+The proof is a Frobenius descent that has nothing to do with metrics.
+(<a class="xref" href="#11-kan-vanishing">Lesson&nbsp;11</a>.)</li>
+</ul>
+
+<h2>Why a lift mod p² has any right to do this</h2>
+
+<p>Here is the whole idea in miniature; the details are
+<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>. Suppose, optimistically, that not only
+\(X\) but the relative Frobenius \(F:X\to X'\) lifts: we have \(\tF:\tX \to \tX'\) over \(W_2(k)\)
+covering \(F\). On differentials, \(F^*=0\) (Frobenius multiplies by \(p\), which is \(0\) in
+characteristic \(p\)). So the lift \(\tF^* : \Om^1_{\tX'} \to \tF_*\Om^1_{\tX}\) lands in the
+subsheaf \(p\,\tF_*\Om^1_{\tX}\) — it is "secretly divisible by \(p\)". Dividing,
+\[
+f := \tfrac{1}{p}\,\tF^* : \Om^1_{X'/k} \longrightarrow F_*\Om^1_{X/k}.
+\]
+A one-line computation (write \(\tF^*(x) = x^p + p\,u(x)\)) gives
+\[
+f(dx) = x^{p-1}\,dx + d\,u(x),
+\]
+whose class in \(\cH^1\) is exactly \(x^{p-1}dx\) — the Cartier isomorphism. Dividing the lift of
+Frobenius by \(p\) literally manufactures the splitting map. The lift mod \(p^2\) is what makes the
+division legal; the rest of the paper is the (real) work of doing this when \(F\) only lifts
+locally, and of organizing the local pieces into a global statement in the derived category.</p>
+
+<div class="box subtle">
+<div class="box-label">The hypothesis is on \(X'\), and it is sufficient, not necessary</div>
+<p>Two warnings the paper is careful about. (i) What must lift is \(X'\), not \(X\); over a
+perfect field the two are abstractly isomorphic so this is invisible, but in families it matters
+(<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>). (ii) Liftability is a
+<em>sufficient</em> condition for degeneration, not a necessary one: Raynaud built surfaces that do
+<em>not</em> lift mod \(p^2\) yet whose spectral sequence still degenerates
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>). The sharp statement — that liftability
+of \(X'\) is <em>equivalent</em> to splittability of the truncation \(\tau_{\leqslant 1}\) — is the
+gerbe theorem of §3 (<a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>).</p>
+</div>
+
+<h2>A first sanity check: curves</h2>
+
+<div class="box example">
+<div class="box-label">Example — the simplest case</div>
+<p>Let \(X\) be a smooth proper curve over \(k\), so \(\Om^{\bullet}_{X/k} = (\cO_X \xto{d}
+\Om^1_{X/k})\) lives only in degrees \(0,1\). For any prime \(p\geqslant 2\) we have \(\{0,1\}
+\subset \{i : i&lt;p\}\), so the truncation \(\tau_{&lt;p}\) is the whole complex and Theorem&nbsp;2.1
+already gives a full splitting \( \cO_{X'}\oplus \Om^1_{X'}[-1] \iso F_*\Om^{\bullet}_X \). Curves
+always lift to \(W_2(k)\) (the obstruction lives in \(H^2\) of a curve, which vanishes). Hence the
+Hodge–de Rham spectral sequence of any smooth proper curve degenerates at \(E_1\): concretely,
+\[
+\dim H^1_{\dR}(X/k) = \dim H^0(X,\Om^1) + \dim H^1(X,\cO_X) = g + g = 2g.
+\]
+Every theorem in the paper specializes, on curves, to something you already believe — a good place
+to keep returning to.</p>
+</div>
+
+<h2>Historical orientation</h2>
+
+<p>Degeneration in characteristic \(0\) was classically deduced from Hodge theory (and, for proper
+non-projective \(X\), Chow's lemma plus resolution of singularities). The first proof
+<em>avoiding</em> Hodge theory was Faltings', via \(p\)-adic Hodge theory (Hodge–Tate
+decompositions). Kato, then Fontaine–Messing, proved degeneration in characteristic \(p\) under a
+liftability hypothesis using crystalline methods, and re-derived the characteristic-\(0\) statement.
+Deligne and Illusie's contribution is an <em>elementary</em> and more precise result — the explicit
+splitting \(\varphi_{\tX}\) — from which all of the above follows by formal nonsense and dimension
+counts. The seed, as they note, is an observation of Mazur, made explicit in work of Ogus and Kato.</p>
+
+<h2>Roadmap</h2>
+
+<ul>
+<li><strong>Module&nbsp;1 (Toolbox).</strong> The five things you must be fluent in: the Hodge
+spectral sequence (L1), Frobenius and the twist \(X'\) (L2), the Cartier isomorphism (L3), Witt
+vectors and liftings mod \(p^2\) (L4), and the derived-category notion of decomposability (L5).</li>
+<li><strong>Module&nbsp;2 (Construction).</strong> The proof of Theorem&nbsp;2.1: the key local
+computation (L6), the passage to all \(\Om^i\) and the role of \(i&lt;p\) (L7), and the gluing in
+the derived category (L8).</li>
+<li><strong>Module&nbsp;3 (Consequences).</strong> Degeneration (L9), descent to characteristic
+\(0\) (L10), Kodaira-type vanishing (L11).</li>
+<li><strong>Module&nbsp;4 (Structure).</strong> The gerbe theorem: lifting \(X'\) ⇔ splitting the
+de Rham complex, exactly (L12).</li>
+<li><strong>Module&nbsp;5 (Complements).</strong> Relative and logarithmic variants (L13); a
+gallery of subtleties and counterexamples that justify every hypothesis (L14).</li>
+</ul>
+
+<div class="box exercise">
+<div class="box-label">Warm-up exercises</div>
+<ol>
+<li>For \(X=\Pp^n_k\), the Hodge numbers are \(h^{ij}=1\) if \(i=j\leqslant n\) and \(0\) otherwise.
+Assuming degeneration, compute all \(\dim H^m_{\dR}(\Pp^n/k)\). (You will re-derive these honestly
+in Lesson&nbsp;1.)</li>
+<li>Convince yourself that "the spectral sequence (0.1) degenerates at \(E_1\)" is equivalent to the
+single numerical identity \(\sum_{i+j=n} h^{ij} = \dim H^n_{\dR}\) for all \(n\), using only that
+the abutment is filtered with the \(E_\infty^{ij}\) as graded pieces and \(\dim E_\infty^{ij}
+\leqslant \dim E_1^{ij}\).</li>
+<li>Where, in the miniature argument above, did we use that we are working modulo \(p^2\) rather than
+modulo some \(p^m\) with \(m\geqslant 3\), or over all of \(W(k)\)? (Answer in Lesson&nbsp;6: we
+divide by \(p\) exactly once.)</li>
+</ol>
+</div>

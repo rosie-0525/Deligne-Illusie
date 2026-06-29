@@ -1,0 +1,221 @@
+<h1>8. Globalizing: homotopies and Čech gluing</h1>
+
+<div class="lead">
+<p>In <a class="xref" href="#06-key-computation">Lesson&nbsp;6</a> we turned a lift \(\tF\) of the
+relative Frobenius into a map \(f=p^{-1}\tF^{*}:\Om^1_{X'/k}[-1]\to F_*\Om^{\bullet}_{X/k}\) realizing
+the Cartier isomorphism on \(\cH^1\). But \(\tF\) exists only <em>locally</em>: smoothness gives a lift
+on each affine of a cover, and the global ones generally do not exist. So we have one map \(f_i\) per
+open, and they disagree on overlaps. This lesson does the bookkeeping that assembles the \(f_i\) into a
+single morphism \(\varphi^1_{\tX}:\Om^1_{X'}[-1]\to F_*\Om^{\bullet}_{X/k}\) in the
+<em>derived</em> category \(D(X')\). The two ideas: (c) two lifts differ by an explicit
+<em>homotopy</em>, so the \(f_i\) are coherently homotopic; and (d) "coherently homotopic local maps"
+is exactly a cocycle in a Čech double complex, which the augmentation quasi-isomorphism converts into a
+map in \(D(X')\). The leftover — whether the gluing can be undone, i.e. whether \(\tF\) is global — is a
+cohomology class \(c\), the subject of the closing sections.</p>
+</div>
+
+<h2>(c) Two lifts differ by a homotopy</h2>
+
+<p>Work locally, where a common lift \(\tX\) of \(X\) and two lifts \(\tF_1,\tF_2:\tX\to\tX'\) of \(F\)
+are available. Each \(\tF_i^{*}\) is a ring homomorphism \(\cO_{\tX'}\to\tF_{i*}\cO_{\tX}\) reducing to
+the <em>same</em> map \(F^{*}\) modulo \(p\). Hence the difference
+\[
+D:=\tF_2^{*}-\tF_1^{*}\;:\;\cO_{\tX'}\longrightarrow p\,\tF_*\cO_{\tX}=p\,F_*\cO_X
+\]
+lands in the square-zero ideal \((p)\). Expanding \(D(ab)\) with \(\tF_2^{*}=\tF_1^{*}+D\) and using
+\(p^2=0\) (so \(D(a)D(b)=0\)) gives \(D(ab)=F^{*}(a)\,D(b)+F^{*}(b)\,D(a)\): \(D\) is an
+\(F^{*}\)-twisted derivation. Dividing by \(p\) (legal once, exactly as in
+<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>) yields an honest \(\cO_{X'}\)-linear
+derivation \(\cO_{X'}\to F_*\cO_X\), i.e. an \(\cO_{X'}\)-linear map</p>
+\[
+h_{12}\;:\;\Om^1_{X'/k}\longrightarrow F_*\cO_X .
+\]
+<p>Concretely, if \(\tF_i^{*}(x\otimes 1)=x^{p}+p\,u_i(x)\), then
+\(h_{12}\bigl(d(x\otimes 1)\bigr)=u_2(x)-u_1(x)\). Combining this with formula&nbsp;(2) of
+Lesson&nbsp;6, \(f_i\bigl(d(x\otimes1)\bigr)=x^{p-1}dx+d\,u_i(x)\), the \(x^{p-1}dx\) cancels and</p>
+\[
+\tag{4} f_2-f_1\;=\;d\circ h_{12}
+\]
+<p>as maps \(\Om^1_{X'}\to F_*\Om^1_X\) (here \(d:F_*\cO_X\to F_*\Om^1_X\)). Thus \(f_1\) and \(f_2\),
+viewed as maps of complexes \(\Om^1_{X'}[-1]\to F_*\Om^{\bullet}_X\), are <strong>homotopic</strong>,
+with homotopy \(h_{12}\). This is precisely Lesson&nbsp;6's observation that changing the lift changes
+\(f\) by an exact form, now named. For three lifts the \(u_i\) telescope, giving the cocycle relation</p>
+\[
+\tag{5} h_{12}+h_{23}=h_{13}.
+\]
+
+<div class="box note">
+<div class="box-label">Where the homotopy lives</div>
+<p>Because \(\Om^1_{X'}\) is locally free, \(h_{12}\in\Hom_{\cO_{X'}}(\Om^1_{X'},F_*\cO_X)=
+\Theta_{X'/S}\otimes_{\cO_{X'}}F_*\cO_X\), the sheaf of \(F_*\cO_X\)-valued vector fields on \(X'\).
+This is the same group that controlled the lifts of \(F\) in
+<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a> — no accident, as (d) will show.</p>
+</div>
+
+<h2>(d) Gluing along a Čech cover</h2>
+
+<p>Choose a Zariski cover \(\mathcal{U}=(U_i)\) of \(X\) fine enough that each \(\tU_i'\) carries a lift
+\(\tF_i:\tU_i\to\tU_i'\). Set \(f_i=p^{-1}\tF_i^{*}\) on \(U_i'\) and, on \(U_{ij}'\), the homotopy
+\(h_{ij}\) built from \((\tF_i,\tF_j)\). The three relations</p>
+\[
+\tag{6} d\circ f_i=0,\qquad f_j-f_i=d\circ h_{ij},\qquad h_{ij}+h_{jk}=h_{ik}
+\]
+<p>(the first because \(d(x^{p-1}dx)=0\), the second is (4), the third is (5)) say <em>exactly</em> that
+\((h_{ij},f_i)\) is a \(1\)-cocycle in the total complex of the Čech double complex
+\(\cC(\mathcal{U},F_*\Om^{\bullet}_X)\). Recall that complex: with
+\(\cC^{b}(\mathcal{U},\cF)=\prod_{i_0&lt;\cdots&lt;i_b}\cF(U_{i_0\cdots i_b})\),</p>
+\[
+\cC(\mathcal{U},\Om^{\bullet})^{n}=\bigoplus_{a+b=n}\cC^{b}(\mathcal{U},\Om^{a}),
+\qquad d_{\mathrm{tot}}=d_1\pm d_2,
+\]
+<p>where \(d_1\) is the de Rham \(d\) and \(d_2=\delta\) is the Čech differential. The augmentation
+\(\Om^{\bullet}\to\cC(\mathcal{U},\Om^{\bullet})\) is a quasi-isomorphism (the sheafified Čech complex
+is a resolution), hence so is its pushforward
+\(F_*\Om^{\bullet}_X\to F_*\cC(\mathcal{U},\Om^{\bullet}_X)\).</p>
+
+<div class="thmbox">
+<span class="thm-label">Construction (2.1(d))</span>
+<div class="thm-body">
+<p>Define \(\varphi^1_{(\mathcal{U},(\tF_i))}:\Om^1_{X'}[-1]\to F_*\cC(\mathcal{U},\Om^{\bullet}_X)\) on a
+local section \(\omega\) of \(\Om^1_{X'}\) (sitting in total degree \(1\)) by
+\[
+\omega\;\longmapsto\;\bigl((h_{ij}\,\omega)_{ij}\,,\,(f_i\,\omega)_i\bigr)
+\in \cC^1(F_*\cO_X)\oplus\cC^0(F_*\Om^1_X).
+\]
+Relations&nbsp;(6) are equivalent to \(d_{\mathrm{tot}}\circ\varphi^1=0\), i.e. to \(\varphi^1\) being a
+map of complexes. Composing with the inverse in \(D(X')\) of the quasi-isomorphism
+\(F_*\Om^{\bullet}_X\to F_*\cC(\mathcal{U},\Om^{\bullet}_X)\) gives
+\[
+\varphi^1_{\tX}\;:\;\Om^1_{X'/k}[-1]\longrightarrow F_*\Om^{\bullet}_{X/k}\quad\text{in } D(X'),
+\qquad \cH^1\varphi^1_{\tX}=C^{-1}.
+\]
+</div>
+</div>
+
+<p>The three components of \(d_{\mathrm{tot}}\varphi^1\) in total degree \(2\) are, term by term, the three
+relations of (6): \(\cC^0(\Om^2)\) gives \(d f_i=0\), \(\cC^1(\Om^1)\) gives
+\(f_j-f_i=dh_{ij}\), and \(\cC^2(\Om^0)\) gives the cocycle relation (Exercise&nbsp;2). On
+\(\cH^1\), \(\varphi^1_{\tX}\) is computed by any single \(f_i\), which is \(C^{-1}\) by Lesson&nbsp;6.
+This \(\varphi^1_{\tX}\) is the input to the multiplicative machine of
+<a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a>: cup-producting it with itself yields
+\(\varphi^i\) for \(i&lt;p\) and assembles \(\varphi_{\tX}\), completing the proof of Theorem&nbsp;2.1.</p>
+
+<p><strong>Independence of choices.</strong> Given two data \((\mathcal{U},(\tF_i))\) and
+\((\mathcal{V},(\tF_j'))\), form the disjoint-union cover \(\mathcal{U}\amalg\mathcal{V}\), whose lifts
+restrict from both. The refinement maps
+\(\cC(\mathcal{U})\to\cC(\mathcal{U}\amalg\mathcal{V})\leftarrow\cC(\mathcal{V})\) are quasi-isomorphisms
+compatible with the augmentations and carry the respective \(\varphi^1\)'s to a common one. Inverting the
+augmentations, all three agree in \(D(X')\). Hence \(\varphi^1_{\tX}\) depends only on \(\tX\).</p>
+
+<div class="box subtle">
+<div class="box-label">This is why one must work in \(D(X')\)</div>
+<p>Globally there is no single chain-level map \(\Om^1_{X'}[-1]\to F_*\Om^{\bullet}_X\): the local \(f_i\)
+are only homotopic, not equal. The cocycle \((h_{ij},f_i)\) packages a "map valued in the de Rham
+complex, up to coherent homotopy", and the derived category is the natural home for such an object.
+The price of inverting the augmentation is that \(\varphi^1_{\tX}\) is, in general, a zig-zag
+(span) rather than an honest morphism of complexes.</p>
+</div>
+
+<h2>When Frobenius lifts globally (Remark 2.2(ii))</h2>
+
+<p>If \(F\) lifts globally — a single \(\tF\) on all of \(X\) — take the trivial one-element cover. Then
+all \(h_{ij}\) vanish, the cocycle is just \((f)\), \(F_*\cC=F_*\Om^{\bullet}\), and
+\(\varphi^1_{\tX}=f\) is an <em>honest quasi-isomorphism of complexes</em> \(\Om^1_{X'}[-1]\xto{f}
+F_*\Om^{\bullet}_X\): no gluing, no zig-zag (cf. <a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>).
+Whether this happy situation occurs is measured by a single class.</p>
+
+<h2>The obstruction class (Remark 2.2(iii))</h2>
+
+<p>The lifts of \(F\) over a fixed \(\tX\) form a <strong>torsor</strong> under
+\(\sHom(\Om^1_{X'},F_*\cO_X)=\Theta_{X'/S}\otimes_{\cO_{X'}}F_*\cO_X\): two lifts differ by the
+derivation \(h_{ij}\) of (c), and any derivation can be added. The torsor has a class</p>
+\[
+c\;\in\;H^1\bigl(X',\,\Theta_{X'/S}\otimes_{\cO_{X'}}F_*\cO_X\bigr),
+\]
+<p>which is, up to sign, the class of the Čech cocycle \((h_{ij})\) and is the
+<strong>obstruction to a global lift \(\tF\)</strong>: \(c=0\) iff the \(h_{ij}\) are a coboundary, iff
+the local lifts can be adjusted to agree, iff \(\tF\) exists globally.</p>
+
+<div class="thmbox">
+<span class="thm-label">Proposition (2.2(iii))</span>
+<div class="thm-body">
+<p>Let \(\pi:F_*\Om^{\bullet}_X\to F_*\cO_X\) be the projection onto the degree-\(0\) quotient (by the
+subcomplex \(\Om^{\geqslant 1}\)). Then
+\[
+c\;=\;\pi\circ\varphi^1_{\tX}\;\in\;\Hom_{D(X')}\bigl(\Om^1_{X'}[-1],F_*\cO_X\bigr)
+=\mathrm{Ext}^1\bigl(\Om^1_{X'},F_*\cO_X\bigr)\supseteq H^1(X',\Theta_{X'/S}\otimes F_*\cO_X).
+\]
+Equivalently, \(c\) is the obstruction to representing \(\varphi^1_{\tX}\) by a genuine map of complexes:
+\(c=0\) iff \(\varphi^1_{\tX}\) is an honest morphism (then \(\tF\) is global, and we are in the previous
+section).</p>
+</div>
+</div>
+
+<p>In the Čech model this is transparent: \(\pi\) kills the \(\Om^1\)-component \((f_i)\) and keeps the
+\(\cC^1(F_*\cO_X)\)-component \((h_{ij})\), so \(\pi\circ\varphi^1_{\tX}=[(h_{ij})]=c\). Lesson&nbsp;12
+will show that a <em>coarser</em> obstruction — to lifting \(X'\) itself, not \(F\) — controls
+decomposability of \(\tau_{\leqslant 1}F_*\Om^{\bullet}\) exactly (the gerbe theorem).</p>
+
+<h2>Example: \(\Pp^1\) is Frobenius-liftable</h2>
+
+<div class="box example">
+<div class="box-label">Example — the simplest case, \(c=0\) by hand</div>
+<p>Cover \(\Pp^1\) by \(U_0=\Spec k[t]\) and \(U_1=\Spec k[s]\), glued by \(s=1/t\) on
+\(\Gm=U_0\cap U_1\). Lift to \(\Wt(k)\) by the evident \(\Pp^1_{\Wt(k)}\), and lift Frobenius on each
+chart by
+\[
+\tF_0:\;t\mapsto t^{p},\qquad \tF_1:\;s\mapsto s^{p}.
+\]
+On the overlap, with \(t'=t\otimes 1\) and \(s'=1/t'\),
+\[
+\tF_0^{*}(s')=\tF_0^{*}(1/t')=1/t^{p}=s^{p}=\tF_1^{*}(s'),
+\]
+so the two lifts <em>agree</em>: \(h_{01}=0\), the cocycle is trivial, and \(c=0\). Hence the \(\tF_i\)
+glue to a global \(\tF\) on \(\Pp^1_{\Wt(k)}\): \(\Pp^1\) is Frobenius-liftable, no Čech gluing is
+needed, and \(\varphi^1_{\tX}\) is an honest quasi-isomorphism. (The same monomial recipe lifts
+Frobenius on \(\Pp^n\) and on any toric variety with a chosen \(\Wt(k)\)-model.)</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Counterpoint — most curves need the gluing</div>
+<p>A general smooth proper curve of genus \(\geqslant 1\) admits <em>no</em> global lift of Frobenius:
+\(c\neq 0\) in \(H^1(X',\Theta_{X'}\otimes F_*\cO_X)\), which is nonzero for dimension reasons. So even
+though such a curve always lifts mod \(p^2\) (<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>)
+and \(\varphi^1_{\tX}\) certainly exists in \(D(X')\), it is genuinely a zig-zag, and the Čech gluing of
+(d) is unavoidable. An ordinary elliptic curve over \(\Fp\) is Frobenius-liftable only for its
+canonical (Serre–Tate) lift; a generic lift has \(c\neq 0\).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Two obstructions, not one</div>
+<p>There is a hierarchy. The class \(c\) here obstructs a global \(\tF\) and is <em>finer</em> than the
+obstruction to decomposability/liftability of \(X'\) in <a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>:
+a global \(\tF\) forces \(X'\) to be liftable, but a liftable \(X'\) need not admit a global \(\tF\)
+(curves of genus \(\geqslant 1\) witness this). The main theorem needs only a lift of \(X'\); a global
+Frobenius lift is a bonus that, when present, upgrades the construction from a span to a chain map.</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>From \(\tF_i^{*}(x\otimes1)=x^{p}+p\,u_i(x)\), derive \(h_{12}(d(x\otimes1))=u_2-u_1\), then prove
+relations&nbsp;(4) and (5) directly. (Check first that \(D=\tF_2^{*}-\tF_1^{*}\) is an
+\(F^{*}\)-twisted derivation, using \(p^2=0\).)</li>
+<li>Write out \(d_{\mathrm{tot}}=d_1\pm d_2\) on the total degree-\(1\) element \((h_{ij},f_i)\) and check
+that its three degree-\(2\) components — in \(\cC^0(\Om^2)\), \(\cC^1(\Om^1)\), \(\cC^2(\Om^0)\) — are
+exactly the three relations of&nbsp;(6). Conclude that \((h_{ij},f_i)\) is a \(1\)-cocycle iff
+\(\varphi^1\) is a chain map.</li>
+<li>Carry out the \(\Pp^1\) computation in full: write the charts, the two lifts, and verify
+\(\tF_0^{*}=\tF_1^{*}\) on \(\Gm\) so that \(h_{01}=0\) and \(c=0\). Then exhibit the resulting global
+\(\tF\) on \(\Pp^1_{\Wt(k)}\).</li>
+<li>Show the lifts of \(F\) over a fixed \(\tX\) form a torsor under
+\(\Theta_{X'/S}\otimes F_*\cO_X\), and identify its class with the cocycle \((h_{ij})\). (Use that the
+difference of two lifts is the derivation of (c), and that any derivation may be added.)</li>
+<li>Prove \(c=\pi\circ\varphi^1_{\tX}\) and explain why \(c=0\) is equivalent to \(\varphi^1_{\tX}\)
+being representable by a genuine map of complexes (hence to a global \(\tF\)). Where does \(\pi\) discard
+the \((f_i)\)?</li>
+<li>Relate \(c\) to a first-order deformation: interpret \(\Theta_{X'/S}\otimes F_*\cO_X\) and compare
+\(c\) with the coarser obstruction of <a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>. Give the
+implication that holds (global \(\tF\Rightarrow X'\) liftable) and a counterexample to its converse.</li>
+</ol>
+</div>

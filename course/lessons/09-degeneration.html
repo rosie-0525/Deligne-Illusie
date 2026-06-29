@@ -1,0 +1,262 @@
+<h1>9. Decomposition and Hodge degeneration</h1>
+
+<div class="lead">
+<p>Theorem&nbsp;2.1 (<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>) splits only the truncation
+\(\tau_{&lt;p}F_*\Om^{\bullet}_{X/k}\) — everything up to degree \(p\). Two natural questions remain.
+First, can the splitting be pushed all the way to the top, so that the <em>whole</em> complex
+\(F_*\Om^{\bullet}\) decomposes? Second, what does decomposition buy us about cohomology? This lesson
+answers both. When \(\dim X\leqslant p\) a duality argument extends the splitting to a full one
+(Cor.&nbsp;2.3); taking hypercohomology then forces the Hodge–de Rham spectral sequence to degenerate
+at \(E_1\) (Cor.&nbsp;2.4). In arbitrary dimension one still gets degeneration <em>in low degrees</em>
+(Cor.&nbsp;2.5). The boundary case \(\dim X=p\) is where the method is sharpest — and just past it,
+\(\dim X&gt;p\), is where it stops and an honest open problem begins.</p>
+</div>
+
+<h2>From \(\tau_{&lt;p}\) to a full splitting</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.3)</span>
+<div class="thm-body">
+<p>Let \(X\) be smooth over a perfect field \(k\) of characteristic \(p\), with \(\dim X\leqslant p\),
+and suppose \(X\) (equivalently \(X'\)) lifts over \(\Wt(k)\). Then \(F_*\Om^{\bullet}_{X/k}\) is
+<strong>decomposable</strong> in \(D(X')\): there is an isomorphism
+\[
+\bigoplus_{i} \Om^i_{X'/k}[-i]\;\iso\; F_*\Om^{\bullet}_{X/k}
+\]
+inducing the inverse Cartier isomorphism \(C^{-1}\) on every cohomology sheaf
+\(\cH^i=\Om^i_{X'/k}\) (now for <em>all</em> \(i\), not only \(i&lt;p\)).</p>
+</div>
+</div>
+
+<details class="proof">
+<summary>Proof</summary>
+<div class="proof-body">
+<p>We may assume \(X\) connected, hence of pure dimension \(d\leqslant p\).</p>
+<p><strong>Case \(d&lt;p\).</strong> Then \(\Om^i_{X/k}=0\) for \(i&gt;d\), so \(\Om^{\bullet}_{X/k}\) is
+concentrated in degrees \([0,d]\subseteq[0,p-1]\). Thus \(\tau_{&lt;p}F_*\Om^{\bullet}=F_*\Om^{\bullet}\),
+and Theorem&nbsp;2.1 already <em>is</em> the asserted full splitting. Nothing to do.</p>
+<p><strong>Case \(d=p\).</strong> Now the complex reaches degree \(p\), exactly the one term
+\(\tau_{&lt;p}\) drops. We recover it by duality. Since \(X\) is smooth of dimension \(p\), the wedge
+pairing
+\[
+\wedge:\;\Om^i_{X/k}\times\Om^{p-i}_{X/k}\longrightarrow \Om^p_{X/k}=\omega_X
+\]
+is perfect (both sides locally free of complementary rank). The relative Frobenius \(F\) is finite and
+flat, so each \(F_*\Om^i\) is a locally free \(\cO_{X'}\)-module, and Grothendieck–Serre duality for
+\(F\) supplies the trace \(\mathrm{Tr}_F:F_*\omega_X\to\omega_{X'}=\Om^p_{X'}\). Composing,
+\[
+(\alpha,\beta)\;\longmapsto\; C(\alpha\wedge\beta),\qquad
+C:=\mathrm{Tr}_F:F_*\Om^p_{X}\to\Om^p_{X'},
+\]
+is a perfect pairing exhibiting \(F_*\Om^{p-i}\cong\sHom_{\cO_{X'}}(F_*\Om^i,\Om^p_{X'})\). The map
+\(C\) is nothing but the inverse Cartier isomorphism in top degree: every \(p\)-form is closed
+(\(\Om^{p+1}=0\)), so \(C\) is defined on all of \(F_*\Om^p\), kills exact forms, and induces
+\(\cH^p\iso\Om^p_{X'}\) — and this top Cartier operator is precisely the trace of the finite flat
+\(F\) (Exercise&nbsp;2).</p>
+<p>Because \(C\) kills exact forms, \(C\bigl(d(\alpha\wedge\beta)\bigr)=0\), i.e.
+\(C(d\alpha\wedge\beta)=\pm\,C(\alpha\wedge d\beta)\): the de Rham differential is, up to sign, its own
+transpose under the pairing. Hence the dual of the complex \((F_*\Om^{\bullet},d)\) is again
+\((F_*\Om^{\bullet},d)\) up to shift, and duality carries the decomposable subcomplex
+\(\tau_{&lt;p}F_*\Om^{\bullet}=\tau_{\leqslant p-1}F_*\Om^{\bullet}\) (degrees \(0,\dots,p-1\)) to the
+quotient complex \(\tau_{\geqslant 1}F_*\Om^{\bullet}\) (degrees \(1,\dots,p\)). Therefore
+\(\tau_{\geqslant 1}F_*\Om^{\bullet}\) is decomposable as well.</p>
+<p>Now use the truncation triangle
+\[
+\tau_{&lt;p}F_*\Om^{\bullet}\to F_*\Om^{\bullet}\to \cH^p[-p]\xto{e}
+\tau_{&lt;p}F_*\Om^{\bullet}[1].
+\]
+\(F_*\Om^{\bullet}\) is decomposable iff the connecting class \(e\) vanishes. Splitting the target by
+Theorem&nbsp;2.1, \(e\) has components
+\[
+e_i\in\Hom_{D(X')}\bigl(\cH^p[-p],\cH^i[-i+1]\bigr)=\Ext^{\,p-i+1}_{\cO_{X'}}(\cH^p,\cH^i)
+=H^{p-i+1}\!\bigl(X',\sHom(\cH^p,\cH^i)\bigr),
+\]
+the last equality because the \(\cH^i\) are locally free (no local \(\Ext\)).</p>
+<ul>
+<li><em>\(1\leqslant i\leqslant p-1\):</em> apply \(\tau_{\geqslant 1}\) to the triangle. Naturality of
+truncation gives a map of triangles whose top class is \(e\) and whose bottom class is the connecting
+class of \(\tau_{\geqslant1}F_*\Om^{\bullet}\); the vertical map kills only the \(i=0\) summand. Since
+\(\tau_{\geqslant 1}F_*\Om^{\bullet}\) is decomposable, that bottom class vanishes, forcing
+\(e_i=0\) for every \(i\geqslant1\).</li>
+<li><em>\(i=0\):</em> here \(e_0\in H^{p+1}\bigl(X',\sHom(\cH^p,\cO_{X'})\bigr)\). But
+\(\dim X'=\dim X=p\), so by Grothendieck vanishing the cohomology of any sheaf vanishes above degree
+\(p\); thus \(H^{p+1}=0\) and \(e_0=0\).</li>
+</ul>
+<p>Hence \(e=0\), \(F_*\Om^{\bullet}\) decomposes, and the splitting induces \(C^{-1}\) on each
+\(\cH^i\) since it does so in degrees \(&lt;p\) (Thm.&nbsp;2.1) and in degree \(p\) (the map \(C\) above).
+<span class="qed">∎</span></p>
+</div>
+</details>
+
+<div class="box subtle">
+<div class="box-label">Why \(\dim=p\) is the exact frontier</div>
+<p>The argument used two facts about \(d=p\): top-degree <em>duality</em> (to get
+\(\tau_{\geqslant1}\) decomposable) and <em>cohomological dimension \(=p\)</em> (to kill
+\(e_0\in H^{p+1}\)). If \(\dim X&gt;p\) both legs break: the missing terms are no longer dual to known
+ones, and \(e_0\) lives in \(H^{p+1}\) of a space of dimension \(&gt;p\), where there is no reason to
+vanish. This is precisely the edge of the method — see the open-problem box below.</p>
+</div>
+
+<h2>Hodge degeneration</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.4)</span>
+<div class="thm-body">
+<p>If \(X\) is <strong>proper</strong> and smooth over \(k\), \(\dim X\leqslant p\), and \(X\) lifts
+over \(\Wt(k)\), then the Hodge–de Rham spectral sequence \(E_1^{ij}=H^j(X,\Om^i_{X/k})\Rightarrow
+H^{i+j}_{\dR}(X/k)\) degenerates at \(E_1\).</p>
+</div>
+</div>
+
+<details class="proof">
+<summary>Proof</summary>
+<div class="proof-body">
+<p>By Cor.&nbsp;2.3 there is an isomorphism \(\bigoplus_i\Om^i_{X'}[-i]\iso F_*\Om^{\bullet}_{X/k}\) in
+\(D(X')\). Take hypercohomology over \(X'\). On the right, \(F\) is finite (hence affine), so \(F_*\) is
+exact and
+\[
+\mathbb{H}^n\bigl(X',F_*\Om^{\bullet}_{X/k}\bigr)=\mathbb{H}^n\bigl(X,\Om^{\bullet}_{X/k}\bigr)
+=H^n_{\dR}(X/k).
+\]
+On the left, hypercohomology of a sum of shifted sheaves is just a sum:
+\[
+\mathbb{H}^n\Bigl(X',\bigoplus_i\Om^i_{X'}[-i]\Bigr)=\bigoplus_{i}H^{n-i}\bigl(X',\Om^i_{X'/k}\bigr).
+\]
+Finally \(X'=X\times_{k,\,\mathrm{Frob}}k\) is \(X\) with scalars extended along the field
+<em>automorphism</em> \(a\mapsto a^p\) of the perfect field \(k\); base change along an isomorphism of
+the base preserves all dimensions of coherent cohomology, so
+\(\dim_k H^{n-i}(X',\Om^i_{X'})=\dim_k H^{n-i}(X,\Om^i_X)=h^{i,\,n-i}\). Combining,
+\[
+\sum_{i+j=n}h^{ij}=\dim_k H^n_{\dR}(X/k)\qquad\text{for every }n,
+\]
+which is the numerical criterion for \(E_1\)-degeneration
+(<a class="xref" href="#01-hodge-de-rham">Lesson&nbsp;1</a>). <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h2>Partial degeneration in any dimension</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.5)</span>
+<div class="thm-body">
+<p>If \(X\) is proper smooth over \(k\) and lifts over \(\Wt(k)\) — of <em>arbitrary</em> dimension —
+then the Hodge–de Rham spectral sequence satisfies \(E_1^{ij}=E_\infty^{ij}\) for all \(i+j&lt;p\):
+it degenerates in total degrees below \(p\).</p>
+</div>
+</div>
+
+<details class="proof">
+<summary>Proof sketch</summary>
+<div class="proof-body">
+<p>From the short exact sequence of complexes
+\(0\to\tau_{&lt;p}F_*\Om^{\bullet}\to F_*\Om^{\bullet}\to (F_*\Om^{\bullet}/\tau_{&lt;p})\to0\), the
+quotient lives in degrees \(\geqslant p\), so it contributes nothing to \(\mathbb{H}^n\) for \(n&lt;p\).
+Hence the inclusion induces \(\mathbb{H}^n(X',\tau_{&lt;p}F_*\Om^{\bullet})\iso\mathbb{H}^n(X,
+\Om^{\bullet})=H^n_{\dR}(X/k)\) for \(n&lt;p\). Apply Theorem&nbsp;2.1 (the truncation <em>is</em>
+decomposable) and hypercohomology, exactly as in Cor.&nbsp;2.4, to get
+\(\bigoplus_i H^{n-i}(X',\Om^i_{X'})\cong H^n_{\dR}(X/k)\) for \(n&lt;p\); the dimension count
+\(\sum_{i+j=n}h^{ij}=\dim H^n_{\dR}\) then holds for \(n&lt;p\), which is degeneration in those degrees
+(Exercise&nbsp;6). <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h2>Examples: keep returning to the simplest cases</h2>
+
+<div class="box example">
+<div class="box-label">Curves — unconditional degeneration</div>
+<p>A smooth proper curve has \(\dim=1\leqslant p\) for every prime \(p\geqslant2\), and curves always
+lift to \(\Wt(k)\) (<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>). So Cor.&nbsp;2.4 applies
+with no extra hypothesis: the Hodge spectral sequence of <em>every</em> smooth proper curve degenerates
+at \(E_1\). Concretely \(\dim H^1_{\dR}=h^{1,0}+h^{0,1}=g+g=2g\). For genus \(1\) the case \(\dim=p=2\)
+is the duality case of Cor.&nbsp;2.3; for \(p\geqslant3\) it is the easy \(\dim&lt;p\) case — either way
+the conclusion is the same and unconditional.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">\(\Pp^2\) and quadric surfaces</div>
+<p>For \(\Pp^2\) the Hodge numbers are \(h^{ij}=1\) if \(i=j\leqslant2\) and \(0\) otherwise. It lifts
+(by \(\Pp^2_{\Wt(k)}\)); for \(p\geqslant3\) we are in the case \(\dim=2&lt;p\), while for \(p=2\) we
+hit the duality case \(\dim=2=p\). Degeneration gives Betti numbers
+\(\dim H^0_{\dR}=\dim H^2_{\dR}=\dim H^4_{\dR}=1\), odd ones \(0\) — the count
+\(\sum_{i+j=n}h^{ij}\) reads \(1,0,1,0,1\). The smooth quadric surface
+\(\Pp^1\times\Pp^1\) has \(h^{00}=h^{22}=1,\;h^{11}=2\), all others \(0\), giving Betti
+\(1,0,2,0,1\).</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Abelian varieties — the parallelizable shortcut, any dimension</div>
+<p>Let \(A\) be an abelian variety of dimension \(g\). Here \(\Om^1_A\) is <em>free</em> (translation
+gives a global frame), so \(\Om^i_A=\textstyle\bigwedge^i\Om^1_A\) is free of rank \(\binom{g}{i}\).
+Thus
+\[
+h^{ij}=\dim H^j(A,\Om^i_A)=\binom{g}{i}\dim H^j(A,\cO_A)=\binom{g}{i}\binom{g}{j},
+\]
+using \(H^j(A,\cO_A)=\bigwedge^j H^1(A,\cO_A)\) with \(\dim H^1(A,\cO_A)=g\). By Vandermonde,
+\(\sum_{i+j=n}\binom{g}{i}\binom{g}{j}=\binom{2g}{n}=\dim H^n_{\dR}(A)\). Note this needs no
+\(\dim\leqslant p\): because \(\Om^1\) is free, Remark&nbsp;2.6(iv)
+(<a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a>) gives a <em>full</em> decomposition for
+any \(g\) from a single lift mod \(p^2\) — the parallelizable shortcut, not Cor.&nbsp;2.3.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">K3 surfaces</div>
+<p>A K3 surface has \(\dim=2\) and lifts to \(\Wt(k)\). Its Hodge diamond is
+\(1;\,0,0;\,1,20,1;\,0,0;\,1\), so degeneration gives Betti numbers \(1,0,22,0,1\) — the famous
+\(b_2=22\). For \(p\geqslant3\) this is the case \(\dim&lt;p\); for \(p=2\) it is the duality case.</p>
+</div>
+
+<h2>What degeneration is — and is not</h2>
+
+<div class="box subtle">
+<div class="box-label">\(\dim&gt;p\) is open</div>
+<p>For proper smooth liftable \(X\) of dimension \(\geqslant p+1\), Deligne–Illusie have
+<em>neither</em> a proof <em>nor</em> a counterexample that \(F_*\Om^{\bullet}\) decomposes, or that the
+spectral sequence degenerates (Remark&nbsp;2.6(iii)). The dimension count above is genuinely a result
+about a window \([0,p)\), and the case \(\dim=p\) is its sharp boundary. An honest frontier; see
+<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Degeneration \(\not\Rightarrow\) Hodge symmetry</div>
+<p>Over \(\C\), \(E_1\)-degeneration comes packaged with \(h^{ij}=h^{ji}\). In characteristic \(p\) the
+symmetry can <em>fail</em> even when degeneration holds (Remark&nbsp;2.6(ii)): there exist surfaces with
+\(h^{1,0}\neq h^{0,1}\). So Cor.&nbsp;2.4 is strictly weaker than the complex Hodge decomposition — it
+asserts the numbers add up, not that they are symmetric.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Liftability is sufficient, not necessary</div>
+<p>Cor.&nbsp;2.4 gives degeneration <em>from</em> a lift mod \(p^2\); the converse is false. Raynaud
+produced surfaces that do not lift to \(\Wt(k)\) yet whose Hodge spectral sequence still degenerates,
+and Mumford produced surfaces whose spectral sequence does <em>not</em> degenerate (so, by the theorem,
+they cannot lift). Liftability is one sufficient mechanism among others; see
+<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>.</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Compute \(H^*_{\dR}(\Pp^n/k)\) from \(h^{ij}=\delta_{ij}\) (\(i\leqslant n\)) and verify
+\(\sum_{i+j=m}h^{ij}=\dim H^m_{\dR}\): the Betti numbers are \(1,0,1,0,\dots,1\) up to degree \(2n\).
+(\(\Pp^n\) lifts and is liftable for the relevant primes.)</li>
+<li>Check that \((\alpha,\beta)\mapsto C(\alpha\wedge\beta)\) is a perfect \(\cO_{X'}\)-bilinear pairing
+\(F_*\Om^i\times F_*\Om^{p-i}\to\Om^p_{X'}\), and that the top-degree Cartier operator \(C\) coincides
+with the trace \(\mathrm{Tr}_F\) of the finite flat \(F\). (Reduce to \(X=\mathbb{A}^p\) with
+coordinates and compute both sides on monomial forms.)</li>
+<li>Pinpoint where \(\dim X=p\) is used in the proof of Cor.&nbsp;2.3: show that the only place is the
+vanishing \(H^{p+1}(X',\sHom(\cH^p,\cO_{X'}))=0\), and that this is exactly Grothendieck vanishing
+above the dimension.</li>
+<li>For an abelian variety, derive \(h^{ij}=\binom{g}{i}\binom{g}{j}\) and
+\(\sum_{i+j=n}h^{ij}=\binom{2g}{n}\). Confirm the answer equals the Betti numbers of the topological
+torus \((S^1)^{2g}\).</li>
+<li>For \(\Pp^1\times\Pp^1\), draw the \(E_1\)-page and identify which differentials could be nonzero.
+Conclude that, because the Hodge groups sit on the diagonal \(i=j\) while every \(d_r\) moves
+\((i,j)\mapsto(i+r,j-r+1)\), <em>all</em> differentials land in zero groups — degeneration here is
+automatic and needs no lifting hypothesis. Contrast with a surface having \(h^{1,0}\neq0\) (e.g. an
+abelian surface), where \(d_1:H^0(\cO)\to H^0(\Om^1)\) and \(d_1:H^1(\cO)\to H^1(\Om^1)\) are the
+potentially nonzero maps that degeneration actually kills.</li>
+<li>Prove the reduction in Cor.&nbsp;2.5: using the truncation short exact sequence, show
+\(\mathbb{H}^n(X',\tau_{&lt;p}F_*\Om^{\bullet})\cong H^n_{\dR}(X/k)\) for \(n&lt;p\), and deduce
+\(E_1^{ij}=E_\infty^{ij}\) for \(i+j&lt;p\).</li>
+</ol>
+</div>

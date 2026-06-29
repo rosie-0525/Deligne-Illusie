@@ -1,0 +1,233 @@
+<h1>6. The key computation: lift Frobenius, divide by p</h1>
+
+<div class="lead">
+<p>Everything in <a class="xref" href="#00-overview">Theorem&nbsp;2.1</a> turns on a single
+calculation, and it is genuinely small. On differentials \(F^{*}=0\)
+(<a class="xref" href="#02-frobenius-twist">Lesson&nbsp;2</a>): the pullback of forms along
+relative Frobenius vanishes <em>on the nose</em>. So if \(F\) lifts to a map \(\tF\) over
+\(\Wt(k)\), the lifted pullback \(\tF^{*}\) is not zero but is <em>divisible by \(p\)</em> — it
+carries the obstruction "\(F^{*}\) ought to be \(\tfrac1p\) of something." Divide it by \(p\). The
+resulting map \(f=\tfrac1p\tF^{*}\) is closed, hence a morphism of complexes, and on cohomology it
+is exactly the Cartier isomorphism (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>). Dividing
+a lift of Frobenius by \(p\) literally manufactures a representative of the Cartier class. This
+lesson does that computation in full, twice over examples, and isolates exactly why the hypothesis
+must be "lift mod \(p^{2}\)".</p>
+</div>
+
+<h2>Setup and hypothesis</h2>
+
+<p>Let \(k\) be a perfect field of characteristic \(p\), \(S=\Spec k\), and \(\tS=\Spec\Wt(k)\).
+Let \(X\) be smooth over \(k\) with a smooth lift \(\tX\) over \(\Wt(k)\). Let
+\(\sigma\colon\Wt(k)\to\Wt(k)\) be the Frobenius lift on the Witt vectors and form the twisted lift
+\(\tX' := \tX\times_{\sigma}\Wt(k)\); it reduces mod \(p\) to the Frobenius twist \(X'\). Throughout
+<em>this</em> lesson we make the optimistic hypothesis that the relative Frobenius
+\(F\colon X\to X'\) lifts to a \(\Wt\)-morphism
+\[
+\tF\colon \tX\longrightarrow \tX', \qquad \tF \text{ covers } F .
+\]
+Globally such an \(\tF\) need not exist — assembling local lifts is the work of
+<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>. But \(\tF\) <em>does</em> exist locally on
+affine opens (lift the coordinates), and that is all the local computation needs.</p>
+
+<h2>The division</h2>
+
+<div class="thmbox">
+<span class="thm-label">Construction (2.1(b))</span>
+<div class="thm-body">
+<p>The lift \(\tF^{*}\colon\Om^1_{\tX'/\Wt}\to\tF_*\Om^1_{\tX/\Wt}\) has image inside
+\(p\,\tF_*\Om^1_{\tX}\). Hence there is a unique \(\cO_{X'}\)-linear map
+\[
+f := p^{-1}\,\tF^{*}\;\colon\; \Om^1_{X'/k}\longrightarrow F_*\Om^1_{X/k}
+\]
+fitting the square below, in which the right vertical "\(\cdot p\)" is an isomorphism.</p>
+</div>
+</div>
+
+\[
+\xymatrix@C=3.4pc@R=2.4pc{
+\Om^1_{X'/k} \ar[r]^-{\tF^{*}} \ar@{=}[d] & p\,\tF_*\Om^1_{\tX} \\
+\Om^1_{X'/k} \ar[r]^-{f} & F_*\Om^1_{X/k} \ar[u]_-{\cdot p}^-{\sim}
+}
+\]
+
+<details class="proof"><summary>Proof</summary>
+<div class="proof-body">
+<p><strong>Divisibility.</strong> The reduction of \(\tF^{*}\) mod \(p\) is \(F^{*}\), which is
+\(0\) on \(\Om^1\) (<a class="xref" href="#02-frobenius-twist">Lemma&nbsp;2.2</a>). Therefore the
+image of \(\tF^{*}\) lies in \(p\,\tF_*\Om^1_{\tX}\); we verify this on generators in (1)–(2)
+below.</p>
+<p><strong>The "\(\cdot p\)" isomorphism.</strong> Because \(\tX\) is flat over \(\Wt(k)\),
+multiplication by \(p\) sits in a short exact sequence
+\(0\to\cO_X\xto{\;\cdot p\;}\cO_{\tX}\to\cO_X\to 0\), so \(\cdot p\colon \cO_X=\cO_{\tX}/p\iso
+p\,\cO_{\tX}\) is an isomorphism onto the subsheaf \(p\,\cO_{\tX}\). Since \(\Om^1_{\tX/\Wt}\) is
+locally free and \(\Om^1_{\tX/\Wt}\otimes\cO_X=\Om^1_{X/k}\), the same holds for forms:
+\(\cdot p\colon F_*\Om^1_{X/k}\iso p\,\tF_*\Om^1_{\tX}\). Composing \(\tF^{*}\) with the inverse of
+this isomorphism defines \(f\), and uniqueness is forced by the square. <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h2>The local formulas</h2>
+
+<p>Work on an affine open and let \(x\) be a local section of \(\cO_{\tX}\) with reduction \(x_0\)
+mod \(p\). The map \(\tF\) lifts \(F\), and \(F^{*}(x_0\otimes 1)=x_0^{p}\), so any lift has the
+shape</p>
+\[
+\tag{1} \tF^{*}(x\otimes 1) \;=\; x^{p} + p\,u(x), \qquad u(x)\in\cO_{\tX}.
+\]
+<p>The function \(u(x)\) records "which" lift of \(x\mapsto x^{p}\) we chose; it is the only freedom
+in \(\tF\). Now apply the (W\(_2\)-linear) de Rham differential \(d\) and use that \(\tF^{*}\)
+commutes with \(d\):
+\[
+\tF^{*}\!\bigl(d(x\otimes 1)\bigr)=d\,\tF^{*}(x\otimes 1)=d\bigl(x^{p}+p\,u(x)\bigr)
+= p\,x^{p-1}\,dx + p\,d u(x) \;\in\; p\,\tF_*\Om^1_{\tX}.
+\]
+This both confirms the divisibility and lets us divide by \(p\). By definition
+\(\tF^{*}=(\cdot p)\circ f\) on \(d(x\otimes1)\), so \(p\cdot f(dx_0\otimes1)=p\,(x_0^{p-1}dx_0+du)\);
+cancelling the (injective) \(\cdot p\) and reducing mod \(p\),</p>
+\[
+\tag{2} f(dx_0\otimes 1) \;=\; x_0^{\,p-1}\,dx_0 + d\,u(x),
+\]
+<p>where on the right everything is read in \(\cO_X\), \(\Om^1_{X/k}\). This is the master formula.
+Its first consequence:</p>
+\[
+\tag{3} d\circ f = 0 .
+\]
+<p>Indeed \(d\bigl(x_0^{p-1}dx_0+du\bigr)=d\bigl(x_0^{p-1}\bigr)\wedge dx_0 + d(du)
+=(p-1)\,x_0^{p-2}\,dx_0\wedge dx_0 = 0\), the first term because \(dx_0\wedge dx_0=0\) and the
+second because \(d\circ d=0\).</p>
+
+<div class="box note">
+<div class="box-label">What (3) buys us</div>
+<p>By (3), \(f\) lands in the closed \(1\)-forms \(Z^{1}=\ker\!\bigl(d\colon F_*\Om^1_{X/k}\to
+F_*\Om^2_{X/k}\bigr)\). Placing \(\Om^1_{X'/k}\) in degree \(1\), this says exactly that
+\[
+f\;\colon\; \Om^1_{X'/k}[-1]\longrightarrow F_*\Om^{\bullet}_{X/k}
+\]
+is a <strong>morphism of complexes</strong> of \(\cO_{X'}\)-modules — a closed form in degree \(1\),
+zero elsewhere, automatically commutes with the differentials.</p>
+</div>
+
+<h2>The miracle: \(\mathscr{H}^1 f = C^{-1}\)</h2>
+
+<p>The Cartier isomorphism \(C^{-1}\colon\Om^1_{X'/k}\iso\mathscr{H}^1\!\bigl(F_*\Om^{\bullet}_{X/k}\bigr)\)
+is pinned down (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>) by
+\(C^{-1}(dx_0\otimes1)=\bigl[x_0^{p-1}dx_0\bigr]\), the class of \(x_0^{p-1}dx_0\) in
+\(\mathscr{H}^1=Z^1/B^1\). Read (2) modulo exact forms: \(d u(x)\in B^1\) is a coboundary, so</p>
+\[
+\bigl[f(dx_0\otimes1)\bigr]=\bigl[x_0^{p-1}dx_0 + du\bigr]=\bigl[x_0^{p-1}dx_0\bigr]
+= C^{-1}(dx_0\otimes 1).
+\]
+<p>Hence \(\mathscr{H}^1 f = C^{-1}\). <em>The Cartier class is what you get by dividing a lift of
+Frobenius by \(p\).</em> Note the local choice \(u\) — i.e. the choice of \(\tF\) — visibly drops
+out on cohomology: it only shifts \(f\) by the exact form \(du\). Remember that; it is the seed of
+the homotopies in <a class="xref" href="#08-gluing">Lesson&nbsp;8</a>.</p>
+
+<div class="box example">
+<div class="box-label">Worked example — the affine line, in full</div>
+<p>Take \(X=\Aa^1=\Spec k[t]\), \(\tX=\Spec\Wt[t]\), \(\tX'=\Aa^1_{\Wt}=\Spec\Wt[t']\), and the
+simplest lift \(\tF\colon t'\mapsto t^{p}\) (so \(u=0\)). Then
+\[
+f(dt') = p^{-1}\,\tF^{*}(dt') = p^{-1}\,d(t^{p}) = p^{-1}\bigl(p\,t^{p-1}\,dt\bigr) = t^{p-1}\,dt .
+\]
+This is closed (\(d(t^{p-1}dt)=(p-1)t^{p-2}\,dt\wedge dt=0\)) and is precisely \(C^{-1}(dt')\),
+the generator of \(\mathscr{H}^1\). The two pieces of the eventual decomposition
+(<a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a> builds the rest) are visible here:
+\[
+\varphi^{0}\colon\cO_{X'}\to F_*\cO_X,\ \ t'\mapsto t^{p};\qquad
+\varphi^{1}\colon \Om^1_{X'}\to Z^1,\ \ dt'\mapsto t^{p-1}dt .
+\]</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Worked example — a twisted lift (dependence on \(\tF\))</div>
+<p>Keep \(X=\Aa^1\) but choose \(\tF\colon t'\mapsto t^{p}+p\,g(t)\) for a polynomial \(g\) (lifted
+to \(\Wt[t]\)). Now \(u=g\), and
+\[
+f(dt') = p^{-1}\,d\bigl(t^{p}+p\,g\bigr)= p^{-1}\bigl(p\,t^{p-1}dt + p\,g'\,dt\bigr)
+= t^{p-1}\,dt + g'(t)\,dt = t^{p-1}dt + dg .
+\]
+So \(f\) <em>changed</em>: it picked up \(dg\). But its class did not, since \(dg=g'\,dt\) is exact:
+\(\bigl[t^{p-1}dt+dg\bigr]=\bigl[t^{p-1}dt\bigr]=C^{-1}(dt')\). <strong>Conclusion.</strong> Two
+lifts of \(F\) give maps \(f_1,f_2\) differing by an exact form — a chain homotopy — hence the same
+map on \(\mathscr{H}^{\bullet}\). The cochain \(f\) depends on \(\tF\); the cohomology class does
+not.</p>
+</div>
+
+<h2>All degrees at once (Remark 2.2(ii))</h2>
+
+<p>Suppose now \(\tF\) exists <em>globally</em> (e.g. for nice \(X\)). Then \(f\) propagates to every
+degree. Define, for each \(i\geqslant 0\),
+\[
+\varphi^{i}_{(\tX,\tF)} \;=\; \bigl(\Lambda^{i}\Om^1_{X'}\xrightarrow{\ \Lambda^{i}f\ }
+\Lambda^{i}Z^1 \xrightarrow{\ \wedge\ } Z^{i}\subset F_*\Om^i_{X/k}\bigr),
+\]
+i.e. wedge together \(i\) copies of \(f\) and multiply. Because a wedge of closed forms is closed,
+this lands in \(Z^{i}\); assembling the degrees gives a morphism of complexes
+\[
+\varphi_{(\tX,\tF)} \;\colon\; \bigoplus_{i\geqslant 0}\Om^i_{X'/k}[-i]\longrightarrow
+F_*\Om^{\bullet}_{X/k}
+\]
+which induces \(C^{-1}\) on every \(\mathscr{H}^i\) (the Cartier isomorphism is multiplicative, so
+\(\mathscr{H}^i(\varphi)=\Lambda^i C^{-1}=C^{-1}\)). It is therefore a
+<strong>quasi-isomorphism</strong>. Its truncation \(\tau_{&lt;p}\,\varphi_{(\tX,\tF)}\) is the map
+\(\varphi_{\tX}\) of <a class="xref" href="#00-overview">Theorem&nbsp;2.1</a>. The multiplicative
+bookkeeping — and the reason the range \(i&lt;p\) appears — is the content of
+<a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a>.</p>
+
+<div class="box subtle">
+<div class="box-label">Why \(\Wt\), and exactly mod \(p^{2}\)</div>
+<p>The construction divides by \(p\) <em>once</em>. To do so legally we need \(\tF\) and the equation
+\(\tF^{*}(x\otimes1)=x^{p}+p\,u\) defined modulo \(p^{2}\): the term \(p\,u\) must be a real,
+nonzero datum, which it is exactly in \(\Wt=\WW/p^{2}\). Modulo \(p\) alone, \(F^{*}=0\) carries no
+information; working over \(W_3\) or all of \(\WW(k)\) supplies more than the one division uses. This
+is the precise reason the hypothesis of the theorem is "lift mod \(p^{2}\)" and nothing more.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Local datum, global obstruction</div>
+<p>The map \(f\) is canonical <em>given</em> the pair \((\tX,\tF)\). But \(\tF\) is only a local
+object: in general it exists on affines, not globally. As the twisted-lift example showed, two local
+\(\tF\)'s give \(f\)'s differing by an explicit homotopy. So globally \(f\) is well defined only
+<em>up to homotopy</em>, which forces the whole construction into the derived category \(D(X')\) and
+demands a gluing argument — precisely <a class="xref" href="#08-gluing">Lesson&nbsp;8</a>.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">"Because of a \(1/p\)" — the tie to Lesson 3</div>
+<p>In <a class="xref" href="#03-cartier">Lesson&nbsp;3</a> the class \(x^{p-1}dx\) is nonexact
+"because of a hidden \(1/p\)": morally it is \(\tfrac1p\,d(x^{p})\), but \(\tfrac1p\) is illegal in
+characteristic \(p\). The lift mod \(p^{2}\) is exactly what makes \(\tfrac1p\,d(\tF^{*}\!-)\) a
+legal operation, and \(f=p^{-1}\tF^{*}\) supplies that division. The Cartier class is the
+obstruction to dividing by \(p\); a lift mod \(p^{2}\) removes it.</p>
+</div>
+
+<div class="box note">
+<div class="box-label">Remark 2.2(i): the field need not be perfect</div>
+<p>Perfectness of \(k\) is convenient but not essential to the computation. It suffices that
+\(S\) is the reduction mod \(p\) of a \(\Z/p^{2}\)-flat base \(\tS\) carrying a Frobenius lift
+\(F_{\tS}\); one then sets \(\tX':=\tX\times_{F_{\tS}}\tS\) and runs the identical argument. This is
+the door to the relative and logarithmic versions in
+<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>.</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Carry out the \(\Aa^1\) computation above from scratch: write \(\tX,\tX',\tF\), compute
+\(f(dt')\), and check directly that it is closed and generates \(\mathscr{H}^1\).</li>
+<li>For \(\Gm=\Spec k[t,t^{-1}]\) take \(\tF\colon t\mapsto t^{p}\). Using multiplicativity
+\(\varphi^{0}(t'^{-1})=t^{-p}\), show \(f\bigl(\tfrac{dt'}{t'}\bigr)=\tfrac{dt}{t}\), i.e.
+\(C^{-1}(d\log t')=[d\log t]\). (Compute \(f(d t'/t')=p^{-1}\tF^{*}(d t'/t')\) and use
+\(d\log(t^p)=p\,d\log t\).)</li>
+<li>Verify (1)–(3) for a general smooth affine \(X\): show every lift of \(x\mapsto x^p\) has the
+form (1), derive (2) by applying \(d\) and dividing by \(p\), and deduce (3).</li>
+<li>Let \(\tF_1,\tF_2\) be two local lifts, with \(\tF_i^{*}(x\otimes1)=x^p+p\,u_i\). Show
+\(f_1-f_2 = d\,h\) where \(h(x\otimes1)=u_1(x)-u_2(x)\) defines a map
+\(\Om^1_{X'}\to F_*\cO_X\); conclude \(\mathscr{H}^1 f_1=\mathscr{H}^1 f_2\).</li>
+<li>For \(\Aa^2\) with \(\tF\colon(t_1,t_2)\mapsto(t_1^{p},t_2^{p})\), compute
+\(\Lambda^2 f(dt_1'\wedge dt_2') = (t_1 t_2)^{p-1}\,dt_1\wedge dt_2\); check it is closed and equals
+\(C^{-1}(dt_1'\wedge dt_2')\).</li>
+<li>Pinpoint, line by line in the construction, the unique place where \(\Wt(k)=\WW/p^2\) is used
+(as opposed to \(W_1=k\), which kills \(F^{*}\), or \(W_3\), which is superfluous).</li>
+</ol>
+</div>

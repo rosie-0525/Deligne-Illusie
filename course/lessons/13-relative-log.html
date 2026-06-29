@@ -1,0 +1,287 @@
+<h1>13. Relative degeneration and logarithmic poles</h1>
+
+<div class="lead">
+<p>The theorem we have built — a lift of \(X'\) splits \(\tau_{&lt;p}F_*\Om^{\bullet}\), and
+splitting forces Hodge degeneration — was stated for a single smooth proper variety over a field.
+Section&nbsp;4 of the paper pushes it in two directions at once. <strong>Relative</strong>: replace
+the base field by an arbitrary scheme \(S\) of characteristic \(p\), so that everything happens in a
+<em>family</em> \(f:X\to S\); now degeneration must be read off the higher direct images
+\(R^jf_*\Om^i\), and the prize is not just a numerical identity but the <em>local freeness</em> of
+those sheaves and their compatibility with base change. <strong>Logarithmic</strong>: allow \(X\) to
+carry a normal-crossings divisor \(D\) and work with the de Rham complex with log poles along \(D\),
+which computes the cohomology of the open complement \(X-D\). The Cartier isomorphism, the splitting,
+and the degeneration all survive — and as a bonus the log story, reduced mod&nbsp;\(p\), reproves
+Deligne's classical degeneration for open varieties with no Hodge theory at all. This is
+<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a> told twice, in families and with poles.</p>
+</div>
+
+<h2>Part A — Relative degeneration (§4.1)</h2>
+
+<h3>Two spectral sequences over a base (4.1.1)</h3>
+
+<p>Let \(S\) be a scheme of characteristic \(p\) and \(f:X\to S\) smooth. The complex
+\(\Om^{\bullet}_{X/S}\) has two natural filtrations, hence two spectral sequences, both abutting to
+the relative de Rham cohomology \(R^{*}f_*\Om^{\bullet}_{X/S}\). The stupid filtration gives the
+<strong>Hodge spectral sequence</strong>
+\[
+\tag{13.1} E_1^{ij}=R^jf_*\Om^i_{X/S}\;\Longrightarrow\;R^{i+j}f_*\Om^{\bullet}_{X/S}.
+\]
+The canonical (= "bête by truncation") filtration gives the <strong>conjugate spectral sequence</strong>
+\[
+\tag{13.2} {}_cE_2^{ij}=R^if'_*\,\cH^j F_*\Om^{\bullet}_{X/S}\;\Longrightarrow\;R^{i+j}f_*\Om^{\bullet}_{X/S},
+\]
+where \(f':X'\to S\) is the base change of \(f\) along the absolute Frobenius \(F_S\) of \(S\). By the
+Cartier isomorphism (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>),
+\(\cH^j F_*\Om^{\bullet}_{X/S}\cong\Om^j_{X'/S}\), so the conjugate \(E_2\)-page reads
+\({}_cE_2^{ij}=R^if'_*\Om^j_{X'/S}\) (cf. Katz). The two spectral sequences carry the <em>same</em>
+information about the abutment from opposite ends; the conjugate one is the natural home of the
+decomposition, because it degenerates <em>exactly</em> when \(\tau_{\leqslant b}F_*\Om^{\bullet}\)
+decomposes.</p>
+
+<div class="thmbox">
+<span class="thm-label">Proposition (4.1.2)</span>
+<div class="thm-body">
+<p>Let \(S=\Spec A\) be artinian local with residue field \(k\), and \(f:X\to S\) of finite type; fix
+\(n\). Suppose (a) the \(H^j(X_s,\Om^i_{X_s/k})\) with \(i+j=n\) are finite-dimensional, and (b) for
+every closed subscheme \(T\subseteq S\) the conjugate spectral sequence of \(f_T\) degenerates in total
+degree \(n\) (\({}_cE_2^{ij}={}_cE_\infty^{ij}\) for \(i+j=n\)). Then the Hodge spectral sequence
+(13.1) satisfies \(E_1^{ij}=E_\infty^{ij}\) for \(i+j=n\), and the \(R^jf_*\Om^i_{X/S}\) with
+\(i+j=n\) are free \(A\)-modules whose formation commutes with base change.</p>
+</div>
+</div>
+
+<details class="proof"><summary>Proof idea (a length count plus dévissage)</summary>
+<div class="proof-body">
+<p>For any coherent term one has \(\lg_A R^jf_*\Om^i_{X/S}\leqslant h^{ij}\cdot\lg(A)\), with equality
+in degree \(n\) iff that sheaf is free of rank \(h^{ij}\) (here \(h^{ij}=\dim_k H^j(X_s,\Om^i)\)). The
+abutment \(R^nf_*\Om^{\bullet}\) has a length that both spectral sequences must reproduce. Running
+\(\sum E_1^{ij}\geqslant \sum E_\infty^{ij}=\lg R^nf_*\Om^{\bullet}\) against the conjugate side, where
+hypothesis (b) makes \(\sum {}_cE_2^{ij}=\lg R^nf_*\Om^{\bullet}\) <em>on the nose</em>, squeezes every
+inequality to an equality: the Hodge terms attain their maximal length, so they are free and (13.1)
+degenerates in degree \(n\). Compatibility with base change is then automatic from freeness. The one
+real subtlety is that hypothesis (b) must be fed in over <em>every</em> \(T\subseteq S\); one inducts on
+the nilpotency length of \(A\), using that \(F_S\) factors through \(A/\mathfrak m^{N'}\) for a suitable
+\(N'\) (Frobenius is highly contracting on a nilpotent ideal), which is what links the conjugate page over
+\(S\) to those over its closed subschemes. <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h3>From decomposability to degeneration in families (4.1.3–4.1.5)</h3>
+
+<p>The hypothesis (b) looks unverifiable until one recalls (<a class="xref" href="#05-derived-decomposable">Lesson&nbsp;5</a>)
+that the conjugate degeneration in total degree \(n\) is implied by decomposability of
+\(\tau_{\leqslant n}F_*\Om^{\bullet}_{X/S}\) in \(D(X')\) — and that decomposability is
+<strong>stable under base change</strong>, since the cohomology sheaves \(\cH^j=\Om^j_{X'/S}\) are
+\(S\)-flat (Remark&nbsp;4.1.3). That stability is exactly what lets one verify (b) for all
+\(T\subseteq S\) at once, and it is what makes the standard reductions (\(S\) affine, then noetherian,
+complete, artinian local) legal. Combining with 4.1.2:</p>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (4.1.4)</span>
+<div class="thm-body">
+<p>Let \(f:X\to S\) be proper and smooth, and suppose \(\tau_{\leqslant b}F_*\Om^{\bullet}_{X/S}\) is
+decomposable in \(D(X')\). Then for \(i+j\leqslant b\) the sheaves \(R^jf_*\Om^i_{X/S}\) are locally
+free of finite type, of formation compatible with base change, and the Hodge spectral sequence (13.1)
+satisfies \(E_1^{ij}=E_\infty^{ij}\) for \(i+j\leqslant b\).</p>
+</div>
+</div>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (4.1.5)</span>
+<div class="thm-body">
+<p>If the full complex \(F_*\Om^{\bullet}_{X/S}\) is decomposable (take \(b\geqslant 2\dim(X/S)\)), the
+Hodge spectral sequence degenerates at \(E_1\) and every \(R^jf_*\Om^i_{X/S}\) is locally free and
+base-change-compatible.</p>
+</div>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — a smooth proper family of curves</div>
+<p>Let \(f:X\to S\) be a smooth proper family of curves, \(S\) of characteristic \(p\). Fibrewise
+\(\Om^{\bullet}\) lives in degrees \(0,1\), and curves always lift mod \(p^2\) — even in families, the
+obstruction lives in an \(H^2\) of a curve, which vanishes — so \(F_*\Om^{\bullet}_{X/S}\) is
+decomposable. By 4.1.5 the Hodge spectral sequence degenerates in the family and \(R^1f_*\Om^{\bullet}_{X/S}\)
+(the relative de Rham bundle) is locally free of rank \(2g\), with \(R^1f_*\cO_X\) and
+\(f_*\Om^1_{X/S}\) locally free of rank \(g\) — and all three commute with base change. This is the
+algebraic backbone of the Gauss–Manin connection and of Serre–Tate theory: the Hodge bundle is a
+genuine vector bundle on the base because the family decomposes uniformly.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">It is \(X'\) that must lift, not \(X\) — and \(\tF_S\) is what saves the day (Remark 4.1.6)</div>
+<p>The sufficient condition 3.7 for decomposability asks for a lift of \(X'\) over \(\tS\), <em>not</em>
+of \(X\). Over a perfect field \(X'\cong X\) so the distinction is invisible; in a family it is real
+(forward-ref&nbsp;<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>). The fix: if the Frobenius
+\(F_S\) of \(S\) <em>itself</em> lifts to \(\tF_S:\tS\to\tS\) over \(\tS\), then any lift \(\tX\) of
+\(X\) over \(\tS\) produces a lift of \(X'\) by base change along \(\tF_S\) — because \(X'\) is, by
+definition, the base change of \(X\) along \(F_S\). Such a \(\tF_S\) exists, e.g., when \(S\) is affine
+and smooth over a perfect field \(k\) and \(\tS\) is a lift of \(S\) over \(\Wt(k)\). So in the geometric
+situations one cares about, lifting \(X\) plus lifting \(F_S\) gives lifting \(X'\) for free.</p>
+</div>
+
+<h2>Part B — Logarithmic poles (§4.2)</h2>
+
+<h3>The log de Rham complex and the log Cartier isomorphism (4.2.1)</h3>
+
+<p>Let \(S\) be of characteristic \(p\), \(X/S\) smooth, and \(D\subset X\) a <em>relative normal
+crossings divisor</em>: étale-locally \(D=(t_1\cdots t_r)\) in coordinates \(t_1,\dots,t_n\). The
+log de Rham complex \(\Om^{\bullet}_{X/S}(\log D)\) is the subcomplex of \(j_*\Om^{\bullet}_{X-D/S}\)
+generated by \(\Om^{\bullet}_{X/S}\) and the forms \(dt_i/t_i\); it is locally free with
+\(\Om^1(\log D)\) free on \(dt_1/t_1,\dots,dt_r/t_r,dt_{r+1},\dots,dt_n\). The whole machine descends
+to it.</p>
+
+<div class="thmbox">
+<span class="thm-label">Log Cartier isomorphism (4.2.1.1)</span>
+<div class="thm-body">
+<p>There is a canonical isomorphism of \(\cO_{X'}\)-modules
+\[
+C^{-1}:\;\Om^i_{X'/S}(\log D')\;\iso\;\cH^i F_*\Om^{\bullet}_{X/S}(\log D),
+\]
+characterized, in degree&nbsp;\(1\), by \(C^{-1}(dt'/t')=[dt/t]\) on each branch of \(D\) and by the
+ordinary Cartier formula \(C^{-1}(dx')=[x^{p-1}dx]\) off \(D\). Here \(D'\subset X'\) is the (still
+normal-crossings) divisor obtained by base change.</p>
+</div>
+</div>
+
+<p>There is a useful refinement. Split \(D=A+B\) into two transverse normal-crossings divisors and set
+\[
+\Om^{\bullet}_{X/S}(A,B):=\Om^{\bullet}_{X/S}(\log D)(-A)
+\]
+— log poles along \(B\), honest <em>zeros</em> along \(A\). The natural inclusion
+\(\Om^{\bullet}(\log D)(-pA)\hookrightarrow\Om^{\bullet}(A,B)\) is a quasi-isomorphism (poles of
+order \(\leqslant p-1\) along \(A\) contribute nothing in char&nbsp;\(p\)), whence a Cartier isomorphism
+\[
+\tag{4.2.1.3}\quad C^{-1}:\;\Om^i_{X'/S}(A',B')\;\iso\;\cH^i F_*\Om^{\bullet}_{X/S}(A,B).
+\]
+The case \(A=\varnothing\) is the plain log complex; \(B=\varnothing\) is the complex
+\(\Om^{\bullet}(\log D)(-D)\) with full zeros.</p>
+
+<h3>The local model, computed (4.2.2(a))</h3>
+
+<p>Everything reduces to the one-variable case \(X=\Aa^1_S\), \(t\) a coordinate, \(D=(t)\). There</p>
+\[
+\Om^{\bullet}(\log D)=\bigl(\;\cO_S[t]\xto{d}\cO_S[t]\cdot\tfrac{dt}{t}\;\bigr),\qquad
+\Om^{\bullet}(\log D)(-D)=\bigl(\;t\,\cO_S[t]\xto{d}\cO_S[t]\,dt\;\bigr),
+\]
+<p>with \(d(t^n)=n\,t^{n-1}dt=n\,t^{n}\,\tfrac{dt}{t}\). The general normal-crossings divisor is an
+external tensor product of these one-variable complexes (and of the smooth-coordinate factors), exactly
+as in the proof of plain Cartier; multiplicativity and Künneth assemble the local models into 4.2.1.1.</p>
+
+<h3>Duality and topology (4.2.2(b)–(c))</h3>
+
+<p><strong>Self-duality.</strong> \(F_*\Om^{\bullet}_{X/S}(\log D)\) is self-dual with dualizing values
+\(\Om^n_{X'/S}(\log D')\) (\(n=\) relative dimension); the Serre dual of \(F_*\Om^{\bullet}(A,B)\) is
+\(F_*\Om^{\bullet}(B,A)\) — swapping which divisor carries the poles and which the zeros. This is the
+algebraic incarnation of Poincaré duality for the open variety.</p>
+
+<p><strong>Topology over \(\C\).</strong> There is an exact sequence
+\(0\to\Om^{\bullet}(\log D)(-D)\to\Om^{\bullet}\to\bigoplus_i\Om^{\bullet}_{D_i}\to\cdots\). Over \(\C\),
+with \(j:X-D\hookrightarrow X\), the complex \(\Om^{\bullet}(\log D)\) computes \(Rj_*\C\) while
+\(\Om^{\bullet}(\log D)(-D)\) computes \(j_!\C\); more generally \(\Om^{\bullet}_X(A,B)\) computes
+\(Rj_{A!}\,Rj_{B*}\,\C\) — extend by zero across \(A\), derived-push across \(B\). The
+\((A,B)\)-bookkeeping is precisely the mixed open/closed support condition.</p>
+
+<h3>Log variants of the whole theory (4.2.3)</h3>
+
+<p>Statements&nbsp;2.1, 2.3, 2.4 and 3.5–3.8 all have logarithmic versions. There is an equivalence
+\(\Rel(X',D',\tS)\simeq\sc(\tau_{\leqslant 1}F_*\Om^{\bullet}(\log D))\) between liftings of the
+<em>pair</em> and splittings of the truncated log complex. One uses lifts \((\tX',\tD')\) with \(\tD'\)
+still normal crossings, with the tangent sheaf \(\Theta_{X'/S}\) replaced by the log tangent sheaf
+\(\Theta(-\log D')\), and one admits only Frobenius lifts \(\tF\) compatible with the divisor, namely
+those satisfying \(\tF^{-1}(\tD')=p\tD\). A global lift of \((X',D')\) gives a canonical decomposition of
+\(\tau_{&lt;p}F_*\Om^{\bullet}(\log D)\), and a (non-canonical) full decomposition when
+\(\dim\leqslant p\) and \(H^{p+1}(X',(\Om^p(\log D))')=0\). Degeneration follows as before: if \(f\) is
+proper smooth and \(\tau_{\leqslant b}F_*\Om^{\bullet}(\log D)\) is decomposable, then
+\(E_1^{ij}=E_\infty^{ij}\) for \(i+j\leqslant b\) (the log analogue of 4.1.4), with the parallel
+statement for \(\Om^{\bullet}(A,B)\). Everything transposes verbatim to algebraic spaces (4.2.5).</p>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (4.2.4) — log degeneration in char 0</span>
+<div class="thm-body">
+<p>Let \(X\) be proper smooth over a field \(K\) of characteristic \(0\), and \(D=A+B\) a normal
+crossings divisor. Then the Hodge spectral sequence for \(\Om^{\bullet}_{X/K}(A,B)\) degenerates at
+\(E_1\). The case \(A=\varnothing\) reproves Deligne's classical degeneration for the log complex of an
+open variety.</p>
+</div>
+</div>
+
+<details class="proof"><summary>Proof (reduction mod \(p\))</summary>
+<div class="proof-body">
+<p>Spread \((X,D)\) out over a finitely generated \(\Z\)-algebra and reduce modulo a large prime \(p\),
+exactly as in <a class="xref" href="#10-char-zero">Lesson&nbsp;10</a>: the reduction is proper smooth
+with \(D\) still normal crossings, of dimension \(&lt;p\), and lifts (with its divisor) mod \(p^2\). The
+log version of 3.7 makes \(F_*\Om^{\bullet}(\log D)(-A)\) decomposable, so the log analogue of 4.1.4
+gives degeneration in characteristic \(p\); a constructibility/semicontinuity argument lifts the
+numerical degeneration back to characteristic&nbsp;\(0\). No Hodge theory, no resolution of the open
+part. <span class="qed">∎</span></p>
+</div>
+</details>
+
+<h3>Examples</h3>
+
+<div class="box example">
+<div class="box-label">Example — the simplest log pair, \((\Pp^1,\{0,\infty\})\)</div>
+<p>Take \(X=\Pp^1\), \(D=\{0\}+\{\infty\}\), so \(X-D=\Gm\). The global log de Rham complex
+\(\Om^{\bullet}(\log D)\) is, in hypercohomology, the two-term complex \(\cO_{\Pp^1}\to\Om^1(\log D)\).
+One computes \(H^0_{\dR}=H^0(\Pp^1,\cO)=K\) and \(H^1_{\dR}=K\cdot[dt/t]\): the form \(dt/t\) is a global
+log form, closed and not exact (its primitive \(\log t\) is not algebraic). So \(b_0=b_1=1\), i.e.
+\(H^{*}_{\dR}(\Gm/K)=K\oplus K\,[dt/t]\), matching \(\Gm\simeq\C^{*}\simeq S^1\) topologically over
+\(\C\). The closed/zeros complex \(\Om^{\bullet}(\log D)(-D)\) computes instead \(H^{*}_c(\Gm)\), dual to
+this — the self-duality 4.2.2(b) in the smallest possible case.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — log Cartier on \((\Aa^1,(t))\): the log form is Cartier-fixed</div>
+<p>On \(X=\Aa^1\), \(D=(t)\), the degree-\(1\) log cohomology \(\cH^1 F_*\Om^{\bullet}(\log D)\) is free
+of rank \(1\) over \(\cO_{X'}\) on the class \([dt/t]\), and
+\[
+C^{-1}\!\left(\frac{dt'}{t'}\right)=\left[\frac{dt}{t}\right].
+\]
+The log form is its own Cartier image — the same phenomenon as for \(\Gm\) in
+<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>. From the lift side
+(<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>) this is forced: a divisor-compatible
+Frobenius lift has \(\tF^{*}(t)=t^p\cdot(\text{unit})\), so \(\tfrac1p\tF^{*}(dt/t)=d\log\) of a unit
+\(\equiv dt/t\) modulo exact forms.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">What must lift, logarithmically</div>
+<p>In the log theory the liftability is of the <em>pair</em> \((X',D')\), with \(D'\) again normal
+crossings, and the admissible Frobenius lifts are exactly those with \(\tF^{-1}(\tD')=p\tD\). That last
+condition is the divisor-level shadow of "divide by \(p\) once": it says \(\tF\) pulls the lifted divisor
+back to \(p\) times the divisor, which is precisely what makes \(\tfrac1p\tF^{*}(dt/t)\) land on the log
+generator rather than on a stray pole. Drop it and the gerbe/torsor bookkeeping of §3 no longer closes
+up. (Again: it is \((X',D')\), not \((X,D)\), that lifts —
+<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>.)</p>
+</div>
+
+<div class="box note">
+<div class="box-label">The conjugate spectral sequence is the right object</div>
+<p>Both Part A and Part B run on the same engine: decomposability of \(\tau_{\leqslant b}F_*\Om^{\bullet}\)
+(or its log/\((A,B)\) version) is equivalent to degeneration of the conjugate spectral sequence in total
+degrees \(\leqslant b\), and because the \(\cH^j\) are \(S\)-flat this is stable under base change. That
+single stability is what reduces the relative theorem 4.1.4 to the artinian local case 4.1.2, and what
+makes "degeneration in a family" mean the strong, geometric statement: locally free Hodge sheaves,
+formation commuting with base change.</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>On \((\Aa^1,(t))\) write out \(\Om^{\bullet}(\log D)\) and \(\Om^{\bullet}(\log D)(-D)\) explicitly,
+compute \(d\) on monomials, and verify directly that the inclusion
+\(\Om^{\bullet}(\log D)(-pA)\hookrightarrow\Om^{\bullet}(A,B)\) is a quasi-isomorphism for \(A=(t)\),
+\(B=\varnothing\) (compare \(\cH^0\) and \(\cH^1\) of the two complexes — they coincide).</li>
+<li>Compute \(H^{*}_{\dR}(\Gm/K)\) via the log complex on \((\Pp^1,\{0,\infty\})\) and check
+\(b_0=b_1=1\). Then compute \(H^{*}\) of \(\Om^{\bullet}(\log D)(-D)\) and identify it with \(H^{*}_c(\Gm)\).</li>
+<li>Verify the log Cartier formula \(C^{-1}(dt'/t')=[dt/t]\) on \((\Aa^1,(t))\), both directly (show
+\(dt/t\) generates \(\cH^1\)) and from a divisor-compatible Frobenius lift.</li>
+<li>For a smooth proper family of curves \(f:X\to S\), deduce from 4.1.5 that \(R^1f_*\Om^{\bullet}_{X/S}\)
+is locally free of rank \(2g\) and that the Hodge spectral sequence degenerates in the family. Where do
+you use that curves lift mod \(p^2\) in families?</li>
+<li>Reprove Deligne's log degeneration (the case \(A=\varnothing\) of 4.2.4) by reduction mod \(p\),
+spelling out the spreading-out, the dimension bound \(&lt;p\), and the lift of \((X,D)\) mod \(p^2\).</li>
+<li>Explain the role of the condition \(\tF^{-1}(\tD')=p\tD\) in the log gerbe: why is it exactly the
+divisor-level form of "divide by \(p\) once," and what breaks in the torsor structure of §3 without it?</li>
+</ol>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deligne–Illusie — Relèvements modulo p² et décomposition du complexe de de Rham</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="viewer.css">
+<script>
+// MathJax 3 (SVG output) + XyJax-v3 (xy-pic commutative diagrams). Both libraries are
+// vendored under vendor/ so the page renders fully offline (no CDN / network requests).
+// Math uses \(..\) / \[..\] delimiters; equation numbers are injected as \tag, so
+// MathJax auto-tagging is off.
+window.MathJax = {
+  loader: {
+    load: ['[custom]/xypic.js'],
+    paths: { custom: 'vendor/xyjax' }
+  },
+  tex: {
+    packages: { '[+]': ['xypic', 'ams', 'color', 'mathtools'] },
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    tags: 'none',
+    macros: {
+      HH: '{\\mathscr{H}}',
+      Om: '{\\Omega}',
+      Spec: '{\\operatorname{Spec}}',
+      Hom: '{\\operatorname{Hom}}',
+      Ext: '{\\operatorname{Ext}}',
+      sHom: '{\\mathop{\\underline{\\operatorname{Hom}}}\\nolimits}',
+      Ass: '{\\operatorname{Ass}}',
+      Supp: '{\\operatorname{Supp}}',
+      sgn: '{\\operatorname{sgn}}',
+      cl: '{\\operatorname{cl}}',
+      Id: '{\\operatorname{Id}}',
+      Rel: '{\\operatorname{Rel}}',
+      sc: '{\\operatorname{sc}}',
+      lg: '{\\operatorname{lg}}',
+      Pic: '{\\operatorname{Pic}}',
+      DR: '{\\mathrm{DR}}'
+    }
+  },
+  options: { enableMenu: true },
+  startup: { typeset: false }
+};
+</script>
+<script src="vendor/mathjax/tex-svg-full.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header id="topbar">
+  <button id="menu-toggle" aria-label="Menu">☰</button>
+  <a id="home-link" href="index.html" title="Accueil / Home" aria-label="Home">⌂</a>
+  <h1 id="book-title">Deligne–Illusie · Relèvements mod p²</h1>
+  <div id="lang-switch" aria-label="Langue du volet droit">
+    <span id="rpane-label">FR&nbsp;|</span>
+    <button data-rlang="en" class="active">EN</button>
+    <button data-rlang="cn">中文</button>
+  </div>
+  <button id="cmt-toggle" aria-label="Comments / erreurs signalées" title="Flagged errors / comments">
+    💬 Comments<span id="cmt-count" hidden></span>
+  </button>
+</header>
+<div id="layout">
+  <nav id="sidebar" aria-label="Table des matières"></nav>
+  <main id="content">
+    <!-- viewer.js fills this with one .align-row per block pair (FR | translation) -->
+    <div id="panes"></div>
+  </main>
+</div>
+<script src="viewer.js"></script>
+<script src="comments.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<h1>5. Derived categories and decomposability</h1>
+
+<div class="lead">
+<p>The Cartier isomorphism (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>) hands us the
+cohomology sheaves of \(F_*\Om^{\bullet}_{X/k}\); it does <em>not</em> hand us the complex. Two
+complexes can have identical cohomology and still be utterly different objects of the derived
+category. The precise sense in which \(F_*\Om^{\bullet}\) is "no more complicated than its
+cohomology" is captured by a single word — <strong>decomposable</strong> — and the whole of
+Theorem&nbsp;2.1 is the construction of a decomposition. This lesson is the homological dictionary
+for that word: the derived category at a working level, truncations and shifts, the definition of
+decomposability, and the two-term obstruction theory we will meet again, verbatim, in the gerbe
+theorem (<a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>). We end by showing — formally, in a
+few lines — why a decomposition forces Hodge–de Rham degeneration.</p>
+</div>
+
+<h2>The derived category, at working level</h2>
+
+<p>Let \(\mathcal{A}\) be an abelian category (for us, \(\cO_X\)-modules on a scheme \(X\)). Start
+with complexes and chain maps; then formally <em>invert the quasi-isomorphisms</em> — the maps that
+are isomorphisms on every cohomology object. The result is the derived category \(D(\mathcal{A})\):
+same objects (complexes), but a morphism may now be a "zig-zag" of honest maps and inverses of
+quasi-isos. For a scheme we write \(D(X) := D(\cO_X\text{-Mod})\). The cohomology objects upgrade to
+functors \(\cH^i \colon D(\mathcal{A}) \to \mathcal{A}\). The one mental adjustment to make: an
+isomorphism in \(D(\mathcal{A})\) is an <em>abstract</em> identification, weaker than an isomorphism
+of complexes — it need not be induced by any single chain map.</p>
+
+<div class="box note">
+<p>We use \(D(\mathcal{A})\) as a black box with four properties. (i) \(\cH^i\) is a functor.
+(ii) A map is an isomorphism in \(D\) iff it is an isomorphism on every \(\cH^i\). (iii)
+\(\Hom_{D}(A, B[i]) = \Ext^i(A,B)\) for objects \(A,B\) of \(\mathcal{A}\) (so \(D\) computes
+\(\Ext\)). (iv) Every distinguished triangle \(A\to B\to C\xto{+1}A[1]\) yields long exact sequences
+both in \(\cH^i\) and, after applying \(\Hom_D(T,-)\) or \(\Hom_D(-,T)\), in \(\Hom\). That is all
+the machinery we need.</p>
+</div>
+
+<h2>Truncations and shifts</h2>
+
+<div class="thmbox def">
+<span class="thm-label">Definition (truncation, §1.4)</span>
+<div class="thm-body">
+<p>For a complex \(L\) and an integer \(n\), the <strong>canonical truncation</strong>
+\(\tau_{\leqslant n}L\) is the subcomplex
+\[
+(\tau_{\leqslant n}L)^i = \begin{cases} L^i & i&lt;n,\\ \ker(d^n\colon L^n\to L^{n+1}) & i=n,\\ 0 & i&gt;n,\end{cases}
+\]
+with the inherited differential and the inclusion \(\tau_{\leqslant n}L\hookrightarrow L\). Then
+\(\cH^i(\tau_{\leqslant n}L)=\cH^iL\) for \(i\leqslant n\) and \(0\) for \(i&gt;n\). Write
+\(\tau_{&lt;n}:=\tau_{\leqslant n-1}\). Dually, the <strong>quotient</strong> \(\tau_{\geqslant n}L\)
+has \((\tau_{\geqslant n}L)^i=0\) for \(i&lt;n\), \(\operatorname{coker}(d^{n-1})\) for \(i=n\), and
+\(L^i\) for \(i&gt;n\); it computes \(\cH^iL\) for \(i\geqslant n\).</p>
+</div>
+</div>
+
+<p>These fit into a short exact sequence of complexes \(0\to\tau_{\leqslant n-1}L\to L\to
+\tau_{\geqslant n}L\to0\), hence a distinguished triangle \(\tau_{\leqslant n-1}L\to L\to
+\tau_{\geqslant n}L\xto{+1}\). The <strong>shift</strong> \(L[n]\) is \(L[n]^i=L^{i+n}\) with
+differential \((-1)^n d_L\). For an object \(M\) (a complex in degree \(0\)), \(M[n]\) is \(M\)
+placed in degree \(-n\); so \(\Om^i[-i]\) is \(\Om^i\) sitting in degree \(i\) — exactly the shape of
+the summands in Theorem&nbsp;2.1.</p>
+
+<h2>Decomposability</h2>
+
+<div class="thmbox def">
+<span class="thm-label">Definition (§3.1)</span>
+<div class="thm-body">
+<p>An object \(K\in D^b(\mathcal{A})\) is <strong>decomposable</strong> if it is isomorphic in
+\(D(\mathcal{A})\) to a complex with zero differential — equivalently, to
+\(\bigoplus_i \cH^iK[-i]\). A <strong>decomposition</strong> is such an isomorphism.</p>
+</div>
+</div>
+
+<div class="thmbox">
+<span class="thm-label">Criterion</span>
+<div class="thm-body">
+<p>\(K\) is decomposable iff there exist morphisms \(f_i\colon \cH^iK[-i]\to K\) in \(D\) with
+\(\cH^i(f_i)=\mathrm{id}_{\cH^iK}\). The data \(f=\sum_i f_i\) <em>is</em> the decomposition.</p>
+</div>
+</div>
+
+<p>Why: \(\bigoplus_i\cH^iK[-i]\) trivially admits such \(f_i\) (the inclusions of summands), so the
+condition is necessary. Conversely, given the \(f_i\), assemble \(f=\sum f_i\colon
+\bigoplus_i\cH^iK[-i]\to K\). On \(\cH^j\) the source has cohomology \(\cH^jK\) and \(f\) induces
+\(\cH^j(f_j)=\mathrm{id}\) (summands of other degrees contribute nothing). So \(f\) is a quasi-iso,
+i.e. an isomorphism in \(D\). \(\square\)</p>
+
+<div class="box example">
+<div class="box-label">Example — over a field it is automatic</div>
+<p>Take \(\mathcal{A}=\mathrm{Vect}_k\). Every short exact sequence of vector spaces splits, so
+\(\Ext^i(V,W)=0\) for \(i\geqslant1\), and one checks every bounded complex is quasi-isomorphic to
+its cohomology with zero differential. <em>Every bounded complex of vector spaces is
+decomposable.</em> Decomposability is therefore a non-condition for vector spaces — it becomes a real
+question only for complexes of <strong>sheaves/modules</strong>, where \(\Ext^1\neq0\).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Decomposable is weaker than it looks, and harder than it looks</div>
+<p>"Decomposable in \(D\)" asserts that an <em>abstract</em> isomorphism exists; it does <em>not</em>
+say the literal differential of \(F_*\Om^{\bullet}\) is zero (it is not), nor that the complex is
+formal on the nose. Conversely, the Cartier isomorphism gives us the \(\cH^i\) for free but produces
+<em>no</em> decomposition — knowing the cohomology never decomposes the complex. Manufacturing the
+maps \(f_i\) is the entire game (<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>).</p>
+</div>
+
+<h2>The two-term case: the obstruction \(e(K)\)</h2>
+
+<p>This is the crux for §3. Suppose \(K^i=0\) for \(i\neq0,1\). Then \(\tau_{\leqslant0}K=\cH^0K\)
+and \(\tau_{\geqslant1}K=\cH^1K[-1]\), and the truncation triangle reads
+\[
+\cH^0K \;\longrightarrow\; K \;\longrightarrow\; \cH^1K[-1] \;\xto{+1}\; \cH^0K[1].
+\]
+A decomposition is determined by a single \(f_1\colon \cH^1K[-1]\to K\) with \(\cH^1(f_1)=\mathrm{id}\)
+(then \(f_0\colon \cH^0K=\tau_{\leqslant0}K\hookrightarrow K\) is forced). The connecting map of the
+triangle is a canonical class
+\[
+e(K)\in \Hom_{D}\!\bigl(\cH^1K[-1],\,\cH^0K[1]\bigr)=\Ext^2(\cH^1K,\cH^0K),
+\]
+and we claim: \(K\) is decomposable \(\iff e(K)=0\); and the set of decompositions, when nonempty, is
+an affine space (a torsor) under \(\Ext^1(\cH^1K,\cH^0K)\).</p>
+
+<p>Apply \(\Hom_D(\cH^1K[-1],-)\) to the triangle. Using \(\Hom_D(A[m],B[n])=\Ext^{n-m}(A,B)\), the
+relevant stretch of the long exact sequence is
+\[
+0\to \Hom_D(\cH^1K[-1],\cH^0K)\to \Hom_D(\cH^1K[-1],K)\xto{\beta}\Hom_D(\cH^1K,\cH^1K)\xto{\partial}\Ext^2(\cH^1K,\cH^0K),
+\]
+where the leading \(0\) is \(\Ext^{-1}=0\), the map \(\beta\) sends \(f_1\mapsto\cH^1(f_1)\), and
+\(\partial(\mathrm{id})=e(K)\). A decomposition is exactly an element of \(\beta^{-1}(\mathrm{id})\).
+This is nonempty iff \(\mathrm{id}\) maps to \(0\) under \(\partial\), i.e. iff \(e(K)=0\); and then it
+is a coset of \(\ker\beta=\operatorname{im}\Hom_D(\cH^1K[-1],\cH^0K)\cong\Ext^1(\cH^1K,\cH^0K)\).
+\(\square\)</p>
+
+<div class="box subtle">
+<div class="box-label">\(\Ext^2\) for existence, \(\Ext^1\) for the choice — the deformation pattern</div>
+<p>Note the two groups are different: the <em>obstruction</em> \(e(K)\) lives in
+\(\Ext^2(\cH^1K,\cH^0K)\), while once it vanishes the <em>decompositions</em> form a torsor under
+\(\Ext^1(\cH^1K,\cH^0K)\). This is exactly Grothendieck's pattern in deformation theory —
+obstruction in \(H^2\), choices a torsor under \(H^1\) — and that is no accident
+(<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>). For longer complexes \(e(K)=0\) is no
+longer sufficient: one genuinely needs all the \(f_i\) (equivalently, a tower of obstructions).</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — \(K=\tau_{\leqslant1}F_*\Om^{\bullet}_{X/k}\), and a coincidence</div>
+<p>The simplest non-vector-space case is a two-term complex of sheaves
+\([\,\cO_X\xto{d}\Om^1_X\,]\) in degrees \(0,1\): here decomposability is a genuine question with
+obstruction in \(\Ext^2(\cH^1,\cH^0)\). Now take the truncation \(K=\tau_{\leqslant1}
+F_*\Om^{\bullet}_{X/k}\). Cartier gives \(\cH^0K=\cO_{X'}\) and \(\cH^1K=\Om^1_{X'/k}\), so the
+decompositions of \(K\) form a torsor under
+\[
+\Ext^1(\Om^1_{X'/k},\cO_{X'})=H^1(X',\mathcal{T}_{X'/k}),
+\]
+<em>the very group that classifies lifts of \(X'\) over \(\Wt(k)\)</em> (<a class="xref"
+href="#04-witt-liftings">Lesson&nbsp;4</a>), with existence-obstruction in
+\(H^2(X',\mathcal{T}_{X'/k})\) — again the deformation obstruction. The two torsors are literally
+governed by the same cohomology. This coincidence, made into an equivalence of gerbes, is the
+content of <a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>: lifting \(X'\) \(\Leftrightarrow\)
+splitting \(\tau_{\leqslant1}F_*\Om^{\bullet}\).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">A decomposition is data, not structure</div>
+<p>Because it is a torsor under a nonzero group, a decomposition is <em>not canonical</em>: there is
+no preferred one. Different lifts mod \(p^2\) yield different decompositions
+(<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>, <a class="xref"
+href="#12-gerbes">Lesson&nbsp;12</a>). Cartier alone never selects a point of the torsor.</p>
+</div>
+
+<h2>Why this gives degeneration</h2>
+
+<p>Suppose we have a decomposition \(F_*\Om^{\bullet}_{X/k}\iso\bigoplus_i\Om^i_{X'/k}[-i]\) in
+\(D(X')\). Take hypercohomology. Because \(F\) is finite, hence affine, \(F_*\) is exact with
+\(R^qF_*=0\) for \(q&gt;0\); so \(F_*\) computes hypercohomology and
+\[
+\mathbb{H}^n(X',F_*\Om^{\bullet}_{X/k})=\mathbb{H}^n(X,\Om^{\bullet}_{X/k})=H^n_{\dR}(X/k).
+\]
+On the other hand a shifted sheaf contributes \(\mathbb{H}^n(X',\Om^i_{X'}[-i])=H^{n-i}(X',\Om^i_{X'})\),
+so
+\[
+H^n_{\dR}(X/k)\cong\bigoplus_i H^{n-i}(X',\Om^i_{X'/k}).
+\]
+Finally the Frobenius twist preserves Hodge numbers (<a class="xref" href="#02-frobenius-twist">eq.
+(2.3)</a>): \(\dim H^{n-i}(X',\Om^i_{X'})=\dim H^{n-i}(X,\Om^i_X)=h^{\,i,\,n-i}\). Comparing
+dimensions,
+\[
+\dim H^n_{\dR}(X/k)=\sum_{i+j=n}h^{ij},
+\]
+which is precisely degeneration of the Hodge–de Rham spectral sequence at \(E_1\). The strategy of
+the paper is now exposed: <em>prove \(F_*\Om^{\bullet}\) decomposes</em>. (Theorem&nbsp;2.1 only
+decomposes \(\tau_{&lt;p}F_*\Om^{\bullet}\); this suffices when \(\dim X&lt;p\), since then
+\(\Om^i=0\) for \(i\geqslant p\) and the truncation is everything — the dimension hypothesis of
+Cor.&nbsp;2.4. The full count is <a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>.)</p>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Verify the cohomology formulas \(\cH^i(\tau_{\leqslant n}L)=\cH^iL\) for \(i\leqslant n\) and
+\(0\) otherwise, directly from the definition, and check the shift sign convention: that
+\(d_{L[n]}=(-1)^nd_L\) is forced if \([1]\) is to be an additive functor with \((L[m])[n]=L[m+n]\).</li>
+<li>Prove that every bounded complex of \(k\)-vector spaces is decomposable, and that
+\(\Ext^i(V,W)=0\) for all \(i\geqslant1\). (Choose splittings of \(\ker d^i\hookrightarrow L^i\) and
+of \(d^i\); assemble a quasi-iso to \(\bigoplus\cH^iL[-i]\).)</li>
+<li>For \(K\) two-term, derive from the \(\Hom\) long exact sequence of the truncation triangle that
+the decompositions of \(K\), when nonempty, form a torsor under \(\Ext^1(\cH^1K,\cH^0K)\), and that
+\(e(K)=0\) is necessary and sufficient. Identify explicitly the term that makes the leading map
+injective.</li>
+<li>Carry out the hypercohomology dimension count above in full, justifying each isomorphism
+(exactness of \(F_*\); \(\mathbb{H}^n\) of a shifted sheaf; the twist identity (2.3)), and conclude
+degeneration from \(\sum_{i+j=n}h^{ij}\geqslant\dim H^n_{\dR}\) with equality.</li>
+<li>For \(K=\tau_{\leqslant1}F_*\Om^{\bullet}_{X/k}\), identify the obstruction group
+\(\Ext^2(\Om^1_{X'},\cO_{X'})=H^2(X',\mathcal{T}_{X'})\) and the torsor group
+\(\Ext^1(\Om^1_{X'},\cO_{X'})=H^1(X',\mathcal{T}_{X'})\). Compare with the obstruction and torsor for
+lifting \(X'\) over \(\Wt(k)\) from <a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>, and
+state, as a conjecture, the equivalence proved in <a class="xref"
+href="#12-gerbes">Lesson&nbsp;12</a>.</li>
+</ol>
+</div>

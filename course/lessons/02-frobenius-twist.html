@@ -1,0 +1,204 @@
+<h1>2. Frobenius and the twist X′</h1>
+
+<div class="lead">
+<p>In characteristic \(p\) every scheme carries a canonical endomorphism for free: raise functions
+to the \(p\)-th power. This is the absolute Frobenius. It is too crude to be a morphism over the
+base, so we correct it into the <strong>relative Frobenius</strong> \(F = F_{X/S}\colon X \to X'\),
+which lands not in \(X\) but in a twisted copy \(X'\) — "\(X\) with its coefficients raised to the
+\(p\)-th power." This \(F\) is the single morphism the whole paper is about: \(F_*\Om^{\bullet}_{X/S}\)
+is the object we will decompose, and the reason it is decomposable starts from one tiny miracle —
+\(F^{*}=0\) on differentials. We build \(X'\) and \(F\) carefully here, because confusing \(X\) with
+\(X'\) is the most common way to get lost later.</p>
+</div>
+
+<h2>Absolute Frobenius</h2>
+
+<p>Let \(S\) be a scheme of characteristic \(p\): the structure map \(\cO_S \to \cO_S\),
+\(a \mapsto a^p\), makes sense because \((a+b)^p = a^p + b^p\) (the binomial coefficients
+\(\binom{p}{k}\) for \(0&lt;k&lt;p\) are divisible by \(p\), hence \(0\)). The
+<strong>absolute Frobenius</strong> \(F_S\colon S \to S\) is the identity on the underlying
+topological space, with \(F_S^{\sharp}\colon \cO_S \to \cO_S\) equal to \(a \mapsto a^p\). For any
+scheme \(X\) over \(S\) one likewise has \(F_X\colon X \to X\), the identity on points and the
+\(p\)-th power on functions.</p>
+
+<div class="box note">
+<p>The trouble: \(F_X\) is <em>not</em> a morphism over \(S\). The square with the two structure maps
+\(u\colon X\to S\) does not commute over \(\mathrm{id}_S\); rather \(u \circ F_X = F_S \circ u\).
+Frobenius "covers" \(F_S\), not the identity. If we want a Frobenius that respects the base — which we
+must, to do relative geometry — we have to twist the target. That twist is \(X'\).</p>
+</div>
+
+<h2>The relative Frobenius and the twist \(X'\)</h2>
+
+<div class="thmbox def">
+<span class="thm-label">Definition (the twist)</span>
+<div class="thm-body">
+<p>For \(u\colon X \to S\) with \(S\) of characteristic \(p\), set
+\[
+X' \;:=\; X \times_{S,\,F_S} S,
+\]
+the base change of \(X\) along the absolute Frobenius \(F_S\colon S \to S\). It is again an
+\(S\)-scheme (via the second projection), and there is a canonical projection \(W\colon X' \to X\)
+covering \(F_S\).</p>
+</div>
+</div>
+
+<p>By the universal property of the fibre product, the two maps \(F_X\colon X\to X\) and
+\(u\colon X\to S\) — which satisfy exactly the compatibility \(u\circ F_X = F_S\circ u\) needed —
+define a unique \(S\)-morphism</p>
+\[
+F = F_{X/S}\colon X \longrightarrow X',
+\]
+<p>the <strong>relative Frobenius</strong>, characterized by \(W\circ F = F_X\) and (projection to
+\(S\)) \(\circ\, F = u\). The full picture:</p>
+
+\[
+\xymatrix{
+X \ar@/^1.2pc/[rrd]^{F_X} \ar@/_1.2pc/[rdd]_{u} \ar@{-->}[rd]|{F_{X/S}} & & \\
+& X' \ar[r]^{W} \ar[d] & X \ar[d]^{u} \\
+& S \ar[r]^{F_S} & S
+}
+\]
+
+<p>The inner square is cartesian. On functions, a local section of \(\cO_{X'}\) coming from
+\(x \in \cO_X\) is written \(x\otimes 1\), and</p>
+\[
+\tag{2.1} F^{*}(x\otimes 1) \;=\; x^{p}.
+\]
+<p>(Scalars from \(S\) are pulled out through the \(F_S\)-twist: \(F^{*}(a\otimes 1)=a\) for
+\(a\in\cO_S\), while \(x\) itself gets raised to the \(p\).)</p>
+
+<div class="box example">
+<div class="box-label">Example — read off \(X'\) from equations</div>
+<p>Suppose \(X \subset \Aa^n_S\) is cut out by polynomials \(f_\alpha = \sum_m a_{\alpha,m}\,T^m\)
+with \(a_{\alpha,m}\in\cO_S\). Then base-changing the coefficients along \(F_S\) gives
+\[
+X' \subset \Aa^n_S, \qquad f_\alpha^{\sigma} = \sum_m a_{\alpha,m}^{\,p}\,T^m,
+\]
+i.e. <em>the same monomials with every coefficient raised to the \(p\)-th power</em>, and the relative
+Frobenius is \(F\colon T_i \mapsto T_i^{p}\) (this is (2.1) on the coordinate \(T_i\)). So "\(X'\) is
+\(X\) with twisted coefficients," and \(F\) is the honest \(p\)-power map on the variables. This is the
+mental picture to keep.</p>
+</div>
+
+<h2>Worked examples</h2>
+
+<div class="box example">
+<div class="box-label">Example — the affine line</div>
+<p>Let \(X=\Aa^1_k=\Spec k[t]\). There are no coefficients to twist, so \(X'=\Aa^1_k=\Spec k[t']\),
+and \(F\colon t' \mapsto t^{p}\). Thus \(F_*\cO_X = k[t]\) viewed as a module over
+\(\cO_{X'}=k[t']\) acting through \(t'\mapsto t^p\); it is <em>free of rank \(p\)</em> on the basis
+\(1, t, t^2, \dots, t^{p-1}\), since every monomial \(t^n\) is uniquely \(t^{p q + r}=(t^p)^q t^r\)
+with \(0\leqslant r&lt;p\). So \(F\) is finite flat of degree \(p = p^{1}\), matching relative
+dimension \(1\). ✓</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — \(\Gm\), and a twist you can see</div>
+<p>For \(\Gm=\Spec k[t,t^{-1}]\) again \(X'=\Gm\) and \(F\colon t'\mapsto t^p\). The twist becomes
+<em>visible</em> over a non-prime field. Take an elliptic curve \(E\colon y^2 = x^3 + a x + b\) over
+\(k\) (char \(\neq 2,3\)). Then
+\[
+E'\colon y^2 = x^3 + a^{p} x + b^{p}, \qquad F\colon (x,y)\mapsto (x^{p},y^{p}).
+\]
+The coefficients have genuinely moved. If \(a,b\in\Fp\) then \(a^p=a,\,b^p=b\), so \(E'=E\) on the
+nose — yet \(F\) is still the nontrivial map \((x,y)\mapsto(x^p,y^p)\), not the identity. The twist is
+in the target's <em>structure</em>, not always in its equations.</p>
+</div>
+
+<h2>Basic properties of \(F\)</h2>
+
+<p>For \(X/S\) smooth of relative dimension \(r\), the relative Frobenius \(F_{X/S}\) is:</p>
+<ul>
+<li><strong>finite locally free of degree \(p^{r}\)</strong> (étale-locally \(X\) looks like
+\(\Aa^r\), where \(F\) is \(T_i\mapsto T_i^p\) in \(r\) variables, a free module on the \(p^r\)
+monomials \(T^m\) with each exponent \(&lt;p\));</li>
+<li>a <strong>universal homeomorphism</strong>, and <strong>purely inseparable</strong> — it is a
+bijection on points but very far from an isomorphism of schemes.</li>
+</ul>
+
+<h2>The one fact that powers everything: \(F^{*}=0\) on \(\Om^1\)</h2>
+
+<div class="thmbox">
+<span class="thm-label">Crucial Lemma (2.2)</span>
+<div class="thm-body">
+<p>The pullback map on Kähler differentials
+\[
+F^{*}\colon \Om^1_{X'/S} \longrightarrow F_*\Om^1_{X/S}
+\]
+is the <strong>zero map</strong>.</p>
+</div>
+</div>
+
+<p>Proof, one line. The generators of \(\Om^1_{X'/S}\) are the \(d(x\otimes 1)\). Pullback commutes
+with \(d\), so by (2.1)
+\[
+F^{*}\bigl(d(x\otimes 1)\bigr) = d\bigl(F^{*}(x\otimes 1)\bigr) = d(x^{p}) = p\,x^{p-1}\,dx = 0,
+\]
+because \(p=0\) in characteristic \(p\). \(\square\) The same computation works degree by degree, so
+\(F^*=0\) on every \(\Om^i_{X'/S}\) with \(i&gt;0\) (see the exercises). This vanishing is the seed of
+the Cartier isomorphism (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>) and of the whole local
+computation (<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>): because \(F^*\) kills
+differentials <em>on the nose</em>, its lift mod \(p^2\) will be divisible by \(p\), and dividing by
+\(p\) is what manufactures the splitting.</p>
+
+<div class="box subtle">
+<div class="box-label">\(F_*\Om^{\bullet}_{X/S}\) is an honest \(\cO_{X'}\)-linear complex</div>
+<p>Although \(F^*=0\), the pushforward \(F_*\Om^{\bullet}_{X/S}\) is a perfectly nonzero complex of
+\(\cO_{X'}\)-modules — \(\cO_{X'}\) acts through \(F^{*}\), i.e. \(x\otimes 1\) acts as multiplication
+by \(x^p\). Its differential \(d\) is \(\cO_{X'}\)-<em>linear</em>: for the action element
+\(x^p=F^*(x\otimes 1)\),
+\[
+d(x^{p}\,\omega) = d(x^{p})\wedge\omega + x^{p}\,d\omega = x^{p}\,d\omega
+\]
+since \(d(x^p)=0\). (Equivalently: \(d\) is \(F^{-1}\cO_{X'}\)-linear.) Over \(\cO_X\) the de Rham
+differential is only a connection, not linear; the miracle of characteristic \(p\) is that
+<em>after pushing forward along \(F\)</em> it becomes linear over the new structure sheaf. This is
+exactly what lets us treat \(F_*\Om^{\bullet}_{X/S}\) as a complex in \(D(X')\) and ask whether it
+splits.</p>
+</div>
+
+<h2>Over a perfect field: \(X'\) versus \(X\)</h2>
+
+<p>If \(k\) is perfect, \(a\mapsto a^p\) is a bijection, so \(F_S=\Spec(\text{Frob})\) is an
+<em>isomorphism</em> of schemes. Hence \(X'=X\times_{k,\,F_k}k\) is abstractly isomorphic to \(X\) —
+but the isomorphism re-labels the \(k\)-structure by \(\sigma^{-1}\) (where \(\sigma=\text{Frob}\)).
+Concretely \(X'\) is the extension of scalars of \(X\) along the field automorphism \(\sigma^{-1}\):
+the underlying scheme is "the same," its \(k\)-linear structure is twisted. Since a field automorphism
+preserves all \(k\)-dimensions,
+\[
+\tag{2.3} \dim_k H^j(X',\Om^i_{X'/k}) = \dim_k H^j(X,\Om^i_{X/k}) \quad\text{for all }i,j:
+\]
+\(X'\) has the <em>same Hodge numbers</em> as \(X\). We lean on this constantly in
+<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>: the splitting lives on \(X'\), but the
+Hodge numbers we want to add up are those of \(X\), and (2.3) bridges the two.</p>
+
+<div class="box subtle">
+<div class="box-label">Keep \(F\colon X\to X'\), always</div>
+<p>Because \(X'\cong X\) abstractly over a perfect field, it is tempting to erase the prime and
+pretend \(F\) is an endomorphism of \(X\). Resist. First, the main theorem's lifting hypothesis is on
+\(X'\), not \(X\) — and "lift \(X'\) mod \(p^2\)" is the correct, slightly stronger-looking demand
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>). Second, in a family over a base \(S\) that
+is not a perfect field, \(F_S\) is genuinely not invertible and \(X'\) genuinely differs from \(X\)
+(<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>). The clean, always-correct statement is:
+\(F\) is the relative Frobenius \(X\to X'\).</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Show \(F^{*}=0\) on \(\Om^i_{X'/S}\) for every \(i\geqslant 1\), directly from \(d(x^p)=0\) and
+the Leibniz rule. (Reduce to monomials \(d(x_1\otimes 1)\wedge\cdots\wedge d(x_i\otimes 1)\).)</li>
+<li>For the conic \(C\colon a x^2 + b y^2 = c\) and for an elliptic curve of your choice over a field
+containing a non-\(p\)-th-power, write down \(C'\), \(E'\), and the map \(F\) explicitly, identifying
+the twist of the coefficients. When does \(X'=X\) as schemes?</li>
+<li>Verify directly that \(F_*\cO_{\Aa^1}\) is free of rank \(p\) over \(\cO_{X'}=k[t']\), and
+determine the \(\cO_{X'}\)-module structure of \(F_*\Om^1_{\Aa^1/k}\). (It is free of rank \(p\) on
+\(dt, t\,dt,\dots,t^{p-1}dt\); note \(t'\) acts by \(t^p\).) Check \(F^*(dt')=d(t^p)=p\,t^{p-1}dt=0\).</li>
+<li>Prove \(F_{X/S}\) has degree \(p^{r}\) for \(X/S\) smooth of relative dimension \(r\), by reducing
+étale-locally to \(\Aa^r_S\) and counting monomials \(T^m\) with all exponents \(&lt;p\).</li>
+<li>Explain why the differential of \(F_*\Om^{\bullet}_{X/S}\) is \(\cO_{X'}\)-linear, and contrast
+with the fact that \(d\colon\cO_X\to\Om^1_X\) is <em>not</em> \(\cO_X\)-linear. Where exactly does
+\(d(x^p)=0\) enter?</li>
+</ol>
+</div>

@@ -1,0 +1,192 @@
+<h1>4. Witt vectors and liftings mod p²</h1>
+
+<div class="lead">
+<p>The hypothesis that makes the whole machine run is almost embarrassingly small: the variety
+should lift <em>one</em> infinitesimal step, from characteristic \(p\) to "characteristic \(p^2\)".
+This lesson supplies the two ingredients that give that phrase a precise meaning — the ring
+\(\Wt(k)\) of Witt vectors of length two, the canonical \(p^2\)-thickening of a perfect field
+\(k\), and the deformation theory that decides which smooth \(X\) admit a lift over it. We will see
+that affine schemes and curves always lift, that anything defined over \(\Z\) lifts for free, but
+that liftability is a genuine, sometimes-violated condition. We close by lifting Frobenius itself —
+the precise non-uniqueness there is the seed of every homotopy in
+<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>.</p>
+</div>
+
+<h2>Witt vectors of a perfect field</h2>
+
+<p>Fix a perfect field \(k\) of characteristic \(p\). One wants a "best possible" ring of
+characteristic \(0\) sitting over \(k\): flat over \(\Z\), \(p\)-adically complete, with residue
+field \(k\). That ring exists and is unique.</p>
+
+<div class="thmbox def">
+<span class="thm-label">Definition</span>
+<div class="thm-body">
+<p>The <strong>ring of Witt vectors</strong> \(\WW(k)\) is the unique (up to unique isomorphism)
+ring that is \(p\)-torsion-free, complete and separated for the \(p\)-adic topology, and satisfies
+\(\WW(k)/p\,\WW(k)\cong k\). Set \(\Wn(k):=\WW(k)/p^{n}\WW(k)\); then
+\(\WW(k)=\varprojlim_n \Wn(k)\). The ring \(\Wn(k)\) is characterized by being <em>flat over
+\(\Z/p^{n}\)</em> with \(\Wn(k)/p\cong k\).</p>
+</div>
+</div>
+
+<p>Concretely, elements of \(\WW(k)\) are sequences \((a_0,a_1,a_2,\dots)\) with \(a_i\in k\), added
+and multiplied by universal polynomial formulas (designed so that \((a_0,a_1,\dots)\mapsto a_0\)
+is the reduction \(\WW(k)\to k\)). For our purposes the formulas matter less than the two
+characterizing properties — flatness and the residue field — which already pin the ring down.</p>
+
+<p>The Frobenius \(a\mapsto a^{p}\) of \(k\) lifts canonically to a ring automorphism
+\(\sigma\) of \(\WW(k)\) (and of each \(\Wn(k)\)), given in coordinates by
+\[
+\sigma(a_0,a_1,a_2,\dots)=(a_0^{\,p},a_1^{\,p},a_2^{\,p},\dots).
+\]
+This \(\sigma\) reduces mod \(p\) to the Frobenius of \(k\); it is the algebraic incarnation of the
+twist \(X\mapsto X'\) from <a class="xref" href="#02-frobenius-twist">Lesson&nbsp;2</a>, and it will
+reappear in every base change below.</p>
+
+<div class="box example">
+<div class="box-label">Examples — the rings you must keep in mind</div>
+<p><strong>(a) Prime field.</strong> \(\WW(\Fp)=\Z_p\), the \(p\)-adic integers, and
+\(\Wt(\Fp)=\Z/p^{2}\). Here \(\sigma=\mathrm{id}\) (Frobenius is the identity on \(\Fp\)).
+<br>
+<strong>(b) Finite fields.</strong> For \(q=p^{f}\), \(\WW(\mathbf{F}_q)\) is the unramified
+extension of \(\Z_p\) of degree \(f\), and \(\sigma\) is its arithmetic Frobenius (the generator of
+the Galois group). E.g. \(\Wt(\mathbf{F}_{p^2})=\mathbf{Z}_{p^2}/p^2\), the length-two truncation of
+the unramified quadratic extension; here \(\sigma\neq\mathrm{id}\).
+<br>
+<strong>(c)</strong> \(\Wt(k)\) is the <em>canonical characteristic-\(p^2\) thickening</em> of \(k\):
+a ring of length two over itself, with \(\Wt(k)/p\cong k\).</p>
+</div>
+
+<h2>Liftings over a square-zero thickening</h2>
+
+<p>Let \(\tS\supset S\) be a closed immersion of schemes defined by a square-zero ideal
+\(I\) (so \(I^{2}=0\)).</p>
+
+<div class="thmbox def">
+<span class="thm-label">Definition</span>
+<div class="thm-body">
+<p>For \(X\) flat over \(S\), a <strong>lift</strong> of \(X\) over \(\tS\) is a flat \(\tS\)-scheme
+\(\tX\) together with an isomorphism \(\tX\times_{\tS}S\iso X\). If \(X/S\) is smooth, every lift
+\(\tX\) is automatically smooth over \(\tS\).</p>
+</div>
+</div>
+
+<p>The case of interest is \(S=\Spec k\), \(\tS=\Spec \Wt(k)\). In \(\Wt(k)\) we have
+\(p\cdot p=p^{2}=0\), so the ideal \((p)\) is square-zero; and multiplication by \(p\) gives an
+isomorphism of \(\cO_X=k\)-modules \(k=\Wt(k)/p\iso p\,\Wt(k)\). Thus lifting over \(\Wt(k)\) is a
+square-zero deformation problem whose ideal is the structure sheaf itself, \(I\cong\cO_X\). To
+"<strong>lift \(X\) mod \(p^{2}\)</strong>" means precisely: find a flat \(\Wt(k)\)-scheme \(\tX\)
+with \(\tX\times_{\Wt(k)}k\cong X\).</p>
+
+<h2>Deformation theory: who lifts, and how many ways</h2>
+
+<p>Let \(X/k\) be smooth, with tangent sheaf \(\Theta=T_X=\Hom_{\cO_X}(\Om^{1}_{X/k},\cO_X)\). The
+square-zero deformation problem with ideal \(\cO_X\) is governed by the coherent cohomology of
+\(\Theta\). This is the structural input the paper uses (e.g. in §3,
+<a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>).</p>
+
+<div class="thmbox">
+<span class="thm-label">Deformation theorem</span>
+<div class="thm-body">
+<p>For \(X/k\) smooth:</p>
+<ul>
+<li>the <strong>obstruction</strong> to the existence of a lift over \(\Wt(k)\) lies in
+\(H^{2}(X,\Theta_{X/k})\);</li>
+<li>if a lift exists, the set of isomorphism classes of lifts is a <strong>torsor</strong> (an affine
+space) under \(H^{1}(X,\Theta_{X/k})\);</li>
+<li>the automorphisms of a fixed lift inducing the identity on \(X\) form
+\(H^{0}(X,\Theta_{X/k})\).</li>
+</ul>
+</div>
+</div>
+
+<p>So liftability is purely cohomological: an obstruction in \(H^2\), an ambiguity measured by
+\(H^1\), symmetries by \(H^0\). Smoothness of the lift is automatic; nothing more than these two
+groups is at stake.</p>
+
+<div class="box example">
+<div class="box-label">Examples — which X lift</div>
+<p><strong>Affine smooth.</strong> If \(X\) is affine, \(\Theta\) is quasicoherent so
+\(H^{\geqslant 1}(X,\Theta)=0\): a lift always <em>exists</em> and is unique up to (non-unique)
+isomorphism. In particular \(\mathbf{A}^{n}_k\) lifts to \(\mathbf{A}^{n}_{\Wt(k)}\).<br>
+<strong>Curves.</strong> If \(\dim X=1\) then \(H^{2}(X,\Theta)=0\) for dimension reasons, so every
+smooth curve lifts.<br>
+<strong>Things defined over \(\Z\).</strong> \(\Pp^{n}\), and any smooth complete intersection in
+\(\Pp^{n}\), have evident lifts (base-change the model over \(\Z\) to \(\Wt(k)\)).<br>
+<strong>Abelian varieties.</strong> always lift (e.g. the canonical Serre–Tate lift).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Not everything lifts</div>
+<p>It is a genuine condition. There exist smooth <em>projective</em> varieties — Mumford's, Igusa's,
+and Lang's surfaces — that do <em>not</em> lift mod \(p^{2}\); they are detected precisely by the
+<em>failure</em> of Hodge–de Rham degeneration
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>). The existence of such examples is what
+gives the main theorem content: liftability is not free, and when it holds it buys you something
+real.</p>
+</div>
+
+<h2>Lifting Frobenius</h2>
+
+<p>Now suppose a lift \(\tX/\Wt(k)\) is given. Base-change along \(\sigma:\Wt(k)\to\Wt(k)\) to get
+\(\tX':=\tX\times_{\sigma}\Wt(k)\), a lift of the Frobenius twist \(X'\). The question that powers
+<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a> is whether the relative Frobenius
+\(F:X\to X'\) lifts to a \(\Wt(k)\)-morphism \(\tF:\tX\to\tX'\).</p>
+
+<div class="box note">
+<div class="box-label">Local yes, global usually no</div>
+<p>On affine opens \(\tF\) <em>always</em> exists, by smoothness of \(\tX'\) and the lifting property
+along the square-zero immersion. Globally the local lifts need not agree: the obstruction to a
+global \(\tF\) lives in \(H^{1}(X',\Theta_{X'}\otimes F_*\cO_X)\)
+(<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>). Moreover any two lifts of \(F\) differ by
+\(p\cdot(\text{a derivation})\) — this exact \(p\)-divisible discrepancy is what gets divided by
+\(p\) to produce the Cartier-type splitting map.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Examples — Frobenius on \(\mathbf{A}^1\) and an elliptic curve</div>
+<p><strong>The affine line.</strong> Take \(\tX=\Spec\Wt(k)[t]\), so \(\tX'=\mathbf{A}^1_{\Wt(k)}\)
+too. One lift of \(F\) is \(\tF\colon t\mapsto t^{p}\). But for <em>any</em> polynomial \(g\),
+\(\tF_g\colon t\mapsto t^{p}+p\,g(t)\) is another lift (it reduces to \(t\mapsto t^p\) mod \(p\)).
+The difference of two lifts,
+\[
+\tF_g^{*}-\tF^{*} = p\,g\cdot\tfrac{d}{dt},
+\]
+is \(p\) times the derivation \(g\,\partial_t\) — explicitly confirming "two lifts differ by
+\(p\cdot(\text{derivation})\)". This non-uniqueness is the source of the homotopies of
+Lessons&nbsp;6 and&nbsp;8.<br>
+<strong>An elliptic curve \(E/k\).</strong> Here \(T_E\cong\cO_E\) (the tangent bundle is trivial),
+so the lifts of \(E\) form a torsor under \(H^{1}(E,T_E)=H^{1}(E,\cO_E)=k\): a one-parameter family.
+The canonical (Serre–Tate) lift is a distinguished point of this line.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Why mod p², and why X' rather than X</div>
+<p><strong>(i) Why exactly \(p^{2}\)?</strong> The construction in
+<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a> divides by \(p\) <em>exactly once</em>,
+so it only needs the lifted equation to be defined modulo \(p^{2}\). Mod \(p\) alone gives nothing
+(\(F^{*}=0\)); higher \(\Wn\) or all of \(\WW(k)\) is unnecessary for the main theorems — it yields
+only refinements (the Witt-complex variants).<br>
+<strong>(ii) It is \(X'\) that must lift.</strong> Strictly the hypothesis is a lift of the twist
+\(X'\). Over a perfect field \(X\cong X'\) abstractly, so the distinction is invisible here; but in
+families and in the logarithmic theory it is real
+(<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>,
+<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Show \(\Wt(\Fp)=\Z/p^{2}\) and that \(\sigma=\mathrm{id}\) on it. (Use the characterization:
+flat over \(\Z/p^{2}\), residue field \(\Fp\).)</li>
+<li>Prove that an affine smooth \(X/k\) admits a lift over \(\Wt(k)\), unique up to isomorphism, and
+that every smooth curve lifts. (Compute the cohomological dimension of \(\Theta\) in each case.)</li>
+<li>For \(F:\mathbf{A}^1\to\mathbf{A}^1\), write down all lifts \(\tF\) explicitly and verify that
+any two differ by \(p\cdot(\text{a derivation})\); identify the derivation in terms of the
+polynomial \(g\).</li>
+<li>Describe the torsor of lifts of an ordinary elliptic curve \(E/k\): identify the group
+\(H^{1}(E,T_E)\) acting, and say what distinguishes the Serre–Tate lift.</li>
+<li>Explain why \((p)\) is a square-zero ideal in \(\Wt(k)\), and identify the \(\cO_X\)-module
+\((p)\) (i.e. compute \(p\,\Wt(k)\) as a \(k\)-module via multiplication by \(p\)).</li>
+</ol>
+</div>

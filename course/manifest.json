@@ -1,0 +1,50 @@
+{
+  "title": "A course on Deligne–Illusie",
+  "modules": [
+    {
+      "title": "0 · Orientation",
+      "lessons": [
+        { "id": "00-overview", "title": "The theorem, and why it is a miracle" }
+      ]
+    },
+    {
+      "title": "1 · The toolbox",
+      "lessons": [
+        { "id": "01-hodge-de-rham", "title": "de Rham cohomology and the Hodge spectral sequence" },
+        { "id": "02-frobenius-twist", "title": "Frobenius and the twist X′" },
+        { "id": "03-cartier", "title": "The Cartier isomorphism" },
+        { "id": "04-witt-liftings", "title": "Witt vectors and liftings mod p²" },
+        { "id": "05-derived-decomposable", "title": "Derived categories and decomposability" }
+      ]
+    },
+    {
+      "title": "2 · The construction",
+      "lessons": [
+        { "id": "06-key-computation", "title": "The key computation: lift Frobenius, divide by p" },
+        { "id": "07-multiplicativity", "title": "From φ¹ to all φⁱ, and why i < p" },
+        { "id": "08-gluing", "title": "Globalizing: homotopies and Čech gluing" }
+      ]
+    },
+    {
+      "title": "3 · Consequences",
+      "lessons": [
+        { "id": "09-degeneration", "title": "Decomposition and Hodge degeneration" },
+        { "id": "10-char-zero", "title": "From characteristic p to characteristic 0" },
+        { "id": "11-kan-vanishing", "title": "Kodaira–Akizuki–Nakano vanishing" }
+      ]
+    },
+    {
+      "title": "4 · The structural picture",
+      "lessons": [
+        { "id": "12-gerbes", "title": "Gerbes: lifting ⇔ splitting, exactly" }
+      ]
+    },
+    {
+      "title": "5 · Complements & subtleties",
+      "lessons": [
+        { "id": "13-relative-log", "title": "Relative degeneration and logarithmic poles" },
+        { "id": "14-subtleties", "title": "Assumptions, subtleties, and counterexamples" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+<h1>14. Assumptions, subtleties, and counterexamples</h1>
+
+<div class="lead">
+<p>The main theorem (<a class="xref" href="#00-overview">Lesson&nbsp;0</a>) is hedged with
+hypotheses: a <em>perfect</em> field of characteristic \(p\); a lift mod \(p^2\); dimension
+\(\leqslant p\); the range \(i&lt;p\); the lift is of \(X'\), not \(X\); properness; ampleness in the
+vanishing theorem. This capstone is the "why is every hypothesis there" reference. For each one we
+give either a <strong>counterexample</strong> if it is dropped, or an explanation of why it sits
+<em>exactly</em> where it does. One lesson recurs throughout, and it is the moral of the whole
+course: <strong>liftability mod \(p^2\) is sufficient but not necessary</strong> for degeneration
+and vanishing; the genuine obstruction is not cohomological but lives in the derived category
+(<a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>). The cohomological consequences are only its
+shadows, and a shadow can vanish while the body remains.</p>
+</div>
+
+<h2>Failures: in characteristic \(p\), these theorems are genuinely false</h2>
+
+<p>It is worth saying plainly, before the apologetics, that none of the conclusions hold
+unconditionally over a field of characteristic \(p\). The hypotheses are not bookkeeping; without
+them the statements are <em>wrong</em>, with explicit witnesses.</p>
+
+<div class="box subtle">
+<div class="box-label">Degeneration fails: Mumford's non-closed forms</div>
+<p>Mumford constructed smooth projective surfaces over an algebraically closed field \(k\) of
+characteristic \(p\) carrying a global \(1\)-form that is <em>not closed</em>: some
+\(\omega\in H^0(X,\Om^1_{X/k})\) has \(d\omega\neq 0\). Further such examples are due to Igusa, Lang,
+and Raynaud–Szpiro. A non-closed \(\omega\) is exactly a nonzero element in the source of the
+bottom-row differential of the Hodge–de Rham spectral sequence,
+\[ d_1 : H^0(X,\Om^1_{X/k})\longrightarrow H^0(X,\Om^2_{X/k}), \]
+since on global sections this \(d_1\) is induced by the de Rham \(d\)
+(<a class="xref" href="#01-hodge-de-rham">Lesson&nbsp;1</a>). So \(d_1\neq 0\): the spectral sequence
+does <em>not</em> degenerate at \(E_1\). By the contrapositive of Corollary&nbsp;2.4
+(<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>) — degeneration in dimension
+\(\leqslant p\) for liftable \(X\) — these surfaces <strong>do not lift over \(W_2(k)\)</strong>.
+Non-liftability is here detected purely by a differential on forms.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">The \(p=2\) Enriques witness</div>
+<p>For \(p=2\), the Enriques surfaces "of type \(\alpha_2\)" give a different failure in a different
+slot of the same spectral sequence: there
+\[ d_1 : H^1(X,\cO_X)\longrightarrow H^1(X,\Om^1_{X/k}) \]
+is nonzero (Ref.&nbsp;2.6(i)). Both witnesses live at \(p\leqslant\dim X=2\), precisely the boundary
+where Corollary&nbsp;2.4 still claims to apply <em>if</em> the surface lifts — so, again, they cannot
+lift mod&nbsp;\(p^2\).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Kodaira vanishing fails: Raynaud–Szpiro</div>
+<p>Raynaud and Szpiro (Remark&nbsp;2.10(ii)) built smooth projective surfaces \(X/k\) carrying an
+<em>ample</em> invertible sheaf \(\cL\) with
+\[ H^1(X,\cL^{-1})\neq 0. \]
+So Kodaira vanishing — true over \(\C\) by Hodge theory — is simply <strong>false</strong> in
+characteristic \(p\). These surfaces necessarily do not lift mod \(p^2\): otherwise Raynaud's
+Corollary&nbsp;2.8 (<a class="xref" href="#11-kan-vanishing">Lesson&nbsp;11</a>) would force the
+vanishing. The contrast with 2.8 is exactly the liftability hypothesis; see the table below.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Hodge symmetry can fail even when the SS degenerates</div>
+<p>Degeneration is strictly weaker than complex Hodge theory. Even for an \(X/k\) whose Hodge–de Rham
+spectral sequence <em>does</em> degenerate at \(E_1\), the symmetry \(h^{ij}=h^{ji}\) of Hodge numbers
+need not hold (Remark&nbsp;2.6(ii); cf. Serre's examples). The algebraic method delivers the additive
+relation \(\sum_{i+j=n}h^{ij}=\dim H^n_{\dR}\) and nothing more — it never invokes a complex
+conjugation, so it cannot and does not produce symmetry. Anyone expecting "Hodge theory in
+characteristic \(p\)" should read this as the precise boundary of what is on offer.</p>
+</div>
+
+<h2>Why each bound sits exactly where it does</h2>
+
+<div class="box subtle">
+<div class="box-label">The range \(i&lt;p\) is real, not cosmetic</div>
+<p>The passage from \(\varphi^1\) to the higher \(\varphi^i\)
+(<a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a>) uses the antisymmetrization that
+divides by \(i!\); the map \(\varphi^i=\tfrac{1}{i!}\bigwedge^i\varphi^1\) exists precisely because
+\(i!\) is invertible mod \(p\), i.e. precisely when \(i&lt;p\). At \(i=p\) the factorial \(p!\equiv 0\)
+and the construction breaks: there is no candidate splitting in degree \(p\). This is why
+Theorem&nbsp;2.1 splits only the truncation \(\tau_{&lt;p}F_*\Om^{\bullet}_{X/k}\), and never claims
+more. The truncation is structural, not a defect of the proof.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">The bound \(\dim\leqslant p\), and why \(\dim&gt;p\) is the frontier</div>
+<p>Three regimes. For \(\dim X&lt;p\) the de Rham complex sits inside the splittable range and
+degeneration is immediate from Theorem&nbsp;2.1. For \(\dim X=p\) one needs an extra input — Serre
+(equivalently Grothendieck) duality together with the vanishing of the top piece
+\(H^{p+1}\) — to push the dimension count through (<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>).
+For \(\dim X&gt;p\) the method <strong>stops</strong>: Deligne and Illusie have
+<em>neither</em> a proof <em>nor</em> a counterexample that \(F_*\Om^{\bullet}_{X/k}\) decomposes — or
+even that the Hodge–de Rham spectral sequence degenerates — for a proper liftable \(X\) of dimension
+\(\geqslant p+1\) (Remark&nbsp;2.6(iii)). This is an honest open problem and the precise frontier of
+the technique: a lift mod \(p^2\) controls the complex only up to degree \(p\), and beyond that the
+torsion sheaves \(\mathscr{H}^i\) for \(i\geqslant p\) are simply not reached by the construction.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Why exactly mod \(p^2\) — \(W_2\), and no less</div>
+<p>The key computation (<a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>) divides by \(p\)
+<em>once</em>: from a lift \(\tF\) of Frobenius one forms \(\tfrac1p\tF^{*}\), legal precisely because
+\(\tF^{*}\) lands in \(p\cdot(\text{flat module})\). A lift mod \(p\) alone is no help —
+\(F^{*}=0\) on differentials, carrying no information. A lift mod \(p^2\) is just enough to make the
+single division meaningful. Higher \(W_n(k)\) is <em>not</em> needed for the main results; it yields
+refinements (Witt-divided variants, Remark&nbsp;2.2) but the theorems already hold over \(W_2\). So
+"mod \(p^2\)" is the minimal exact hypothesis, neither weakenable to mod \(p\) nor requiring all of
+\(W(k)\).</p>
+</div>
+
+<div class="box note">
+<div class="box-label">The roles of "proper" and "ample"</div>
+<p>Two analytic-looking words earn their place cheaply. <strong>Properness</strong> is used only to
+make coherent cohomology finite-dimensional, so that the additive count "Hodge numbers sum to Betti
+numbers" is a statement about finite integers at all. <strong>Ampleness</strong> enters the vanishing
+theorem (<a class="xref" href="#11-kan-vanishing">Lesson&nbsp;11</a>) in exactly one place: to seed
+Serre vanishing \(H^j(X,\cF\otimes\cL^{n})=0\) for \(n\gg0\), against which the Frobenius descent
+runs. The descent itself is formal; ampleness is the seed, not the engine.</p>
+</div>
+
+<h2>Sufficient, not necessary: the obstruction lives in \(D(X')\)</h2>
+
+<div class="box subtle">
+<div class="box-label">Raynaud's surface: degeneration and vanishing without a lift</div>
+<p>This is the sharpest cautionary tale (Remark&nbsp;2.10(iii)). For \(p\geqslant7\), by the
+Godeaux–Serre method, there is a smooth projective surface \(X/\Fp\) that does <em>not</em> lift over
+\(\Z/p^2\), yet for which</p>
+<ul>
+<li>(a) the Hodge–de Rham spectral sequence <em>degenerates</em> at \(E_1\); and</li>
+<li>(b) <em>every</em> ample invertible sheaf satisfies Kodaira–Akizuki–Nakano vanishing.</li>
+</ul>
+<p>So the "pathology" of non-liftability is completely <em>invisible</em> at the level of the
+spectral sequence and of vanishing theorems: both cohomological consequences hold, although the
+sufficient condition that the paper uses to prove them fails. What, then, actually goes wrong? By the
+gerbe theorem (Corollary&nbsp;3.6, <a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>),
+\[ X' \text{ lifts over } W_2(k) \iff \tau_{\leqslant 1}F_*\Om^{\bullet}_{X/k}\ \text{is decomposable in } D(X'). \]
+For Raynaud's surface the right-hand side fails: \(\tau_{\leqslant 1}F_*\Om^{\bullet}_{X/k}\) is
+<strong>not</strong> decomposable, even though its cohomology adds up correctly. The failure is real
+and detectable — but only in the derived category, not in any of its numerical shadows.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">The lift is of \(X'\), not \(X\)</div>
+<p>Throughout, the hypothesis is liftability of the Frobenius twist \(X'\)
+(<a class="xref" href="#02-frobenius-twist">Lesson&nbsp;2</a>), <em>not</em> of \(X\). Over a perfect
+field \(k\), Frobenius is an automorphism of \(k\) and \(X'\cong X^{(p)}\) is abstractly isomorphic to
+a base change of \(X\), so the distinction is invisible and one harmlessly says "\(X\) lifts." In a
+<em>family</em> over a base \(S\) of characteristic \(p\) this collapses: \(X\) and \(X'\) are
+genuinely different \(S\)-schemes, and to convert a lift of \(X/S\) into a lift of \(X'/S\) one needs
+a lift \(\tF_S\) of the absolute Frobenius of \(S\) (Remark&nbsp;4.1.6,
+<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>). Forgetting the prime is safe only over a
+perfect base.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">The decomposition is not canonical</div>
+<p>A lift mod \(p^2\) <em>determines</em> a splitting \(\varphi_{\tX}\), but the splitting depends on
+the lift. Two lifts generally give two different decompositions, and the set of decompositions of
+\(\tau_{\leqslant 1}\) is a <strong>torsor</strong> under \(H^1(X',\Theta_{X'/k})\)
+(<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>,
+<a class="xref" href="#12-gerbes">Lesson&nbsp;12</a>) — the same group that controls deformations.
+There is no preferred splitting in the absence of a preferred lift; the isomorphism of
+Theorem&nbsp;2.1 is canonical <em>given</em> \(\tX\), and only given \(\tX\).</p>
+</div>
+
+<div class="box note">
+<div class="box-label">Where this sits in the history</div>
+<p>Degeneration in characteristic \(0\) was classically extracted from Hodge theory. The first proof
+<em>avoiding</em> harmonic analysis was Faltings', through \(p\)-adic Hodge theory (Hodge–Tate
+decompositions); Kato, and then Fontaine–Messing, proved degeneration in characteristic \(p\) under
+liftability by crystalline methods, recovering the characteristic-\(0\) statement. Deligne and
+Illusie's contribution is the <em>elementary</em> and more precise object — the explicit splitting
+\(\varphi_{\tX}\) — from which degeneration, its descent to characteristic \(0\)
+(<a class="xref" href="#10-char-zero">Lesson&nbsp;10</a>), and Kodaira–Akizuki–Nakano vanishing all
+follow by formal arguments and dimension counts. The seed, as they note, is an observation of Mazur,
+made explicit in work of Ogus and Kato.</p>
+</div>
+
+<h2>Summary</h2>
+
+<table class="tabular">
+<caption>Each hypothesis of Theorem&nbsp;2.1 and its corollaries, what fails without it, and the witness.</caption>
+<thead>
+<tr><th>Hypothesis</th><th>What breaks without it</th><th>Witness</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Lift mod \(p^2\) (over \(W_2(k)\))</td>
+<td>\(F_*\Om^{\bullet}\) need not decompose; the Hodge SS can fail to degenerate</td>
+<td>Mumford's non-closed \(1\)-forms; Enriques type \(\alpha_2\) at \(p=2\) (Rem.&nbsp;2.6(i))</td>
+</tr>
+<tr>
+<td>Dimension \(\leqslant p\)</td>
+<td>Dimension count / the vanishing of \(H^{p+1}\) is unavailable; for \(\dim&gt;p\) the method gives no statement</td>
+<td>Frontier: no proof and no counterexample for \(\dim\geqslant p+1\) (Rem.&nbsp;2.6(iii))</td>
+</tr>
+<tr>
+<td>Range \(i&lt;p\)</td>
+<td>The antisymmetrization \(\tfrac1{i!}\) is undefined at \(i=p\); only \(\tau_{&lt;p}\) splits</td>
+<td>\(p!\equiv0 \pmod p\) (<a class="xref" href="#07-multiplicativity">Lesson&nbsp;7</a>)</td>
+</tr>
+<tr>
+<td>Lift of \(X'\) (not \(X\))</td>
+<td>In families \(X\neq X'\); no passage from a lift of \(X\) to one of \(X'\)</td>
+<td>Need a Frobenius lift \(\tF_S\) (Rem.&nbsp;4.1.6, <a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>)</td>
+</tr>
+<tr>
+<td>Properness</td>
+<td>Coherent cohomology is infinite-dimensional; the additive count is vacuous</td>
+<td>Finiteness of \(H^j(X,\Om^i)\) (<a class="xref" href="#01-hodge-de-rham">Lesson&nbsp;1</a>)</td>
+</tr>
+<tr>
+<td>Ampleness (in KAN)</td>
+<td>No Serre-vanishing seed for the Frobenius descent</td>
+<td>Descent is formal; ampleness only seeds it (<a class="xref" href="#11-kan-vanishing">Lesson&nbsp;11</a>)</td>
+</tr>
+<tr>
+<td>Necessity?</td>
+<td>None — liftability is <em>sufficient, not necessary</em>; degeneration and KAN can hold without any lift, while \(\tau_{\leqslant 1}\) is still non-decomposable</td>
+<td>Raynaud's surface, \(p\geqslant7\) (Rem.&nbsp;2.10(iii))</td>
+</tr>
+</tbody>
+</table>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Show that a non-closed global \(1\)-form \(\omega\in H^0(X,\Om^1)\) forces the bottom-row \(d_1\) of
+the Hodge–de Rham spectral sequence to be nonzero, hence non-degeneration, hence (which theorem's
+contrapositive?) non-liftability of \(X\) over \(W_2(k)\) in dimension \(\leqslant p\). Name the
+theorem and state the contrapositive precisely.</li>
+<li>Explain in what sense Raynaud's surface (Remark&nbsp;2.10(iii)) is <em>consistent</em> with
+Corollary&nbsp;3.6: the spectral sequence degenerates and KAN holds, yet what the gerbe theorem
+asserts to fail is the decomposability of \(\tau_{\leqslant 1}F_*\Om^{\bullet}\) — a property invisible
+to the spectral sequence. Why does degeneration not imply decomposability?</li>
+<li>Reconcile Remark&nbsp;2.10(ii) (Kodaira vanishing <em>fails</em>: an ample \(\cL\) with
+\(H^1(X,\cL^{-1})\neq0\)) with Corollary&nbsp;2.8 (KAN <em>holds</em>). Which single hypothesis
+distinguishes the two situations, and what does its presence guarantee?</li>
+<li>Locate, precisely, where the dimension bound enters the proof of degeneration, distinguishing
+\(\dim&lt;p\) from \(\dim=p\). Why is \(\dim&gt;p\) open — what does a lift mod \(p^2\) fail to control?</li>
+<li>Give the minimal-hypothesis argument that the lift must be mod \(p^2\) and no less: explain why mod
+\(p\) carries no information, why one division by \(p\) suffices, and why \(W_n\) for \(n\geqslant3\) is
+unnecessary for the main theorems.</li>
+<li>Explain why the method does <em>not</em> yield Hodge symmetry \(h^{ij}=h^{ji}\): which ingredient of
+the complex-analytic proof has no characteristic-\(p\) counterpart here, and what does the algebraic
+argument deliver in its place?</li>
+</ol>
+</div>

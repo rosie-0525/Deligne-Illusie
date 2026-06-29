@@ -1,0 +1,252 @@
+<h1>1. de Rham cohomology and the Hodge spectral sequence</h1>
+
+<div class="lead">
+<p>Before we can ask whether something <em>degenerates</em>, we need the object that might.
+This lesson builds it from scratch: the algebraic de Rham complex, its hypercohomology, and the
+spectral sequence that relates the two — the Hodge–de Rham spectral sequence
+<a class="xref" href="#00-overview">(0.1)</a>. The punchline is a single numerical statement.
+There is always an inequality \(\sum_{i+j=n} h^{ij} \geqslant \dim H^n_{\dR}\); the Hodge numbers
+on the left are, in a precise sense, an <em>over</em>count of de Rham cohomology. "Degeneration"
+is the assertion that the overcount is exact. Over \(\C\) it always is, by Hodge theory. In
+characteristic \(p\) it can fail — and the whole paper is the story of when it does not.</p>
+</div>
+
+<h2>The algebraic de Rham complex</h2>
+
+<p>Let \(X\) be a smooth scheme over a field \(k\). The sheaf of Kähler differentials
+\(\Om^1_{X/k}\) is generated, locally, by symbols \(df\) for \(f\in\cO_X\), subject to
+\(k\)-linearity and the Leibniz rule \(d(fg)=f\,dg+g\,df\). Its exterior powers
+\(\Om^i_{X/k}=\bigwedge^i \Om^1_{X/k}\) come with a unique \(k\)-linear <em>exterior derivative</em>
+\[
+\cO_X \xto{d} \Om^1_{X/k} \xto{d} \Om^2_{X/k} \xto{d} \cdots
+\]
+characterized by \(d(\omega\wedge\eta)=d\omega\wedge\eta+(-1)^{\deg\omega}\,\omega\wedge d\eta\) and
+\(d\circ d=0\). The \(\cO_X\)-modules \(\Om^i_{X/k}\) are <em>not</em> stalks of a constant
+sheaf and the maps \(d\) are <em>not</em> \(\cO_X\)-linear (they are only \(k\)-linear); the pair
+\((\Om^{\bullet}_{X/k},d)\) is a complex of sheaves of \(k\)-vector spaces. When \(X/k\) is smooth
+of dimension \(n\), each \(\Om^i_{X/k}\) is locally free of rank \(\binom{n}{i}\), and the complex
+has length \(n\): it stops at \(\Om^n_{X/k}\).</p>
+
+<div class="box example">
+<div class="box-label">Example — affine space, in coordinates</div>
+<p>On \(\Aa^n_k=\Spec k[x_1,\dots,x_n]\), the module \(\Om^1\) is free on \(dx_1,\dots,dx_n\), and
+\(\Om^i\) is free on the \(\binom{n}{i}\) wedges \(dx_{j_1}\wedge\cdots\wedge dx_{j_i}\). The
+differential is the familiar one, \(d(f)=\sum_i (\partial f/\partial x_i)\,dx_i\). A subtlety that
+will haunt us: in characteristic \(p\), \(d(x^p)=p\,x^{p-1}dx=0\). So \(x^p\) is a non-constant
+function with \(df=0\); \(p\)-th powers are "constants" for \(d\). This single fact is the seed of
+the Cartier isomorphism (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>).</p>
+</div>
+
+<div class="thmbox def">
+<span class="thm-label">Definition</span>
+<div class="thm-body">
+<p>The <strong>algebraic de Rham cohomology</strong> of \(X/k\) is the hypercohomology of the de
+Rham complex,
+\[
+H^n_{\dR}(X/k) \;:=\; \mathbb{H}^n\!\left(X,\ \Om^{\bullet}_{X/k}\right).
+\]</p>
+</div>
+</div>
+
+<p>Why hypercohomology and not ordinary cohomology? Because we have a <em>complex</em> of sheaves,
+not a single sheaf, and we must remember both the cohomology of each \(\Om^i\) (a sheaf-theoretic,
+"vertical" datum) and the differential \(d\) linking them (a "horizontal" datum). Hypercohomology
+\(\mathbb{H}^n\) is the total cohomology that mixes the two. The standard tool for unmixing them is a
+spectral sequence, and there is one canonical choice.</p>
+
+<h2>The Hodge–de Rham spectral sequence</h2>
+
+<p>Filter the complex by its <strong>stupid (naive) filtration</strong>: let
+\(\sigma^{\geqslant i}\Om^{\bullet}\) be the subcomplex that agrees with \(\Om^{\bullet}\) in degrees
+\(\geqslant i\) and is zero below,
+\[
+\sigma^{\geqslant i}\Om^{\bullet} : \; 0 \to \cdots \to 0 \to \Om^i \xto{d} \Om^{i+1} \to \cdots
+\]
+This <em>is</em> a subcomplex (applying \(d\) only raises degree, so it cannot escape downward), and
+the associated graded piece is a single sheaf placed in a single degree:
+\(\mathrm{gr}^i = \sigma^{\geqslant i}/\sigma^{\geqslant i+1} = \Om^i_{X/k}[-i]\). A filtered complex
+has a spectral sequence of hypercohomology, with \(E_1^{i,j}=\mathbb{H}^{i+j}(X,\mathrm{gr}^i)\).
+Here \(\mathbb{H}^{i+j}(X,\Om^i[-i]) = H^j(X,\Om^i)\), so we obtain:</p>
+
+<div class="thmbox">
+<span class="thm-label">Theorem</span> <span class="thm-cite">(Hodge–de Rham spectral sequence)</span>
+<div class="thm-body">
+<p>For \(X\) smooth over \(k\) there is a convergent spectral sequence
+\[
+\tag{0.1} E_1^{i,j} = H^j(X,\ \Om^i_{X/k}) \;\Longrightarrow\; H^{i+j}_{\dR}(X/k),
+\]
+with differentials \(d_r : E_r^{i,j}\to E_r^{i+r,\,j-r+1}\). On the bottom row \(j=0\), the map
+\(d_1 : E_1^{i,0}=H^0(X,\Om^i) \to E_1^{i+1,0}=H^0(X,\Om^{i+1})\) is induced by the de Rham
+differential \(d\).</p>
+</div>
+</div>
+
+<div class="box note">
+<div class="box-label">Reading the \(E_1\) page</div>
+<p>Picture \(E_1\) as a grid: column \(i\) holds the cohomology of \(\Om^i\), with \(H^j\) at height
+\(j\). The first differentials \(d_1\) point one column to the right (same height), and are exactly
+the de Rham differential acting on cohomology. The abutment \(H^n_{\dR}\) is assembled from the
+anti-diagonal \(i+j=n\). The two extreme cases are easy to name: \(E_1^{i,0}=H^0(\Om^i)\) is the
+space of <em>global \(i\)-forms</em>, and the bottom-row complex \((H^0(\Om^{\bullet}),d)\) is the
+complex of global forms with its own differential.</p>
+</div>
+
+<h2>Degeneration and the universal Hodge inequality</h2>
+
+<p>Run the spectral sequence. Each page is the cohomology of the previous: \(E_{r+1}=H(E_r,d_r)\).
+Taking cohomology can only shrink dimensions, so \(\dim E_{r+1}^{i,j}\leqslant \dim E_r^{i,j}\), and
+in the limit \(\dim E_\infty^{i,j}\leqslant \dim E_1^{i,j}=h^{ij}\), where
+\(h^{ij}:=\dim_k H^j(X,\Om^i)\) are the <strong>Hodge numbers</strong>. Convergence says the abutment
+carries a finite filtration whose graded pieces are exactly the \(E_\infty^{i,j}\) with \(i+j=n\), so
+\(\dim H^n_{\dR} = \sum_{i+j=n}\dim E_\infty^{i,j}\). Combining:</p>
+
+<p>
+\[
+\dim_k H^n_{\dR}(X/k) \;=\; \sum_{i+j=n}\dim E_\infty^{i,j} \;\leqslant\;
+\sum_{i+j=n} h^{ij}.
+\tag{1.2}
+\]
+</p>
+
+<p>The right-hand inequality (1.2) is <em>unconditional</em>: it holds for every smooth \(X/k\), in
+any characteristic, with no hypotheses whatsoever. The Hodge numbers always overcount de Rham
+cohomology. We say the spectral sequence <strong>degenerates at \(E_1\)</strong> if every
+differential \(d_r\) vanishes for \(r\geqslant 1\); equivalently \(E_1=E_\infty\); equivalently the
+inequalities in (1.2) are equalities for all \(n\):</p>
+
+<div class="thmbox def">
+<span class="thm-label">Numerical criterion</span>
+<div class="thm-body">
+<p>The Hodge–de Rham spectral sequence degenerates at \(E_1\) if and only if
+\[
+\sum_{i+j=n} h^{ij} \;=\; \dim_k H^n_{\dR}(X/k)\qquad\text{for every } n.
+\]
+This dimension equality is exactly the statement Deligne–Illusie prove (under hypotheses).</p>
+</div>
+</div>
+
+<div class="thmbox">
+<span class="thm-label">Theorem</span> <span class="thm-cite">(classical; Hodge theory)</span>
+<div class="thm-body">
+<p>If \(X\) is smooth and proper over \(\C\) (or any field of characteristic \(0\)), the Hodge–de Rham
+spectral sequence degenerates at \(E_1\).</p>
+</div>
+</div>
+
+<p>Over \(\C\) this comes from Hodge theory: \(H^n_{\dR}(X^{\mathrm{an}})\cong\bigoplus_{i+j=n}
+H^j(X,\Om^i)\) by harmonic representatives. For \(X\) proper but not projective one reduces to the
+projective case by Chow's lemma and resolution of singularities. This is the analytic input that
+Deligne–Illusie replace by a purely algebraic argument running through characteristic \(p\)
+(<a class="xref" href="#10-char-zero">Lesson&nbsp;10</a>).</p>
+
+<div class="box subtle">
+<div class="box-label">In characteristic \(p\), degeneration can fail</div>
+<p>The inequality (1.2) is universal, but equality is not. The cleanest way it breaks: suppose \(X\)
+carries a global \(1\)-form \(\omega\in H^0(X,\Om^1)\) that is <em>not closed</em>,
+\(d\omega\neq 0\). Then on the bottom row the differential
+\(d_1 : H^0(\Om^1)\to H^0(\Om^2)\) sends \([\omega]\mapsto[d\omega]\neq 0\), so \(d_1\neq 0\) and the
+sequence does not degenerate. Such non-closed global forms genuinely exist on smooth proper surfaces
+in characteristic \(p\); the first examples are Mumford's and Igusa's. We catalogue these failures —
+and exactly which hypothesis rules them out — in <a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>.</p>
+</div>
+
+<h2>Worked examples</h2>
+
+<div class="box example">
+<div class="box-label">Example — the projective line \(\Pp^1\)</div>
+<p>The complex is just \(\cO \xto{d} \Om^1\), with \(\Om^1_{\Pp^1}\cong\cO(-2)\). The four relevant
+cohomology groups are
+\[
+H^0(\cO)=k,\quad H^1(\cO)=0,\qquad H^0(\Om^1)=0,\quad H^1(\Om^1)=k.
+\]
+(The last is Serre duality, \(H^1(\Om^1)\cong H^0(\cO)^\vee\).) So on the \(E_1\) page only
+\(E_1^{0,0}=k\) and \(E_1^{1,1}=k\) are nonzero; everything else vanishes. The only differential that
+could be nonzero, \(d_1:E_1^{0,0}\to E_1^{1,0}=H^0(\Om^1)=0\), lands in zero. Hence
+\(E_1=E_\infty\) and the sequence degenerates. Reading off the abutment:
+\[
+H^0_{\dR}=k,\qquad H^1_{\dR}=0,\qquad H^2_{\dR}=k.
+\]
+Note \(h^{ij}=\delta_{ij}\) here — the Hodge diamond is a single diagonal.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — projective space \(\Pp^n\)</div>
+<p>The standard computation of \(H^j(\Pp^n,\Om^i)\) (Bott's formula) gives
+\(h^{ij}=1\) if \(i=j\leqslant n\), and \(h^{ij}=0\) otherwise: the Hodge diamond is, again, the
+diagonal. Since the only nonzero \(E_1^{i,j}\) sit on the diagonal \(j=i\), every \(d_1\) (which
+shifts to column \(i+1\), same row) lands in a zero group; likewise all higher \(d_r\). The sequence
+degenerates, and the de Rham Betti numbers are
+\[
+\dim H^{2m}_{\dR}(\Pp^n)=1\ (0\leqslant m\leqslant n),\qquad \dim H^{\mathrm{odd}}_{\dR}=0,
+\]
+with total dimension \(\sum_m \dim H^m_{\dR}=n+1\). (This is Exercise&nbsp;1, and matches the
+topological Betti numbers of \(\Pp^n(\C)\).)</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — an elliptic curve, and curves of genus \(g\)</div>
+<p>Let \(E/k\) be a smooth proper curve of genus \(1\). The complex is \(\cO\xto{d}\Om^1\) with
+\(\Om^1_E\cong\cO_E\), so all four Hodge numbers are \(1\):
+\[
+h^{00}=\dim H^0(\cO)=1,\quad h^{10}=\dim H^0(\Om^1)=1,\quad
+h^{01}=\dim H^1(\cO)=1,\quad h^{11}=\dim H^1(\Om^1)=1.
+\]
+The bottom-row differential \(d_1:H^0(\cO)\to H^0(\Om^1)\) is \(f\mapsto df\), and it kills the
+constants \(H^0(\cO)=k\) — every regular function on a proper curve is constant, with \(df=0\). So
+\(d_1=0\), the sequence degenerates, and
+\[
+\dim H^1_{\dR}(E/k)=h^{10}+h^{01}=1+1=2,\qquad H^0_{\dR}=k,\quad H^2_{\dR}=k.
+\]
+The de Rham Betti numbers are \(1,2,1\). More generally, for a smooth proper curve of genus \(g\) one
+has \(h^{00}=h^{11}=1\) and \(h^{10}=h^{01}=g\), giving the key number
+\[
+\dim H^1_{\dR}(X/k)=h^{10}+h^{01}=2g,
+\]
+which over \(\C\) is the topological first Betti number \(b_1=2g\).</p>
+</div>
+
+<h2>Two cautions</h2>
+
+<div class="box subtle">
+<div class="box-label">Inequality vs. equality</div>
+<p>Do not conflate the two halves of (1.2). The inequality \(\sum_{i+j=n}h^{ij}\geqslant
+\dim H^n_{\dR}\) is a formal consequence of having a spectral sequence and holds <em>always</em>.
+Equality — degeneration — is a real theorem: free over \(\C\), conditional in characteristic \(p\).
+The content of Deligne–Illusie is precisely a hypothesis (a lift mod \(p^2\), in dimension \(&lt;p\))
+that forces the equality.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Degeneration is not Hodge symmetry</div>
+<p>Degeneration says the numbers \(h^{ij}\) <em>add up</em> correctly along anti-diagonals. It says
+<em>nothing</em> about the symmetry \(h^{ij}=h^{ji}\). Over \(\C\) that symmetry holds for a separate
+reason (complex conjugation on harmonic forms, \(H^j(\Om^i)\cong\overline{H^i(\Om^j)}\)). In
+characteristic \(p\) it can fail even when degeneration holds: there are smooth proper varieties with
+\(h^{ij}\neq h^{ji}\). Keep the two statements firmly apart
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Assuming degeneration, compute all \(\dim H^m_{\dR}(\Pp^n/k)\) from the Hodge numbers
+\(h^{ij}=\delta_{ij}\) (for \(i,j\leqslant n\)). Confirm the total is \(n+1\) and compare with the
+topological Betti numbers of \(\Pp^n(\C)\).</li>
+<li>Prove the universal inequality \(\sum_{i+j=n} h^{ij}\geqslant \dim H^n_{\dR}(X/k)\) using only
+that \(\dim E_\infty^{i,j}\leqslant \dim E_1^{i,j}\) and that \(H^n_{\dR}\) is filtered with the
+\(E_\infty^{i,j}\) (\(i+j=n\)) as graded pieces. Identify precisely when equality holds for a fixed
+\(n\).</li>
+<li><em>Curves always degenerate, unconditionally.</em> Let \(X\) be a smooth proper curve. Show that
+on the \(E_1\) page the only differential that is not automatically zero is the bottom-row
+\(d_1:E_1^{0,0}=H^0(\cO)\to E_1^{1,0}=H^0(\Om^1)\), and that the would-be next one
+\(d_1:H^0(\Om^1)\to H^0(\Om^2)=0\) vanishes because \(\Om^2=0\) on a curve. Then show
+\(d_1:H^0(\cO)\to H^0(\Om^1)\) is \(f\mapsto df=0\) (regular functions on a proper curve are
+constant). Conclude that the Hodge–de Rham spectral sequence of any smooth proper curve degenerates
+at \(E_1\), with no lifting or characteristic hypothesis. (Foreshadowing: curves always lift to
+\(W_2(k)\), so the general theorem will <em>re</em>prove this — but here you get it by hand.)</li>
+<li>Over \(\C\), use the analytic comparison to identify \(H^n_{\dR}(X/\C)\) with singular cohomology
+\(H^n(X^{\mathrm{an}},\C)\), and the Hodge numbers \(h^{ij}\) with the classical Hodge numbers
+\(\dim H^{j}(X,\Om^i)=\dim H^{i,j}\). Re-derive the curve count \(b_1=2g\) and the elliptic-curve
+Betti numbers \(1,2,1\) from this point of view.</li>
+</ol>
+</div>

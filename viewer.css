@@ -21,6 +21,8 @@ body {
 }
 #topbar h1 { font-size: 1.05rem; margin: 0; font-weight: 600; letter-spacing: .02em; }
 #menu-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.3rem; cursor: pointer; }
+#home-link { color: #fff; text-decoration: none; font-size: 1.3rem; line-height: 1; opacity: .9; }
+#home-link:hover { opacity: 1; }
 #lang-switch { margin-left: auto; display: flex; align-items: center; gap: .4rem; }
 #rpane-label { font-size: .85rem; opacity: .85; letter-spacing: .03em; }
 #lang-switch button {

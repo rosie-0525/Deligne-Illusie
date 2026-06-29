@@ -1,0 +1,234 @@
+<h1>7. From φ¹ to all φⁱ, and why i &lt; p</h1>
+
+<div class="lead">
+<p><a class="xref" href="#06-key-computation">Lesson&nbsp;6</a> extracted, from a local lift of
+Frobenius mod \(p^2\), a single morphism in the derived category
+\[
+\varphi^1 = f \;:\; \Om^1_{X'/k}[-1] \longrightarrow F_*\Om^{\bullet}_{X/k},
+\qquad \cH^1\varphi^1 = C^{-1}.
+\]
+It splits off the degree-\(1\) cohomology of the pushed-forward de Rham complex. To prove
+Theorem&nbsp;2.1 we must do the same in every degree below \(p\) and package the results into one
+isomorphism
+\[
+\varphi_{\tX} \;=\; \sum_{i&lt;p}\varphi^i \;:\;
+\bigoplus_{i&lt;p}\Om^i_{X'/k}[-i] \;\iso\; \tau_{&lt;p}\,F_*\Om^{\bullet}_{X/k}.
+\]
+Remarkably, this needs almost no new geometry. Everything above degree \(1\) is <em>multilinear
+algebra</em> applied to the one map \(\varphi^1\) — and the single step that can fail, dividing by
+\(i!\), is exactly what pins the range to \(i&lt;p\).</p>
+</div>
+
+<h2>The reduction: an isomorphism in \(D\) is checked on cohomology</h2>
+
+<p>The first thing to notice is that the global derived-category statement dissolves into independent
+problems, one per degree. The reason is structural: a sheaf placed in degree \(i\), written
+\(L[-i]\), has cohomology concentrated in that one degree, so a direct sum of such has
+\(\cH^i\bigl(\bigoplus_j L^j[-j]\bigr)=L^i\). A morphism out of it sees, in degree \(i\), only the
+\(i\)-th summand.</p>
+
+<div class="thmbox">
+<span class="thm-label">Reduction</span> <span class="thm-cite">(paper §2.1(a))</span>
+<div class="thm-body">
+<p>Let \(K\) be a complex of \(\cO_{X'}\)-modules with \(\cH^i K=0\) for \(i\geqslant p\) (e.g.
+\(K=\tau_{&lt;p}F_*\Om^{\bullet}_{X/k}\)). Then to give an isomorphism
+\(\bigoplus_{i&lt;p}\Om^i_{X'}[-i]\iso K\) in \(D(X')\) is the <em>same</em> as to give, for each
+\(0\leqslant i&lt;p\), a morphism \(\varphi^i:\Om^i_{X'}[-i]\to K\) whose induced map
+\(\cH^i\varphi^i:\Om^i_{X'}\to\cH^iK\) is an isomorphism of sheaves.</p>
+</div>
+</div>
+
+<p>Indeed, given such \(\varphi^i\), set \(\varphi=\sum_i\varphi^i\). On \(\cH^i\) the summands
+\(\varphi^j\) with \(j\ne i\) contribute nothing, so \(\cH^i\varphi=\cH^i\varphi^i\), an isomorphism.
+A morphism of complexes that is an isomorphism on every cohomology sheaf is a quasi-isomorphism,
+hence an isomorphism in \(D(X')\) (<a class="xref" href="#05-derived-decomposable">Lesson&nbsp;5</a>).
+Conversely any such isomorphism restricts to the summands. So our entire task reduces to the
+degreewise demand
+\[
+\cH^i\varphi^i = C^{-1}\qquad(i&lt;p),
+\]
+and the Cartier isomorphism (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>) guarantees that
+\(C^{-1}\) is an isomorphism. We must build the chain-level maps \(\varphi^i\); Cartier supplies their
+correctness for free.</p>
+
+<h2>The two forced maps \(\varphi^0\) and \(\varphi^1\)</h2>
+
+<p>The case \(i=0\) is forced and choice-free. Degree-\(0\) Cartier identifies
+\(\cH^0F_*\Om^{\bullet}\cong\cO_{X'}\) with the \(p\)-th powers inside \(F_*\cO_X\), so the only
+candidate is the composite
+\[
+\varphi^0 :\; \cO_{X'}\xto{C^{-1}}\cH^0F_*\Om^{\bullet}_{X/k}\hookrightarrow F_*\Om^{\bullet}_{X/k},
+\qquad x'\longmapsto x^p.
+\]
+It uses no lift at all. The case \(i=1\) is the work of <a class="xref" href="#06-key-computation">Lesson&nbsp;6</a>:
+it is the one place the lift mod \(p^2\) enters. Everything else, we now build out of \(\varphi^1\).</p>
+
+<h2>The multiplicative construction of \(\varphi^i\)</h2>
+
+<p>The exterior power is a quotient of the tensor power by the wedge (product) map
+\(m:(\Om^1_{X'})^{\otimes i}\to\Om^i_{X'}\), \(\omega_1\otimes\cdots\otimes\omega_i\mapsto
+\omega_1\wedge\cdots\wedge\omega_i\). When \(i!\) is invertible this surjection has a canonical
+<strong>antisymmetrization</strong> section
+\[
+a(\omega_1\wedge\cdots\wedge\omega_i)
+=\frac{1}{i!}\sum_{s\in\mathfrak{S}_i}\sgn(s)\,
+\omega_{s(1)}\otimes\cdots\otimes\omega_{s(i)},
+\qquad m\circ a=\mathrm{id}.
+\]
+With \(a\) in hand, define \(\varphi^i\) for \(1\leqslant i&lt;p\) as the composite
+\[
+\varphi^i:\;\Om^i_{X'}[-i]\xto{a[-i]}(\Om^1_{X'})^{\otimes i}[-i]
+\xto{(\varphi^1)^{\otimes i}}(F_*\Om^{\bullet}_{X/k})^{\otimes i}
+\xto{\ \wedge\ }F_*\Om^{\bullet}_{X/k}.
+\]
+Read left to right: antisymmetrize a form into a tensor of \(1\)-forms; apply \(\varphi^1\) in each
+slot (note \((\Om^1_{X'}[-1])^{\otimes i}=(\Om^1_{X'})^{\otimes i}[-i]\), which is why the shifts
+line up); then multiply, using that \(F_*\Om^{\bullet}_{X/k}\) is a sheaf of graded-commutative
+differential algebras under \(\wedge\). The tensor products here are <em>derived</em>, but harmless:
+all complexes in sight are bounded complexes of locally free \(\cO_{X'}\)-modules, so derived and
+ordinary tensor agree. The careful bookkeeping of these tensors and products lives in
+<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>.</p>
+
+<h2>The point: why \(i&lt;p\)</h2>
+
+<div class="box subtle">
+<div class="box-label">The scalar \(1/i!\) is the entire restriction</div>
+<p>The section \(a\) — and hence this construction of \(\varphi^i\) — exists exactly when \(i!\) is
+invertible in \(k\). Since \(\operatorname{char}k=p\), invertibility means \(p\nmid i!\). The prime
+\(p\) first divides a factorial at \(i=p\) (its earliest appearance is the factor \(p\) in \(p!\)), so
+\[
+i!\ \text{is invertible in }k\iff p\nmid i!\iff i&lt;p.
+\]
+This is the origin of the truncation \(\tau_{&lt;p}\) and of the range \(i&lt;p\) everywhere in the
+paper. At \(i=p\) we have \(p!\equiv 0\pmod p\), the symbol \(1/p!\) is undefined, and the
+construction simply breaks. Degrees \(\geqslant p\) are not a matter of working harder along these
+lines: they require genuinely different tools — Serre/Grothendieck duality when \(\dim\leqslant p\)
+(<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>) — and beyond that the statement can
+<em>fail</em> (<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<h2>Why \(\cH^i\varphi^i = C^{-1}\)</h2>
+
+<p>The verification is a one-line cancellation, and it is the place where multiplicativity of
+\(C^{-1}\) (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>) does all the work.</p>
+
+<details class="proof"><summary>Proof that \(\cH^i\varphi^i=C^{-1}\)</summary>
+<div class="proof-body">
+<p>Pass to cohomology sheaves through the three arrows. The product map induces, on
+\(\cH^{\bullet}\), the wedge product on \(\bigoplus_j\cH^jF_*\Om^{\bullet}\) (the cohomology of a
+DG-algebra is a graded algebra). The middle arrow induces \((\cH^1\varphi^1)^{\otimes i}=(C^{-1})^{\otimes i}\)
+on the relevant summand. So for \(\omega_1\wedge\cdots\wedge\omega_i\in\Om^i_{X'}\),
+\[
+\cH^i\varphi^i(\omega_1\wedge\cdots\wedge\omega_i)
+=\frac{1}{i!}\sum_{s\in\mathfrak{S}_i}\sgn(s)\,
+C^{-1}\omega_{s(1)}\wedge\cdots\wedge C^{-1}\omega_{s(i)}.
+\]
+Each \(C^{-1}\omega_j\) is a class in \(\cH^1\), i.e. of odd degree, so reordering the wedge of the
+\(i\) of them by a permutation \(s\) introduces the factor \(\sgn(s)\). Hence every summand equals
+\(\sgn(s)^2\,C^{-1}\omega_1\wedge\cdots\wedge C^{-1}\omega_i=C^{-1}\omega_1\wedge\cdots\wedge
+C^{-1}\omega_i\). There are \(i!\) of them, the prefactor \(1/i!\) cancels, and by multiplicativity of
+\(C^{-1}\),
+\[
+\cH^i\varphi^i(\omega_1\wedge\cdots\wedge\omega_i)
+=C^{-1}\omega_1\wedge\cdots\wedge C^{-1}\omega_i
+=C^{-1}(\omega_1\wedge\cdots\wedge\omega_i).
+\]
+Thus \(\cH^i\varphi^i=C^{-1}\), an isomorphism. <span class="qed">∎</span></p>
+</div>
+</details>
+
+<p>By the Reduction, \(\varphi_{\tX}=\sum_{i&lt;p}\varphi^i\) is then an isomorphism on every
+cohomology sheaf, hence a quasi-isomorphism onto \(\tau_{&lt;p}F_*\Om^{\bullet}_{X/k}\), i.e. an
+isomorphism in \(D(X')\). That is Theorem&nbsp;2.1 — modulo the one remaining issue, that
+\(\varphi^1\) was constructed only locally and must be glued
+(<a class="xref" href="#08-gluing">Lesson&nbsp;8</a>).</p>
+
+<h2>Examples</h2>
+
+<div class="box example">
+<div class="box-label">Example — degree \(2\), the cleanest case</div>
+<p>For \(\alpha,\beta\in\Om^1_{X'}\), antisymmetrization gives
+\(a(\alpha\wedge\beta)=\tfrac12(\alpha\otimes\beta-\beta\otimes\alpha)\). Applying
+\((\varphi^1)^{\otimes 2}\) and then the product,
+\[
+\varphi^2(\alpha\wedge\beta)
+=\tfrac12\bigl(\varphi^1\alpha\wedge\varphi^1\beta-\varphi^1\beta\wedge\varphi^1\alpha\bigr)
+=\tfrac12\bigl(\varphi^1\alpha\wedge\varphi^1\beta+\varphi^1\alpha\wedge\varphi^1\beta\bigr)
+=\varphi^1\alpha\wedge\varphi^1\beta,
+\]
+using anticommutativity of \(\wedge\) on \(1\)-forms in \(F_*\Om^{\bullet}\). So \(\varphi^2\) is
+simply \(\alpha\wedge\beta\mapsto\varphi^1\alpha\wedge\varphi^1\beta\) — but the derivation needed
+\(2\) invertible, i.e. \(p&gt;2\). For \(p=2\) the range is just \(i\in\{0,1\}\), so \(\varphi^2\) is
+never formed, consistently.</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — \(\varphi^2\) explicitly on \(\Aa^2\)</div>
+<p>Take \(X=\Aa^2=\Spec k[t_1,t_2]\) with the Frobenius lift \(\tF:(t_1,t_2)\mapsto(t_1^p,t_2^p)\),
+so by <a class="xref" href="#06-key-computation">Lesson&nbsp;6</a> we have
+\(\varphi^1(dt_i')=t_i^{p-1}\,dt_i\). Then
+\[
+\varphi^2(dt_1'\wedge dt_2')=\varphi^1(dt_1')\wedge\varphi^1(dt_2')
+=t_1^{p-1}t_2^{p-1}\,dt_1\wedge dt_2.
+\]
+This is a top form on the surface, hence automatically closed (\(\Om^3=0\)), and its class in
+\(\cH^2\) is \([t_1^{p-1}t_2^{p-1}\,dt_1\wedge dt_2]\). By the multiplicative computation of Cartier on
+\(\Aa^2\) (<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>), this is precisely
+\(C^{-1}(dt_1'\wedge dt_2')\). The formula \(\cH^2\varphi^2=C^{-1}\) is visible by hand.</p>
+</div>
+
+<h2>Subtleties to carry forward</h2>
+
+<div class="box subtle">
+<div class="box-label">Only \(\tau_{&lt;p}\) — the top degrees are recovered separately</div>
+<p>The construction produces an isomorphism onto the truncation \(\tau_{&lt;p}F_*\Om^{\bullet}\) and
+nothing more. When \(\dim X\leqslant p\) the missing top degrees are pinned down by
+Serre/Grothendieck duality (<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>), which is what
+lets degeneration go through in that range. For \(\dim X&gt;p\) the analogous decomposability is
+genuinely open / can fail (<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>).</p>
+</div>
+
+<div class="box note">
+<div class="box-label">When \(\Om^1\) is free: full decomposability (Remark 2.6(iv))</div>
+<p>The only obstruction beyond degree \(p\) was the section \(a\) of \(\bigotimes^n\Om^1\to\Om^n\). If
+such a section happens to exist for <em>every</em> \(n\) by other means — for instance when
+\(\Om^1_X\) is free, so \(X\) is parallelizable — then the same multiplicative recipe builds
+\(\varphi^n\) in <em>all</em> degrees, with no \(i&lt;p\) restriction, given only a lift mod \(p^2\).
+This is Raynaud's observation: an <strong>abelian variety</strong> has trivial cotangent bundle, so
+its de Rham complex decomposes fully whenever it lifts mod \(p^2\), regardless of dimension versus
+\(p\).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">All the geometry is in \(\varphi^1\)</div>
+<p>Worth saying plainly: \(\varphi^0\) is forced, \(\varphi^1\) carries the lift mod \(p^2\) and the
+entire geometric content, and every \(\varphi^i\) for \(i\geqslant 2\) is assembled from \(\varphi^1\)
+by pure multilinear algebra that only ever needs \(i!\) invertible. The deep input enters once; the
+rest is bookkeeping.</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Prove \(p\mid i!\iff i\geqslant p\) (use that \(i!\) is a product of integers \(\leqslant i\), and
+that \(p\) is prime), and conclude that \(1/i!\) exists in a field of characteristic \(p\) iff
+\(i&lt;p\).</li>
+<li>Verify that the antisymmetrization \(a\) is a section of the wedge map
+\(m:(\Om^1_{X'})^{\otimes i}\to\Om^i_{X'}\), i.e. \(m\circ a=\mathrm{id}\), whenever \(i!\) is
+invertible. (Apply \(m\) to each term; every permutation contributes \(\sgn(s)^2\) copies of
+\(\omega_1\wedge\cdots\wedge\omega_i\).)</li>
+<li>Re-derive \(\varphi^2(\alpha\wedge\beta)=\varphi^1\alpha\wedge\varphi^1\beta\) from the definition,
+and find the degree-\(3\) analogue \(\varphi^3(\alpha\wedge\beta\wedge\gamma)\) (you should again get
+\(\varphi^1\alpha\wedge\varphi^1\beta\wedge\varphi^1\gamma\), valid for \(p&gt;3\)).</li>
+<li>Carry out the \(\Aa^2\) computation of \(\varphi^2\) above and check directly that its
+\(\cH^2\)-class equals \(C^{-1}(dt_1'\wedge dt_2')\), using the Cartier basis classes from
+<a class="xref" href="#03-cartier">Lesson&nbsp;3</a>.</li>
+<li>Explain why for \(p=2\) the construction stops at \(i=1\), so it gives only
+\(\tau_{&lt;2}F_*\Om^{\bullet}\). Which theorem (<a class="xref" href="#09-degeneration">Lesson&nbsp;9</a>)
+is then needed to obtain degeneration for a smooth proper <em>surface</em> in characteristic \(2\)?</li>
+<li>For an abelian variety \(A\), pick a basis \(\omega_1,\dots,\omega_g\) of the invariant
+\(1\)-forms and write down an explicit section \(\bigotimes^n\Om^1_A\to\Om^n_A\) for every \(n\).
+Deduce, following Remark&nbsp;2.6(iv), that \(F_*\Om^{\bullet}_{A/k}\) is fully decomposable once
+\(A\) lifts mod \(p^2\), with no constraint relating \(g\) and \(p\).</li>
+</ol>
+</div>

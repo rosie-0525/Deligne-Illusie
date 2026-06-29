@@ -2,26 +2,40 @@
 
 HTML/JSON edition of P. Deligne & L. Illusie, *« Relèvements modulo p² et décomposition
 du complexe de de Rham »* (Inventiones math. **89**, 247–270, 1987), rendered with MathJax 3
-(SVG output) + XyJax‑v3. Same viewer format as the SGA 2 viewer. Both math libraries are
-vendored under `vendor/`, so the page renders **fully offline** — no CDN or network needed.
+(SVG output) + XyJax‑v3. Both math libraries are vendored under `vendor/`, so everything
+renders **fully offline** — no CDN or network needed.
+
+The site has two parts, reached from a landing page (`index.html`):
+
+- **The paper** (`paper.html`) — the full text in a bilingual, block-aligned reader (French ·
+  English/中文).
+- **The course** (`course.html`) — a 15-lesson graduate course that walks through the paper
+  step by step: motivation, the key ideas, many worked examples (the simplest case of every
+  theorem) and the counterexamples that justify each hypothesis.
 
 ## View it
 
 Live: **https://rosie-0525.github.io/Deligne-Illusie/**
 
-To run locally — must be served over HTTP (the viewer uses `fetch`), from the repo root:
+To run locally — must be served over HTTP (both readers use `fetch`), from the repo root:
 
 ```sh
 python3 -m http.server 8000
-# open http://localhost:8000/
+# open http://localhost:8000/         (landing: choose paper or course)
 ```
 
 ## Layout
 
 ```
-index.html        viewer shell (MathJax + XyJax config, top bar, sidebar)
+index.html        landing page — choose "the paper" or "the course"
+paper.html        paper viewer shell (MathJax + XyJax config, top bar, sidebar)
 viewer.js         loads the manifest once, lazy-loads + caches chapters, resolves #anchors
-viewer.css        styling
+viewer.css        paper styling
+course.html       course reader shell (MathJax + XyJax config, sidebar, lesson pane)
+course/course.js  loads the course manifest, lazy-loads lesson fragments, hash routing
+course/course.css course styling
+course/manifest.json        modules → lessons (id + title), drives the sidebar + prev/next
+course/lessons/*.html       one HTML fragment per lesson (00-overview … 14-subtleties)
 vendor/mathjax/tex-svg-full.js   MathJax 3 (SVG output, all extensions) — vendored for offline use
 vendor/xyjax/xypic.js            XyJax-v3 xy-pic extension — vendored for offline use
 data/<lang>/manifest.json   per-language manifest: { toc, chapters, anchor_index, default_page_id }
@@ -30,6 +44,30 @@ data/en/chapters/*.json     English translation  (full; bibliography entries kep
 data/cn/chapters/*.json     Chinese translation  (full; bibliography entries kept verbatim)
 source/Deligne-Illusie.pdf  original paper (source material; not referenced by the viewer)
 ```
+
+## The course
+
+A self-contained path through the paper for graduate students fluent in schemes and sheaf
+cohomology. Each lesson opens with motivation, states results with the paper's own numbering,
+computes explicit examples (always including the simplest case), and flags the subtleties.
+
+```
+0 · Orientation        00 the theorem, and why it is a miracle
+1 · The toolbox        01 Hodge–de Rham SS · 02 Frobenius & the twist X′ · 03 Cartier ·
+                       04 Witt vectors & liftings mod p² · 05 derived categories / decomposability
+2 · The construction   06 lift Frobenius, divide by p · 07 from φ¹ to all φⁱ, why i<p · 08 gluing
+3 · Consequences       09 decomposition & Hodge degeneration · 10 char 0 by reduction mod p ·
+                       11 Kodaira–Akizuki–Nakano vanishing
+4 · Structure          12 gerbes: lifting ⇔ splitting, exactly
+5 · Complements        13 relative degeneration & logarithmic poles · 14 assumptions & counterexamples
+```
+
+Course content model: `course/manifest.json` lists modules and their lessons (`{id, title}`);
+each lesson is a standalone HTML fragment in `course/lessons/<id>.html` (math in `\(..\)`/`\[..\]`,
+`<`/`>` written `&lt;`/`&gt;` inside math, diagrams via `\xymatrix`, cross-lesson links as
+`<a class="xref" href="#<id>">`). `course.js` lazy-loads the fragment for the current
+`#<id>` hash, typesets it, and renders prev/next. To add a lesson: drop a fragment in
+`course/lessons/` and add its `{id, title}` to the manifest.
 
 ## Reading layout (bilingual, block-aligned)
 

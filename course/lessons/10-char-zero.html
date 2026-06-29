@@ -1,0 +1,199 @@
+<h1>10. From characteristic p to characteristic 0</h1>
+
+<div class="lead">
+<p>Over \(\C\), degeneration of the Hodge–de Rham spectral sequence is a theorem of Hodge theory:
+harmonic representatives, the Kähler identities, the \(\partial\bar\partial\)-lemma. This lesson
+proves the same statement over <em>any</em> field of characteristic \(0\) with no analysis whatsoever.
+The mechanism is <strong>reduction modulo \(p\)</strong>: a variety in characteristic \(0\) is
+"spread out" over a finitely generated ring, then reduced modulo a large prime — and, the small
+miracle, the reduction <em>automatically</em> satisfies both hypotheses of
+<a class="xref" href="#09-degeneration">Corollary&nbsp;2.4</a>. Degeneration holds at the closed
+point and is transported back. The only ingredient beyond 2.4 is that coherent cohomology is
+well-behaved in families.</p>
+</div>
+
+<h2>The statement</h2>
+
+<div class="thmbox">
+<span class="thm-label">Corollary (2.7)</span>
+<div class="thm-body">
+<p>Let \(K\) be a field of characteristic \(0\) and \(X\) a proper smooth \(K\)-scheme. Then the
+Hodge–de Rham spectral sequence \(E_1^{ij}=H^j(X,\Om^i_{X/K})\Rightarrow H^{i+j}_{\dR}(X/K)\)
+degenerates at \(E_1\).</p>
+</div>
+</div>
+
+<p>By the warm-up of <a class="xref" href="#00-overview">Lesson&nbsp;0</a>, degeneration is equivalent
+to the single family of <em>numerical</em> identities
+\[
+\sum_{i+j=n} h^{ij} \;=\; h^n \qquad\text{for all } n,
+\qquad h^{ij}:=\dim_K H^j(X,\Om^i_{X/K}),\;\; h^n:=\dim_K H^n_{\dR}(X/K).
+\]
+Both sides are finite (properness), and "\(\leqslant\)" always holds; degeneration is exactly the
+reverse inequality, i.e. the equality. So the whole theorem is the assertion that finitely many
+integers agree — and integers, unlike harmonic forms, can be computed at a closed point of a scheme.</p>
+
+<h2>The philosophy: a constructible identity</h2>
+
+<p>The proof is a template Deligne uses repeatedly. An identity between dimensions of coherent
+cohomology is <strong>constructible</strong>: it is defined over a finitely generated subring of
+the base, and its truth is locally constant on the spectrum of that ring. Concretely, three facts
+do all the work. (i) Everything in sight is defined over a finitely generated \(\Z\)-algebra:
+\(X\), its sheaves \(\Om^i\), and the finitely many cohomology classes that witness the dimensions
+\(h^{ij},h^n\) involve only finitely many elements of \(K\). (ii) For a proper morphism the sheaves
+\(R^jf_*\Om^i\) and \(R^nf_*\Om^\bullet\) are coherent, hence locally free of constant rank after
+shrinking the base, and their formation commutes with base change there. (iii) Therefore the two
+sides of \(\sum h^{ij}=h^n\) are the ranks of two locally free sheaves on \(\Spec A\); if they
+agree at <em>one</em> well-chosen closed point, they agree generically, hence at the original
+characteristic-\(0\) point. The one closed point we choose lives in characteristic \(p\), where
+Corollary&nbsp;2.4 is available for nothing.</p>
+
+<details class="proof"><summary>Proof of Corollary 2.7</summary>
+<div class="proof-body">
+<p>We may assume \(X\) is connected, of dimension \(d\).</p>
+<ol>
+<li><strong>Reduce to \(K\) finitely generated over \(\Q\).</strong> The numbers \(h^{ij},h^n\) are
+unchanged under field extension (coherent cohomology commutes with the flat base change
+\(K\hookrightarrow \overline K\) or \(K\hookrightarrow K'\)), and \(X\), being of finite type, is
+already defined over a subfield \(K_0\subseteq K\) finitely generated over \(\Q\). Replace \(K\)
+by \(K_0\).</li>
+<li><strong>Spread out.</strong> There exist an integral finite-type \(\Z\)-algebra \(A\), a proper
+smooth morphism \(f:\mathcal{X}\to\Spec A\) of relative dimension \(d\), and a ring map \(A\to K\)
+with \(X=\mathcal{X}\otimes_A K\). (Clear denominators in the finitely many equations defining
+\(\mathcal{X}\) and the data establishing properness and smoothness.)</li>
+<li><strong>Achieve constant ranks.</strong> The sheaves \(R^jf_*\Om^i_{\mathcal{X}/A}\) and
+\(R^nf_*\Om^\bullet_{\mathcal{X}/A}\) are coherent. After inverting a suitable nonzero \(s\in A\)
+(shrinking \(\Spec A\) to a dense open), they become <em>locally free of constant ranks</em>
+\(h^{ij}\) and \(h^n\), with formation compatible with arbitrary base change. (Generic freeness for
+the first; for the second, the de Rham complex has locally free terms, so its hypercohomology is
+computed by a perfect complex whose cohomology is locally free over the same open.)</li>
+<li><strong>Choose a good closed point.</strong> Let \(T\subseteq\Spec A\) be the closure of a
+closed point of \(\Spec(A\otimes\Q)\); then \(T\) is quasi-finite and flat over \(\Spec\Z\). Pick a
+closed point \(s\in T\) at which \(T\) is étale over \(\Z\) and whose residue field
+\(k:=k(s)\) is finite of characteristic \(p\geqslant d\) (all but finitely many \(p\) qualify, and
+none of them divides \(s\)). Étaleness over \(\Z\) means the local ring \(\cO_{s}\) of \(T\) at
+\(s\) is unramified: its maximal ideal is \(\mathfrak{m}_s=(p)\), and
+\[
+\cO_{s}/\mathfrak{m}_s^2 \;=\; \cO_{s}/(p^2)\;\cong\; \Wt(k).
+\]
+Hence \(\mathcal{X}\otimes_A\bigl(\cO_{s}/\mathfrak{m}_s^2\bigr)\) is a proper smooth scheme over
+\(\Wt(k)\) reducing modulo \(p\) to the special fibre \(\mathcal{X}_s:=\mathcal{X}\otimes_A k\):
+that is, a <em>lift of \(\mathcal{X}_s\) over \(\Wt(k)\)</em>
+(<a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>).</li>
+<li><strong>Apply 2.4 and read back.</strong> \(\mathcal{X}_s\) is proper smooth over \(k\) of
+dimension \(d\leqslant p\) and admits a lift over \(\Wt(k)\); by
+<a class="xref" href="#09-degeneration">Corollary&nbsp;2.4</a> its Hodge–de Rham sequence
+degenerates, i.e. \(\sum_{i+j=n}\dim_k H^j(\mathcal{X}_s,\Om^i)=\dim_k H^n_{\dR}(\mathcal{X}_s/k)\)
+for all \(n\). By the constant-rank/base-change of step&nbsp;3, the left summands equal \(h^{ij}\)
+and the right side equals \(h^n\). Therefore \(\sum_{i+j=n}h^{ij}=h^n\) for \(X\), which is exactly
+degeneration over \(K\). \(\;\blacksquare\)</li>
+</ol>
+</div>
+</details>
+
+<div class="box note">
+<div class="box-label">The magic: both hypotheses, for free</div>
+<p>Corollary 2.4 asks for two things — a lift mod \(p^2\) and dimension \(\leqslant p\) — and naively
+each looks hard to arrange. Reduction modulo a large prime delivers <em>both</em> at no cost.
+The lift exists because \(\mathcal{X}\) is defined over \(A\), which already contains the
+\(\Wt(k)\)-thickening \(\cO_{s}/\mathfrak{m}_s^2\): the family <em>is</em> its own lift. And the
+dimension bound \(d\leqslant p\) holds because we were free to <em>choose</em> \(p\geqslant d\),
+there being infinitely many primes to pick from. Nothing analytic, nothing transcendental: the
+geometry of the single object \(\mathcal{X}\to\Spec A\) supplies the lift, and the abundance of
+primes supplies the inequality.</p>
+</div>
+
+<h2>Examples</h2>
+
+<div class="box example">
+<div class="box-label">Example — the clean illustration: a smooth hypersurface</div>
+<p>Let \(X\subset\Pp^{n}_{\C}\) be a smooth hypersurface of degree \(e\), so \(d=\dim X=n-1\). Its
+defining polynomial has coefficients \(a_\bullet\) generating a finite extension of \(\Q\); spread
+out over
+\[
+A=\Z[a_\bullet]\bigl[\tfrac1\Delta\bigr],\qquad \Delta=\text{the discriminant},
+\]
+with \(\mathcal{X}\subset\Pp^{n}_A\) the same hypersurface. Smoothness over \(\Spec A\) is exactly
+\(\Delta\in A^\times\). Now reduce modulo any prime \(p\) with \(p&gt;d\) and \(p\nmid\Delta\): the
+fibre \(\mathcal{X}_p\subset\Pp^n_{\Fp}\) is again a smooth hypersurface, of dimension \(d&lt;p\).
+Its lift is utterly transparent — the very same equation read over \(\Wt(\Fp)=\Z/p^2\) defines a
+smooth hypersurface over \(\Z/p^2\). Apply 2.4. Hypersurfaces make the "lift mod \(p^2\)" hypothesis
+visibly free: the equation never knew it was in characteristic \(p\).</p>
+</div>
+
+<div class="box example">
+<div class="box-label">Example — elliptic curve, and curves of genus \(g\)</div>
+<p>For \(E/\C\) an elliptic curve, \(d=1\), and for all but finitely many \(p\) the spreading-out has
+good reduction \(E_p/\Fp\), a smooth proper curve. Curves always lift to \(\Wt\) (the obstruction
+sits in \(H^2\) of a curve, which vanishes — <a class="xref" href="#04-witt-liftings">Lesson&nbsp;4</a>),
+and any \(p\geqslant 2\geqslant d+1\) works, so 2.4 applies and recovers
+\(\dim H^1_{\dR}=h^{10}+h^{01}=1+1=2\). More generally a smooth proper curve of genus \(g\) over
+\(\C\) gives \(\dim H^1_{\dR}=2g\) by the identical route. (Here the route is overkill: curves
+degenerate <em>unconditionally</em> — <a class="xref" href="#09-degeneration">Lesson&nbsp;9</a> — but
+they are the reassuring smallest case.)</p>
+</div>
+
+<h2>Subtleties</h2>
+
+<div class="box subtle">
+<div class="box-label">Why properness is essential</div>
+<p>Properness is what makes \(R^jf_*\Om^i\) coherent (so the ranks \(h^{ij}\) are finite and
+base-change holds) — the engine of steps&nbsp;3 and 5. Drop it and the cohomologies can be
+infinite-dimensional and jump wildly in families; the argument collapses. For open or singular
+\(X\) one passes to a smooth compactification with normal-crossings boundary and the
+<em>logarithmic</em> de Rham complex, where a parallel statement holds
+(<a class="xref" href="#13-relative-log">Lesson&nbsp;13</a>).</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">Why a <em>large</em> prime, and why only finitely many are lost</div>
+<p>The condition \(p\geqslant d\) is precisely what lands the special fibre in the range "dimension
+\(\leqslant p\)" of 2.4; this is the only place the size of \(p\) is used. We discard exactly the
+primes dividing the inverted element \(s\) (equivalently the discriminant), the primes of bad
+reduction, and the finitely many \(p&lt;d\). All of these together are a <em>finite</em> set, and
+infinitely many good primes remain — one is all we need.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">This gives degeneration, not Hodge symmetry</div>
+<p>The algebraic proof yields \(\sum_{i+j=n}h^{ij}=h^n\) but says nothing about the symmetry
+\(h^{ij}=h^{ji}\). That symmetry is genuinely complex-analytic (complex conjugation on harmonic
+forms); in characteristic \(p\) it can fail outright
+(<a class="xref" href="#14-subtleties">Lesson&nbsp;14</a>). So even in characteristic \(0\) this
+route recovers strictly <em>less</em> than full Hodge theory: degeneration is the part that
+survives reduction mod \(p\); symmetry is the part that does not.</p>
+</div>
+
+<div class="box subtle">
+<div class="box-label">A robust general technique</div>
+<p>"Spread out over a finitely generated \(\Z\)-algebra, specialize to a closed point of large
+residue characteristic, transport the conclusion back" is a method, not a trick. It moves an
+<em>algebraic</em> identity between characteristic \(0\) and characteristic \(p\) in both
+directions, and Deligne deploys it elsewhere (e.g. Weil-II style arguments, and his proof of the
+Weil conjectures' applications). The content of this lesson is that the Hodge–de Rham degeneration
+is robust enough to make the trip.</p>
+</div>
+
+<div class="box exercise">
+<div class="box-label">Exercises</div>
+<ol>
+<li>Spell out the spreading-out for a single smooth plane curve \(C=\{F(x,y)=0\}\subset\Aa^2_K\)
+(or its projective closure): exhibit \(A\), the element \(s\) one inverts, and the family
+\(\mathcal{C}\to\Spec A\). What is \(s\) explicitly?</li>
+<li>Explain carefully why only finitely many primes are excluded. (List every place a prime can be
+"bad": dividing \(s\); below \(d\); where some \(R^jf_*\Om^i\) fails to be free. Why is each set
+finite?)</li>
+<li>Pinpoint where "\(p\geqslant d\)" enters the proof, and describe what would go wrong if one
+specialized to a small prime \(p&lt;d\). (Which hypothesis of 2.4 fails, and why can the spectral
+sequence then genuinely have nonzero differentials?)</li>
+<li>Carry out the hypersurface example for a smooth quartic surface \(X\subset\Pp^3_{\C}\): here
+\(d=2\), so any \(p\geqslant 3\) (avoiding \(p\mid\Delta\)) works. Identify \(A\), exhibit the lift
+over \(\Z/p^2\), and conclude degeneration. (You may take the Fermat quartic
+\(x_0^4+x_1^4+x_2^4+x_3^4=0\), where the bad primes are visibly only \(p=2\).)</li>
+<li>Why does verifying degeneration for a single small prime \(p\) <em>not</em> let you conclude in
+characteristic \(0\)? (Hint: if \(p&lt;d\), the special fibre lies outside the range of 2.4 and may
+fail to degenerate — its ranks could be strictly smaller — so equality at that fibre is neither
+available nor, if it held, transportable along the family. Constancy of ranks transports
+information from a <em>good</em> fibre to the generic point, not from a bad one.)</li>
+</ol>
+</div>
